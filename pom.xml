@@ -24,6 +24,10 @@
 <artifactId>log4j-api</artifactId>
 <version>2.0-rc1</version>
 </dependency>
+<dependency>
+<groupId>mysql</groupId>
+<artifactId>mysql-connector-java</artifactId>
+<version>5.1.6</version>
   </dependencies>
   <build>
     <finalName>com.kpi.compsys</finalName>
