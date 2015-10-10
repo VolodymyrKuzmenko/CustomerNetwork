@@ -1,1 +1,0 @@
-/*script for test data*/

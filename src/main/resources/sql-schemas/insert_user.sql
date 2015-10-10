@@ -1,0 +1,1 @@
+INSERT INTO `social_network`.`user` (`id`, `email`, `password`, `status`, `userInfo_id`) VALUES (NULL, 'example@em.com', '1233', '0', '3');
