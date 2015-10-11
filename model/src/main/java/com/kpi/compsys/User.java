@@ -26,26 +26,32 @@ public class User {
     public void setId(int id) {
         this.id = id;
     }
+    
     @Column(name="email")
     public String getEmail() {
         return email;
     }
+
     @Column(name="email")
     public void setEmail(String email) {
         this.email = email;
     }
+
     @Column(name="password")
     public String getPassword() {
         return password;
     }
+
     @Column(name="password")
     public void setPassword(String password) {
         this.password = password;
     }
+
     @Column(name="status")
     public int getStatus() {
         return status;
     }
+
     @Column(name="status")
     public void setStatus(int status) {
         this.status = status;

@@ -1,0 +1,15 @@
+
+# Created by .ignore support plugin (hsz.mobi)
+.idea/
+target/
+controller/target/
+dao/target/
+model/target/
+*.iml
+target
+.idea
+!.gitignore
+
+
+controller/src/main/webapp/addDeal.jsp
+controller/src/main/java/com/becomejavasenior/deal/AddDealServlet.java
