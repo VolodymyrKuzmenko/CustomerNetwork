@@ -12,5 +12,10 @@
     <packaging>jar</packaging>
     <artifactId>dao</artifactId>
     <dependencies>
+        <dependency>
+            <groupId>customer-nt</groupId>
+            <artifactId>dao</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 </project>
