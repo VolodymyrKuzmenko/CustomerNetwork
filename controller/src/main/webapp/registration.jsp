@@ -57,42 +57,48 @@
 			</div>
 		</div>
 	</header>
-	<section class="welcome">
+	<section class="registration">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<div class="col-md-12">
-						<div class="wrapper">
-							<div class="info">
-								<div class="motivation_text">
-									<h2>
-									Build your business with us! 
-									</h2>
-									<h3>
-										Try to manage your dreams
-									</h3>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam obcaecati aliquid tenetur nihil sint voluptate harum voluptatem voluptatibus aspernatur eius esse, ex quis unde voluptatum iure beatae praesentium voluptates id.</p>
-									<div class="buttons">
-										<button class="btn_sign btn">Sign in</button>
-										<button href="#login-popup" class="login-link btn_log btn">Log in</button>
-									</div>
-								</div>
-								<img src="images/macbook.png" alt="Alt">
-							</div>
+					<form action="">
+						<h3>Registration</h3>
+						<div class="text_holder">
+							<span>Enter your email</span>
+							<input type="email">
 						</div>
-					</div>
+						<div class="text_holder">
+							<span>Enter your name</span>
+							<input type="text">
+						</div>
+						<div class="text_holder">
+							<span>Enter your surname</span>
+							<input type="text">
+						</div>
+						<div class="text_holder">
+							<span>Enter your birthday</span>
+							<input type="date">
+						</div>
+						<div class="text_holder">
+							<span>Enter your position</span>
+							<input type="text">
+						</div>
+						<div class="text_holder">
+							<span>Enter your password</span>
+							<input type="password">
+						</div>
+						<div class="text_holder">
+							<span>Confirm your password</span>
+							<input type="password">
+						</div>
+						<div class="text_holder">
+							<span>Choose your photo</span>
+							<input type="file" name="pic" accept="image/*">
+						</div>
+						<input type="submit" class="btn btn_sign" value="Sign In">
+					</form>
 				</div>
 			</div>
-		</div>
 	</section>
-	<div id="login-popup" class="white-popup mfp-hide">
-  		<form action="">
-  			Enter your login <br>
-  			<input type="text">
-  			Enter your password <br>
-  			<input type="password">
-  			<button class="btn_log btn">Log in</button>
-  		</form>
-	</div>
 </body>
 </html>

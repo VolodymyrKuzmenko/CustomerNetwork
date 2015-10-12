@@ -1,0 +1,202 @@
+*::-webkit-input-placeholder {
+	color: #666;
+	opacity: 1;
+}
+*:-moz-placeholder {
+	color: #666;
+	opacity: 1;
+}
+*::-moz-placeholder {
+	color: #666;
+	opacity: 1;
+}
+*:-ms-input-placeholder {
+	color: #666;
+	opacity: 1;
+}
+button,a:focus {outline:0;}
+
+body input:focus:required:invalid,
+body textarea:focus:required:invalid {
+	
+}
+body input:required:valid,
+body textarea:required:valid {
+	
+}
+body {
+	font-family: "RobotoRegular", sans-serif;
+	font-size: 16px;
+	height: 200%;
+	background-color: #9b9b9b;
+}
+.top_line{
+	background-color: #ff5959;
+	height: 90px;
+	padding-top:10px;
+}
+.top_line h1{
+	margin: 0 20px 0 0 ;
+	padding: 0;
+}
+.logo_pic{
+	width: 48px;
+	height: 48px;
+}
+.top_logo{
+	margin-left: 40px;
+	background-image: url(../images/logo.png);
+	background-size: 48px 48px;
+	background-repeat: no-repeat;
+	padding-left:55px;
+}
+.top_logo h1{
+	font-family: 'Lobster';
+}
+.top_logo h1,span{
+	display: block;
+	line-height: 27px;
+}
+.welcome{
+	padding-top:100px; 
+	background-size:cover;
+	background-image: url(../images/fon.jpg);
+	background-repeat: no-repeat;
+	min-height:577px;
+}
+.info h2,h3{
+	text-align: center;
+}
+.info h2,h3,p{
+	margin: 0;
+	padding: 0;
+	color:white;
+	font-family:'RobotoLight';
+	text-shadow: 1px 1px 2px black, 0 0 0.8em black;
+
+}
+.info p{
+	margin-top: 20px;
+	max-width: 400px;
+	text-align: justify;
+}
+ h2{
+	
+	text-transform: uppercase;
+	font-size: 30px;
+	color:white;
+	font-family: 'RobotoBold';
+}
+ h3{
+	text-transform: uppercase;
+	color: white;
+	margin: 0;
+	padding: 0;
+
+}
+.motivation_text,img{
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	vertical-align: middle;
+}
+.motivation_text+img{
+	margin-left: 30px;
+}
+.wrapper{
+	text-align: center;
+}
+body  button.btn,input.btn{
+	color:white;
+	text-transform: uppercase;
+	width: 124px;
+	height: 35px;
+	border-radius: 5px;
+	border: 2px solid #ff5959;
+	cursor:pointer;
+}
+body .btn_sign{
+	background-color: rgba(255,255,255,.2);
+
+}
+body .btn_sign:hover{
+	background-color: rgba(255,255,255,.5);
+}
+body .btn_log:hover{
+	background-color: #f72525;
+}
+body .btn_sign:active{
+	background-color: rgba(255,255,255,.55);
+}
+body .btn_log:active{
+	background-color: #fd0f0f;
+}
+body .btn_log{
+	background-color: #ff5959;
+
+}
+.btn_sign+.btn_log{
+	margin-left: 20px;
+}
+.buttons{
+	text-align: center;
+	margin-top: 20px;
+}
+.white-popup {
+  position: relative;
+  background: #FFF;
+  padding: 20px;
+  width: auto;
+  max-width: 500px;
+  margin: 20px auto;
+}
+form{
+	text-align: center;
+}
+input{
+	display:block;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 7px;
+	margin-bottom: 20px;
+}
+.registration{
+	padding-top:30px; 
+	background-size:cover;
+	background-image: url(../images/fon.jpg);
+	background-repeat: no-repeat;
+	min-height:640px;
+}
+.text_holder{
+	display:block;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 7px;
+	margin-bottom: 9px;
+}
+.text_holder input,.text_holder span{
+	display: inline-block;
+	margin-left: 10px;
+}
+.text_holder span{
+	color:white;
+	text-shadow: 1px 1px 2px black, 0 0 0.8em black;
+}
+body .text_holder a{
+	font-size: 14px;
+	margin-left: 10px;
+	text-align: center;
+	vertical-align: middle;
+	color:white;
+	display:inline-block;
+	text-transform: uppercase;
+	width: 104px;
+	height: 30px;
+	border-radius: 5px;
+	border: 2px solid white;
+	cursor:pointer;
+	background-color: rgba(255,255,255,.3);
+}
+.registration input[type="submit"]{
+	margin-top: 25px;
+}
