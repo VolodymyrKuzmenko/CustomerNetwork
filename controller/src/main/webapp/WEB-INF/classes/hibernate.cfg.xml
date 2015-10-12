@@ -14,7 +14,7 @@
         <property name="hibernate.connection.autocommit">false</property>
         <property name="current_session_context_class">thread</property>
 
-        <mapping class="com.kpi.compsys.User"/>
+        <mapping class="com.kpi.compsys.model.User"/>
 
     </session-factory>
 </hibernate-configuration>

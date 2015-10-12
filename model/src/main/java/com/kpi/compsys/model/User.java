@@ -1,10 +1,11 @@
-package com.kpi.compsys;
-import org.hibernate.annotations.GenericGenerator;
+package com.kpi.compsys.model;
 
-import javax.persistence.*;
 /**
- * Created by Vova on 10/11/2015.
+ * Created by Vova on 10/12/2015.
  */
+import org.hibernate.annotations.GenericGenerator;
+import javax.persistence.*;
+
 @Entity
 @Table(name="user")
 public class User {
@@ -26,7 +27,7 @@ public class User {
     public void setId(int id) {
         this.id = id;
     }
-    
+
     @Column(name="email")
     public String getEmail() {
         return email;
