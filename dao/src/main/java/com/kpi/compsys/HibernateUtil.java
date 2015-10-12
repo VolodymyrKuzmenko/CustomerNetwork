@@ -13,6 +13,7 @@ public class HibernateUtil {
         try {
             //creates the session factory from hibernate.cfg.xml
             sessionFactory = new Configuration().configure().buildSessionFactory();
+            System.out.print("Connected");
         } catch (Exception e) {
             e.printStackTrace();
         }
