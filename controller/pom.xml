@@ -11,7 +11,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>controller</artifactId>
     <packaging>war</packaging>
-
+    <name>Controller Maven Webapp</name>
     <dependencies>
         <dependency>
             <groupId>javax.servlet</groupId>
