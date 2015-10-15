@@ -88,9 +88,9 @@
 	<div id="login-popup" class="white-popup mfp-hide">
   		<form action="">
   			Enter your login <br>
-  			<input type="text">
+  			<input type="text" name="login">
   			Enter your password <br>
-  			<input type="password">
+  			<input type="password" name="password">
   			<button class="btn_log btn">Log in</button>
   		</form>
 	</div>
