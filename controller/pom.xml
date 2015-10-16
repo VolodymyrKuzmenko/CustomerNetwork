@@ -11,6 +11,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>controller</artifactId>
     <packaging>war</packaging>
+
     <name>Controller Maven Webapp</name>
     <dependencies>
         <dependency>
@@ -36,6 +37,11 @@
         <dependency>
             <groupId>customer-nt</groupId>
             <artifactId>model</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>customer-nt</groupId>
+            <artifactId>service</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>

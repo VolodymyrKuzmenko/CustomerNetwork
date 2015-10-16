@@ -5,7 +5,6 @@ import com.kpi.compsys.dao.UserDao;
 import com.kpi.compsys.model.User;
 import org.hibernate.Session;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoImpl extends AbstractDaoImpl<User> implements UserDao<User>{
@@ -31,9 +30,9 @@ public class UserDaoImpl extends AbstractDaoImpl<User> implements UserDao<User>{
 
     @Override
     public List<User> fillListEntity(Session session) {
-        List<User> responce = new ArrayList<User>();
+        List<User> responce;
         responce = session.createCriteria(User.class).list();
-        return null;
+        return responce;
     }
 
     @Override

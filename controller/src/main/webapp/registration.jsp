@@ -3,6 +3,7 @@
 <!--[if IE 7]><html lang="ru" class="lt-ie9 lt-ie8"><![endif]-->
 <!--[if IE 8]><html lang="ru" class="lt-ie9"><![endif]-->
 <!--[if gt IE 8]><!-->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <html lang="ru">
 <!--<![endif]-->
 <head>
@@ -40,8 +41,8 @@
 	<script src="libs/countdown/jquery.countdown-ru.js"></script>
 	<script src="libs/landing-nav/navigation.js"></script>
 	<script src="libs/magnific_popup/jquery.magnific-popup.js"></script>
-	<script src="libs/bootstrap/bootstrap.js" /></script>
-	<script src="libs/bootstrap/fileInput.js" /></script>
+	<script src="libs/bootstrap/bootstrap.js" />
+	<script src="libs/bootstrap/fileInput.js" />
 	<script src="js/common.js"></script>
 	<!-- Yandex.Metrika counter --><!-- /Yandex.Metrika counter -->
 	<!-- Google Analytics counter --><!-- /Google Analytics counter -->
@@ -61,41 +62,21 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<form action="">
+					<form action="registration" method="post">
 						<h3>Registration</h3>
 						<div class="text_holder">
 							<span>Enter your email</span>
-							<input type="email">
-						</div>
-						<div class="text_holder">
-							<span>Enter your name</span>
-							<input type="text">
-						</div>
-						<div class="text_holder">
-							<span>Enter your surname</span>
-							<input type="text">
-						</div>
-						<div class="text_holder">
-							<span>Enter your birthday</span>
-							<input type="date">
-						</div>
-						<div class="text_holder">
-							<span>Enter your position</span>
-							<input type="text">
+							<input type="email" name="email">
 						</div>
 						<div class="text_holder">
 							<span>Enter your password</span>
-							<input type="password">
+							<input type="password" name="password">
 						</div>
 						<div class="text_holder">
 							<span>Confirm your password</span>
-							<input type="password">
+							<input type="password" name="passwordConfirm">
 						</div>
-						<div class="text_holder">
-							<span>Choose your photo</span>
-							<input type="file" name="pic" accept="image/*">
-						</div>
-						<input type="submit" class="btn btn_sign" value="Sign In">
+						<input type="submit" class="btn btn_sign" value="Sign In" >
 					</form>
 				</div>
 			</div>

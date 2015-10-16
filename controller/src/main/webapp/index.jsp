@@ -5,6 +5,7 @@
 <!--[if gt IE 8]><!-->
 <html lang="ru">
 <!--<![endif]-->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <head>
 	<meta charset="utf-8" />
 	<title>Заголовок</title>
@@ -40,8 +41,8 @@
 	<script src="libs/countdown/jquery.countdown-ru.js"></script>
 	<script src="libs/landing-nav/navigation.js"></script>
 	<script src="libs/magnific_popup/jquery.magnific-popup.js"></script>
-	<script src="libs/bootstrap/bootstrap.js" /></script>
-	<script src="libs/bootstrap/fileInput.js" /></script>
+	<script src="libs/bootstrap/bootstrap.js" />
+	<script src="libs/bootstrap/fileInput.js" />
 	<script src="js/common.js"></script>
 	<!-- Yandex.Metrika counter --><!-- /Yandex.Metrika counter -->
 	<!-- Google Analytics counter --><!-- /Google Analytics counter -->
@@ -86,12 +87,12 @@
 		</div>
 	</section>
 	<div id="login-popup" class="white-popup mfp-hide">
-  		<form action="">
-  			Enter your login <br>
-  			<input type="text" name="login">
+  		<form action="login" method="post">
+  			Enter your email <br>
+  			<input type="email" name="email">
   			Enter your password <br>
   			<input type="password" name="password">
-  			<button class="btn_log btn">Log in</button>
+  			<input type="submit" class="btn_log btn" value="Log in">
   		</form>
 	</div>
 </body>
