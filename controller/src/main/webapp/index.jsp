@@ -73,7 +73,7 @@
 									</h3>
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam obcaecati aliquid tenetur nihil sint voluptate harum voluptatem voluptatibus aspernatur eius esse, ex quis unde voluptatum iure beatae praesentium voluptates id.</p>
 									<div class="buttons">
-										<button class="btn_sign btn">Sign in</button>
+										<button class="btn_sign btn" ><a href="registration.jsp">Sign in</a></button>
 										<button href="#login-popup" class="login-link btn_log btn">Log in</button>
 									</div>
 								</div>
@@ -93,6 +93,9 @@
   			<input type="password">
   			<button class="btn_log btn">Log in</button>
   		</form>
+	</div>
+	<div id="window-error" class="white-popup mfp-hide">
+  		<h3 class="error_h3">ERROR Password or Login!</h3>
 	</div>
 </body>
 </html>

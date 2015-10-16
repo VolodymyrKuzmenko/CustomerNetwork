@@ -89,5 +89,18 @@ $(document).ready(function() {
 		return false;
 	});
 	$('input[type=file]').bootstrapFileInput();
+	//Error alert
+// 	$.magnificPopup.open({
+//   items: {
+//     src: '#window-error', // can be a HTML string, jQuery object, or CSS selector
+//     type: 'inline'
+//   }
+// });
+	$.magnificPopup.open({
+  items: {
+    src: '#registration-error', // can be a HTML string, jQuery object, or CSS selector
+    type: 'inline'
+  }
+});
 
 });

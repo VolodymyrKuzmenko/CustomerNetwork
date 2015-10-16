@@ -61,44 +61,27 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<form action="">
-						<h3>Registration</h3>
+					<h3 class="reg_text">Registration</h3>
+					<form action="" class="reg_form">
 						<div class="text_holder">
 							<span>Enter your email</span>
 							<input type="email">
-						</div>
-						<div class="text_holder">
-							<span>Enter your name</span>
-							<input type="text">
-						</div>
-						<div class="text_holder">
-							<span>Enter your surname</span>
-							<input type="text">
-						</div>
-						<div class="text_holder">
-							<span>Enter your birthday</span>
-							<input type="date">
-						</div>
-						<div class="text_holder">
-							<span>Enter your position</span>
-							<input type="text">
 						</div>
 						<div class="text_holder">
 							<span>Enter your password</span>
 							<input type="password">
 						</div>
 						<div class="text_holder">
-							<span>Confirm your password</span>
+							<span>Confirm password</span>
 							<input type="password">
-						</div>
-						<div class="text_holder">
-							<span>Choose your photo</span>
-							<input type="file" name="pic" accept="image/*">
 						</div>
 						<input type="submit" class="btn btn_sign" value="Sign In">
 					</form>
 				</div>
 			</div>
 	</section>
+	<div id="registration-error" class="white-popup mfp-hide">
+  		<h3 class="error_h3">ERROR Registraton!</h3>
+	</div>
 </body>
 </html>
