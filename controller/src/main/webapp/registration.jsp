@@ -41,8 +41,8 @@
 <script src="libs/countdown/jquery.countdown-ru.js"></script>
 <script src="libs/landing-nav/navigation.js"></script>
 <script src="libs/magnific_popup/jquery.magnific-popup.js"></script>
-<script src="libs/bootstrap/bootstrap.js"/>
-<script src="libs/bootstrap/fileInput.js"/>
+<script src="libs/bootstrap/bootstrap.js"/></script>
+<script src="libs/bootstrap/fileInput.js"/></script>
 <script src="js/common.js"></script>
 <!-- Yandex.Metrika counter --><!-- /Yandex.Metrika counter -->
 <!-- Google Analytics counter --><!-- /Google Analytics counter -->
@@ -62,8 +62,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <form action="registration" method="post">
-                    <h3>Registration</h3>
+                <form class="reg_form" action="registration" method="post">
+                    <h3 class="reg_text">Registration</h3>
                     <div class="text_holder">
                         <span>Enter your email</span>
                         <input type="email" name="email">

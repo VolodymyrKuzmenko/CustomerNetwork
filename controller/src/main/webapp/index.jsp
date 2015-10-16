@@ -41,8 +41,8 @@
 	<script src="libs/countdown/jquery.countdown-ru.js"></script>
 	<script src="libs/landing-nav/navigation.js"></script>
 	<script src="libs/magnific_popup/jquery.magnific-popup.js"></script>
-	<script src="libs/bootstrap/bootstrap.js" />
-	<script src="libs/bootstrap/fileInput.js" />
+	<script src="libs/bootstrap/bootstrap.js" /></script>
+	<script src="libs/bootstrap/fileInput.js" /></script>
 	<script src="js/common.js"></script>
 	<!-- Yandex.Metrika counter --><!-- /Yandex.Metrika counter -->
 	<!-- Google Analytics counter --><!-- /Google Analytics counter -->
@@ -75,7 +75,7 @@
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam obcaecati aliquid tenetur nihil sint voluptate harum voluptatem voluptatibus aspernatur eius esse, ex quis unde voluptatum iure beatae praesentium voluptates id.</p>
 									<div class="buttons">
 										<button class="btn_sign btn" ><a href="registration.jsp">Sign in</a></button>
-										<button href="#login-popup" class="login-link btn_log btn">Log in</button>
+										<button  class=" btn_log btn"><a href="#login-popup" class="login-link" >Log in</a></button>
 									</div>
 								</div>
 								<img src="images/macbook.png" alt="Alt">
