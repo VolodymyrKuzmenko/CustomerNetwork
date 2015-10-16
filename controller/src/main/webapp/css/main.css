@@ -161,34 +161,40 @@ input{
 	margin-bottom: 20px;
 }
 .registration{
-	padding-top:30px; 
+	padding-top:100px; 
 	background-size:cover;
 	background-image: url(../images/fon.jpg);
 	background-repeat: no-repeat;
 	min-height:640px;
 }
 .text_holder{
-	display:block;
+	display:table-row;
 	margin-right: auto;
 	margin-left: auto;
 	margin-top: 7px;
 	margin-bottom: 9px;
 }
 .text_holder input,.text_holder span{
-	display: inline-block;
-	margin-left: 10px;
+	display:table-cell;
+	margin-left: 20px;
+	vertical-align: top;
+	
 }
 .text_holder span{
+	margin-top: 10px;
+	margin-right: 30px;
 	color:white;
 	text-shadow: 1px 1px 2px black, 0 0 0.8em black;
+	display:table-cell;
+	vertical-align: middle;
 }
+
 body .text_holder a{
 	font-size: 14px;
 	margin-left: 10px;
 	text-align: center;
 	vertical-align: middle;
 	color:white;
-	display:inline-block;
 	text-transform: uppercase;
 	width: 104px;
 	height: 30px;
@@ -199,4 +205,22 @@ body .text_holder a{
 }
 .registration input[type="submit"]{
 	margin-top: 25px;
+	display: table-row;
+}
+.error_h3{
+	color:#ff5959;
+	text-shadow:none;
+}
+a{
+	color: #ff5959;
+}
+.reg_form{
+	display:table;
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+}
+.reg_text{
+	text-align: center;
+	margin-bottom: 50px;
 }
