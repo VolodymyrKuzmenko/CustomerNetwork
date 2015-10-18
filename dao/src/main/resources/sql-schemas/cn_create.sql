@@ -4,6 +4,14 @@
 drop table if exists  social_network.userInfo  ;
 drop table if exists social_network.user;
 
+CREATE TABLE IF NOT EXISTS social_network.user (
+  user_id INT NOT NULL AUTO_INCREMENT,
+  email VARCHAR(45),
+  password VARCHAR(45),
+  status TINYINT DEFAULT 0,
+  PRIMARY KEY (user_id)
+)
+ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS social_network.userInfo (
   info_id INT NOT NULL AUTO_INCREMENT,
@@ -20,12 +28,5 @@ ENGINE = InnoDB;
 
 
 
-CREATE TABLE IF NOT EXISTS social_network.user (
-  user_id INT NOT NULL AUTO_INCREMENT,
-  email VARCHAR(45),
-  password VARCHAR(45),
-  status TINYINT DEFAULT 0,
-  PRIMARY KEY (user_id)
-)
-ENGINE = InnoDB;
+
 
