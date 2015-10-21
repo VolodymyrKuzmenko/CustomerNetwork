@@ -27,12 +27,12 @@ public class RegistrationServlet extends HttpServlet {
         if (usrEmail.isEmpty() || usrPass.isEmpty() || usrPassConfirm.isEmpty()) {
             //ERROR Message
             error=1;
-            return;
+
         }
 
         if (!usrPass.equals(usrPassConfirm)) {
             error=2;
-            return;
+
         }
 
         for (User user : userService.getAllUsers()) {
