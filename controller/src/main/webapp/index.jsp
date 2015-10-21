@@ -41,8 +41,8 @@
 	<script src="libs/countdown/jquery.countdown-ru.js"></script>
 	<script src="libs/landing-nav/navigation.js"></script>
 	<script src="libs/magnific_popup/jquery.magnific-popup.js"></script>
-	<script src="libs/bootstrap/bootstrap.js" /></script>
-	<script src="libs/bootstrap/fileInput.js" /></script>
+	<script src="libs/bootstrap/bootstrap.js"></script>
+	<script src="libs/bootstrap/fileInput.js"></script>
 	<script src="js/common.js"></script>
 	<!-- Yandex.Metrika counter --><!-- /Yandex.Metrika counter -->
 	<!-- Google Analytics counter --><!-- /Google Analytics counter -->
@@ -87,7 +87,7 @@
 		</div>
 	</section>
 	<div id="login-popup" class="white-popup mfp-hide">
-  		<form action="login" method="post">
+  		<form action="login" method="POST">
   			Enter your email <br>
   			<input type="email" name="email">
   			Enter your password <br>

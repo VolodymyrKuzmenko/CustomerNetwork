@@ -35,7 +35,7 @@ public class AuthenticationServlet extends HttpServlet {
         if (currentUser==null){
             //USer mot found message
             System.out.println("ERROR!!!");
-            req.getRequestDispatcher("/index.jsp").forward(req, resp);
+            req.getRequestDispatcher("/error_auth.jsp").forward(req, resp);
             return;
         }else {
             HttpSession session = req.getSession();
