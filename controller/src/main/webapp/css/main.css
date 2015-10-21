@@ -135,6 +135,9 @@ body .btn_log{
 	background-color: #ff5959;
 
 }
+.login-link{
+	color:white;
+}
 .btn_sign+.btn_log{
 	margin-left: 20px;
 }
@@ -212,7 +215,7 @@ body .text_holder a{
 	text-shadow:none;
 }
 a{
-	color: #ff5959;
+	color:black;
 }
 .reg_form{
 	display:table;

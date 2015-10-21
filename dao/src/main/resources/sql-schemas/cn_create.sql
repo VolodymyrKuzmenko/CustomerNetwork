@@ -14,6 +14,9 @@ CREATE TABLE IF NOT EXISTS social_network.user (
 ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS social_network.userInfo (
+
+CREATE TABLE  IF NOT EXISTS social_network.userInfo (
+
   info_id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(45),
   surname VARCHAR(45),
