@@ -40,7 +40,6 @@ public class RegistrationServlet extends HttpServlet {
                 //error message
 //                request.getRequestDispatcher("/index.jsp").forward(request, response);
                 error=3;
-                return;
             }
         }
         if(error==0){
@@ -51,6 +50,7 @@ public class RegistrationServlet extends HttpServlet {
             userService.createUser(newUser);
             request.getRequestDispatcher("/index.jsp").forward(request, response);
         }else{
+            System.out.println("Error registration!");
             request.getRequestDispatcher("/error_registration.jsp").forward(request, response);
         }
 
