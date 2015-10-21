@@ -43,7 +43,7 @@
 <script src="libs/magnific_popup/jquery.magnific-popup.js"></script>
 <script src="libs/bootstrap/bootstrap.js"></script>
 <script src="libs/bootstrap/fileInput.js"></script>
-<script src="js/common.js"></script>
+<script src="js/main.js"></script>
 <!-- Yandex.Metrika counter --><!-- /Yandex.Metrika counter -->
 <!-- Google Analytics counter --><!-- /Google Analytics counter -->
 <header>
@@ -62,7 +62,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <form  action="registration" method="POST">
+                <form  class ="reg_form" action="registration" method="POST">
                     <h3 class="reg_text">Registration</h3>
                     <div class="text_holder">
                         <span>Enter your email</span>

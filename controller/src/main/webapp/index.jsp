@@ -43,7 +43,7 @@
 	<script src="libs/magnific_popup/jquery.magnific-popup.js"></script>
 	<script src="libs/bootstrap/bootstrap.js"></script>
 	<script src="libs/bootstrap/fileInput.js"></script>
-	<script src="js/common.js"></script>
+	<script src="js/main.js"></script>
 	<!-- Yandex.Metrika counter --><!-- /Yandex.Metrika counter -->
 	<!-- Google Analytics counter --><!-- /Google Analytics counter -->
 	<header>
