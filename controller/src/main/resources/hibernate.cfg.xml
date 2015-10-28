@@ -15,6 +15,7 @@
         <property name="current_session_context_class">thread</property>
 
         <mapping class="com.kpi.compsys.model.User"/>
+        <mapping class="com.kpi.compsys.model.UserInfo"/>
 
     </session-factory>
 </hibernate-configuration>
