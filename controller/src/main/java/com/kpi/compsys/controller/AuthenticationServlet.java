@@ -1,6 +1,8 @@
 package com.kpi.compsys.controller;
 
 import com.kpi.compsys.model.User;
+import com.kpi.compsys.model.UserInfo;
+import com.kpi.compsys.service.UserInfoService;
 import com.kpi.compsys.service.UserService;
 
 import javax.servlet.ServletException;
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Date;
 import java.util.Map;
 
 /**
