@@ -19,9 +19,8 @@ public abstract class AbstractDaoImpl<T> implements AbstractDao<T> {
         T result = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
-            fillSave(session, entity);
-            session.getTransaction().commit();
+
+            session.merge(entity);
         } catch (SessionException e) {
             e.printStackTrace();
         } finally {
@@ -29,7 +28,7 @@ public abstract class AbstractDaoImpl<T> implements AbstractDao<T> {
                 session.close();
             }
         }
-        return null;
+        return entity;
     }
 
     @Override
@@ -37,9 +36,9 @@ public abstract class AbstractDaoImpl<T> implements AbstractDao<T> {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
-            fillDelete(session,entity);
-            session.getTransaction().commit();
+
+            session.delete(entity);
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -52,33 +51,15 @@ public abstract class AbstractDaoImpl<T> implements AbstractDao<T> {
     @Override
     public T update(T entity) {
         Session session = null;
-        T result = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
-            result = fillUpdate(session, entity);
-            session.getTransaction().commit();
+
+            session.merge(entity);
+
         } catch (SessionException e) {
             e.printStackTrace();
-          //  logger.error("Exeption in update method");
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
-        return result;
-    }
 
-    @Override
-    public T getById(int id) {
-        Session session = null;
-        T entity = null;
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            entity = loadEntity(session, id);
-        } catch (Exception e) {
-            e.printStackTrace();
-         //   logger.error("Exeption in getById method");
+          //  logger.error("Exeption in update method");
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
@@ -87,33 +68,11 @@ public abstract class AbstractDaoImpl<T> implements AbstractDao<T> {
         return entity;
     }
 
+
     @Override
-    public List<T> getAll() {
-        Session session = null;
-        List<T> enityes = null;
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            enityes = fillListEntity(session);
+    public abstract List<T> getAll();
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
-        return enityes;
-    }
 
-    public abstract T fillSave(Session session, T entity);
-
-    public abstract T fillUpdate(Session session, T entity);
-
-    public abstract T loadEntity(Session session, int id);
-
-    public abstract List<T> fillListEntity(Session session);
-
-    public abstract void fillDelete(Session session, T entity);
 
 
 }

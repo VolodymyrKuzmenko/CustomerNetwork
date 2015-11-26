@@ -9,7 +9,7 @@ public interface AbstractDao<T> {
     T create (T entity);
     void delete (T entity);
     T update (T entity);
-    T getById(int id);
+    T getById(Integer id);
     List<T> getAll();
     List<T> getByFilter(String query);
 

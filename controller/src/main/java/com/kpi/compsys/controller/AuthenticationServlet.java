@@ -1,9 +1,7 @@
 package com.kpi.compsys.controller;
 
 import com.kpi.compsys.model.User;
-import com.kpi.compsys.model.UserInfo;
-import com.kpi.compsys.service.UserInfoService;
-import com.kpi.compsys.service.UserService;
+import com.kpi.compsys.service.impl.UserServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.Date;
 import java.util.Map;
 
 /**
@@ -20,7 +17,7 @@ import java.util.Map;
  */
 @WebServlet("/login")
 public class AuthenticationServlet extends HttpServlet {
-    private UserService userService = new UserService();
+    private UserServiceImpl userService = new UserServiceImpl();
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Map<String, String[]> paramMap = req.getParameterMap();
@@ -28,7 +25,7 @@ public class AuthenticationServlet extends HttpServlet {
         String password = paramMap.get("password")[0];
         System.out.println("strt");
         User currentUser = null;
-        for (User user : userService.getAllUsers()){
+        for (User user : userService.getAll()){
             if (user.getEmail().equals(email)&& user.getPassword().equals(password)){
                 currentUser = user;
                 break;
