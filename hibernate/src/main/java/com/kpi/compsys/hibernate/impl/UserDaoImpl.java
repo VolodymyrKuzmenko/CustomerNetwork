@@ -1,5 +1,4 @@
-package com.kpi.compsys.dao.impl;
-
+package com.kpi.compsys.hibernate.impl;
 
 import com.kpi.compsys.dao.UserDao;
 import com.kpi.compsys.model.User;
@@ -38,5 +37,10 @@ public class UserDaoImpl extends AbstractDaoImpl<User> implements UserDao<User>{
     @Override
     public void fillDelete(Session session, User entity) {
         session.delete(entity);
+    }
+
+    @Override
+    public List<User> getByFilter(String query) {
+        return null;
     }
 }

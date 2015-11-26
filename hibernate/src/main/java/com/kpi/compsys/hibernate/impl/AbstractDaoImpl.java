@@ -1,7 +1,7 @@
-package com.kpi.compsys.dao.impl;
+package com.kpi.compsys.hibernate.impl;
 
-import com.kpi.compsys.HibernateUtil;
 import com.kpi.compsys.dao.AbstractDao;
+import com.kpi.compsys.hibernate.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionException;
 

@@ -1,4 +1,4 @@
-package com.kpi.compsys;
+package com.kpi.compsys.hibernate;
 
 /**
  * Created by Vova on 10/12/2015.

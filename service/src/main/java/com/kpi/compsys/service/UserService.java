@@ -1,7 +1,6 @@
 package com.kpi.compsys.service;
 
-import com.kpi.compsys.dao.factory.DaoFactory;
-import com.kpi.compsys.dao.impl.UserDaoImpl;
+import com.kpi.compsys.hibernate.impl.UserDaoImpl;
 import com.kpi.compsys.model.User;
 
 import java.util.List;
@@ -10,7 +9,7 @@ import java.util.List;
  * Created by Vova on 10/13/2015.
  */
 public class UserService {
-    private UserDaoImpl dao = (UserDaoImpl) DaoFactory.genInstance().getUserDao();
+    private UserDaoImpl dao = new UserDaoImpl();
     public List<User> getAllUsers(){
 
         return dao.getAll();

@@ -11,5 +11,6 @@ public interface AbstractDao<T> {
     T update (T entity);
     T getById(int id);
     List<T> getAll();
+    List<T> getByFilter(String query);
 
 }
