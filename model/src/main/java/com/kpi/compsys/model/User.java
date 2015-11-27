@@ -3,6 +3,10 @@ package com.kpi.compsys.model;
 /**
  * Created by Vova on 10/12/2015.
  */
+
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,6 +17,29 @@ public class User {
     private String email;
     private String password;
 
+    @NotFound(action = NotFoundAction.IGNORE)
+    @OneToOne
+    @JoinColumn(name ="manager", nullable = true)
+    public User getManager() {
+        return manager;
+    }
+
+    public void setManager(User manager) {
+        this.manager = manager;
+    }
+
+    @JoinColumn(name = "role")
+    @OneToOne
+    public UserRole getRole() {
+        return role;
+    }
+
+    public void setRole(UserRole role) {
+        this.role = role;
+    }
+
+    private User manager;
+    private UserRole role;
 
     @Id
     @GeneratedValue()

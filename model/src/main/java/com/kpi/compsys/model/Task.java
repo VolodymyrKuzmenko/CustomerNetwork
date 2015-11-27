@@ -1,7 +1,7 @@
 package com.kpi.compsys.model;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * Created by Vova on 11/27/2015.
@@ -16,5 +16,86 @@ public class Task {
     private Boolean deleted;
     private User responsible;
     private Project project;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "status")
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "project")
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "responsible")
+    public User getResponsible() {
+        return responsible;
+    }
+
+    public void setResponsible(User responsible) {
+        this.responsible = responsible;
+    }
+
+    @Column(name="deleted")
+    public Boolean getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
+    }
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name="date_updated")
+    public Date getDateUpdated() {
+        return dateUpdated;
+    }
+
+
+    public void setDateUpdated(Date dateUpdated) {
+        this.dateUpdated = dateUpdated;
+    }
+
+    @Column(name = "date_created")
+    @Temporal(TemporalType.TIMESTAMP)
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    @Column(name = "name")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Id
+    @GeneratedValue
+    @Column(name="task_id")
+    public Integer getTaskId() {
+        return taskId;
+    }
+
+    public void setTaskId(Integer taskId) {
+        this.taskId = taskId;
+    }
+
     private Status status;
 }

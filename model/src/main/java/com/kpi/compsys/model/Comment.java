@@ -2,7 +2,7 @@ package com.kpi.compsys.model;
 
 import javax.persistence.*;
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * Created by Vova on 11/27/2015.

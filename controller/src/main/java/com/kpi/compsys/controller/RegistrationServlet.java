@@ -51,7 +51,6 @@ public class RegistrationServlet extends HttpServlet {
             User newUser = new User();
             newUser.setEmail(usrEmail);
             newUser.setPassword(usrPass);
-            newUser.setStatus(1);
             userService.add(newUser);
             request.getRequestDispatcher("/index.jsp").forward(request, response);
         //log new user was created

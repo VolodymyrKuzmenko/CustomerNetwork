@@ -16,7 +16,6 @@ public class UserInfo {
     private String name;
     private String surname;
     private Date birthday;
-    private String position;
     private String image;
 
     @Column(name="name")
@@ -46,15 +45,6 @@ public class UserInfo {
         this.birthday = birthday;
     }
 
-    @Column(name="position")
-    public String getPosition() {
-        return position;
-    }
-
-    public void setPosition(String position) {
-        this.position = position;
-    }
-
     @Column(name="photo")
     public String getImage() {
         return image;
@@ -75,7 +65,7 @@ public class UserInfo {
     public void setInfo_id(int info_id) {
         this.info_id = info_id;
     }
-    @OneToOne(cascade=CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY,cascade=CascadeType.ALL)
     @JoinColumn(name = "user_id")
     public User getUser()
     {

@@ -13,4 +13,6 @@ public interface AbstractDao<T> {
     List<T> getAll();
     List<T> getByFilter(String query);
 
+    void close();
+
 }

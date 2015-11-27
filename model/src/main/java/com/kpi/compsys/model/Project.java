@@ -1,7 +1,7 @@
 package com.kpi.compsys.model;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -10,6 +10,16 @@ import java.util.List;
 @Entity
 @Table(name= "Project")
 public class Project {
+    private Integer id;
+    private String name;
+    private Status status;
+    private Project parrentProject;
+    private String descriprion;
+    private Date dateCreated;
+    private Date dateUpdated;
+    private User responsible;
+    private List<Comment> comments;
+    private List<Task> tasks;
 
     @Id
     @GeneratedValue
@@ -32,8 +42,7 @@ public class Project {
     }
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "status_id")
-
+    @JoinColumn(name="status")
     public Status getStatus() {
         return status;
     }
@@ -90,16 +99,11 @@ public class Project {
     public void setResponsible(User responsible) {
         this.responsible = responsible;
     }
-
-    private Integer id;
-    private String name;
-    private Status status;
-    private Project parrentProject;
-    private String descriprion;
-    private Date dateCreated;
-    private Date dateUpdated;
-    private User responsible;
-
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "comment_project", joinColumns = {
+            @JoinColumn(name = "project_id", nullable = false, updatable = true)},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "comment_id", nullable = false, updatable = true)})
     public List<Comment> getComments() {
         return comments;
     }
@@ -109,7 +113,7 @@ public class Project {
     }
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name="project", referencedColumnName="project_id")
+    @JoinTable(name="Task", joinColumns={@JoinColumn(name = "task_id", nullable = false, updatable = true)})
     public List<Task> getTasks() {
         return tasks;
     }
@@ -118,12 +122,4 @@ public class Project {
         this.tasks = tasks;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "comment_project", joinColumns = {
-            @JoinColumn(name = "project_id", nullable = false, updatable = true)},
-            inverseJoinColumns = {
-                    @JoinColumn(name = "comment_id", nullable = false, updatable = true)})
-    private List<Comment> comments;
-
-    private List<Task> tasks;
 }
