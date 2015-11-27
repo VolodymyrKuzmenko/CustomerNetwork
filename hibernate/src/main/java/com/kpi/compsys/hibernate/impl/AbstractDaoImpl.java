@@ -2,8 +2,7 @@ package com.kpi.compsys.hibernate.impl;
 
 import com.kpi.compsys.dao.AbstractDao;
 import com.kpi.compsys.hibernate.HibernateUtil;
-import org.hibernate.Session;
-import org.hibernate.SessionException;
+import org.hibernate.Query;
 
 import java.util.List;
 
@@ -11,109 +10,42 @@ import java.util.List;
  * Created by Vova on 10/12/2015.
  */
 public abstract class AbstractDaoImpl<T> implements AbstractDao<T> {
+    protected HibernateUtil util = new HibernateUtil();
 
-
+    //TODO dead code. Need work with prepare statement
     @Override
-    public T create(T entity) {
-        Session session = null;
-        T result = null;
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
-            fillSave(session, entity);
-            session.getTransaction().commit();
-        } catch (SessionException e) {
-            e.printStackTrace();
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
-        return null;
+    public List<T> getByFilter(String queryStr) {
+        Query query = util.getSesssion().createQuery(queryStr);
+        List<T> list = query.list();
+        return list;
     }
 
     @Override
+    public T create(T entity) {
+        util.getSesssion().merge(entity);
+        return entity;
+    }
+
+
     public void delete(T entity) {
-        Session session = null;
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
-            fillDelete(session,entity);
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
+        util.getSesssion().delete(entity);
     }
 
     @Override
     public T update(T entity) {
-        Session session = null;
-        T result = null;
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
-            result = fillUpdate(session, entity);
-            session.getTransaction().commit();
-        } catch (SessionException e) {
-            e.printStackTrace();
-          //  logger.error("Exeption in update method");
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
-        return result;
-    }
-
-    @Override
-    public T getById(int id) {
-        Session session = null;
-        T entity = null;
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            entity = loadEntity(session, id);
-        } catch (Exception e) {
-            e.printStackTrace();
-         //   logger.error("Exeption in getById method");
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
+        util.getSesssion().merge(entity);
         return entity;
     }
 
+
+    public abstract void delete(Integer id);
+
     @Override
-    public List<T> getAll() {
-        Session session = null;
-        List<T> enityes = null;
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            enityes = fillListEntity(session);
+    public abstract List<T> getAll();
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
-        return enityes;
+    @Override
+    public void close() {
+        util.shutdownSession();
     }
-
-    public abstract T fillSave(Session session, T entity);
-
-    public abstract T fillUpdate(Session session, T entity);
-
-    public abstract T loadEntity(Session session, int id);
-
-    public abstract List<T> fillListEntity(Session session);
-
-    public abstract void fillDelete(Session session, T entity);
-
 
 }

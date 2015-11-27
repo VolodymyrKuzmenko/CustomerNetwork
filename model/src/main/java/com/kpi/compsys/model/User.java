@@ -3,7 +3,10 @@ package com.kpi.compsys.model;
 /**
  * Created by Vova on 10/12/2015.
  */
-import org.hibernate.annotations.GenericGenerator;
+
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,11 +16,33 @@ public class User {
     private int id;
     private String email;
     private String password;
-    private int status;
+
+    @NotFound(action = NotFoundAction.IGNORE)
+    @OneToOne
+    @JoinColumn(name ="manager", nullable = true)
+    public User getManager() {
+        return manager;
+    }
+
+    public void setManager(User manager) {
+        this.manager = manager;
+    }
+
+    @JoinColumn(name = "role")
+    @OneToOne
+    public UserRole getRole() {
+        return role;
+    }
+
+    public void setRole(UserRole role) {
+        this.role = role;
+    }
+
+    private User manager;
+    private UserRole role;
 
     @Id
-    @GeneratedValue(generator="increment")
-    @GenericGenerator(name="increment", strategy = "increment")
+    @GeneratedValue()
     @Column(name="user_id")
     public int getId() {
         return id;
@@ -46,15 +71,5 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    @Column(name="status")
-    public int getStatus() {
-        return status;
-    }
-
-
-    public void setStatus(int status) {
-        this.status = status;
     }
 }

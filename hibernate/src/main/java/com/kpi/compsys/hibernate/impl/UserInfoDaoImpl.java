@@ -2,46 +2,27 @@ package com.kpi.compsys.hibernate.impl;
 
 import com.kpi.compsys.dao.UserInfoDao;
 import com.kpi.compsys.model.UserInfo;
-import org.hibernate.Session;
 
 import java.util.List;
 
 /**
  * Created by Lilly_94 on 27.10.2015.
  */
-public class UserInfoDaoImpl extends AbstractDaoImpl<UserInfo> implements UserInfoDao<UserInfo> {
+public class UserInfoDaoImpl extends AbstractDaoImpl<UserInfo> implements UserInfoDao {
+
     @Override
-    public UserInfo fillSave(Session session, UserInfo entity) {
-        session.save(entity);
-        return null;
+    public void delete(Integer id){
+        UserInfo userInfo = (UserInfo) util.getSesssion().load(UserInfo.class, id);
+        super.delete(userInfo);
     }
 
     @Override
-    public UserInfo fillUpdate(Session session, UserInfo entity) {
-        session.update(entity);
-        return null;
+    public UserInfo getById(Integer id) {
+        return (UserInfo) util.getSesssion().load(UserInfo.class, id);
     }
 
     @Override
-    public UserInfo loadEntity(Session session, int id) {
-        session.load(UserInfo.class,id);
-        return null;
-    }
-
-    @Override
-    public List<UserInfo> fillListEntity(Session session) {
-        List<UserInfo> responce;
-        responce = session.createCriteria(UserInfo.class).list();
-        return responce;
-    }
-
-    @Override
-    public void fillDelete(Session session, UserInfo entity) {
-        session.delete(entity);
-    }
-
-    @Override
-    public List<UserInfo> getByFilter(String query) {
-        return null;
+    public List<UserInfo> getAll() {
+        return util.getSesssion().createCriteria(UserInfo.class).list();
     }
 }
