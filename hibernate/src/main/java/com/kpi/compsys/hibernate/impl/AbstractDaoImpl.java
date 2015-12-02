@@ -3,16 +3,21 @@ package com.kpi.compsys.hibernate.impl;
 import com.kpi.compsys.dao.AbstractDao;
 import com.kpi.compsys.hibernate.HibernateUtil;
 import org.hibernate.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 /**
  * Created by Vova on 10/12/2015.
  */
+@Component
 public abstract class AbstractDaoImpl<T> implements AbstractDao<T> {
-    protected HibernateUtil util = new HibernateUtil();
 
-    //TODO dead code. Need work with prepare statement
+    @Autowired
+    protected HibernateUtil util;
+
+    //TODO dead code. Need work with prepare statement, may be sql injection.
     @Override
     public List<T> getByFilter(String queryStr) {
         Query query = util.getSesssion().createQuery(queryStr);

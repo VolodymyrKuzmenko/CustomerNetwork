@@ -13,7 +13,10 @@ import java.util.List;
 
 /**
  * Created by Vova on 10/16/2015.
+ *
+ * Servlets is deprecated. Use MVC Controllers
  */
+@Deprecated
 @WebFilter(filterName = "loginFilter")
 public class LoginFilter implements Filter {
 

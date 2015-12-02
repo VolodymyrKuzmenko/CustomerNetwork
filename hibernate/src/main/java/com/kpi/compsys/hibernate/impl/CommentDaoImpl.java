@@ -2,12 +2,14 @@ package com.kpi.compsys.hibernate.impl;
 
 import com.kpi.compsys.dao.CommentDao;
 import com.kpi.compsys.model.Comment;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 /**
  * Created by Vova on 11/27/2015.
  */
+@Component
 public class CommentDaoImpl extends AbstractDaoImpl<Comment> implements CommentDao {
     @Override
     public Comment getById(Integer id) {

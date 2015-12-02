@@ -2,7 +2,11 @@ package com.kpi.compsys.controller;
 
 import com.kpi.compsys.model.User;
 import com.kpi.compsys.service.impl.UserServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
+import org.springframework.context.ApplicationContext;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,10 +17,22 @@ import java.util.Map;
 
 /**
  * Created by Vova on 10/15/2015.
+ *
+ * Servlets is deprecated. Use MVC Controllers
  */
+@Deprecated
 @WebServlet("/registration")
 public class RegistrationServlet extends HttpServlet {
-    private UserServiceImpl userService = new UserServiceImpl();
+    @Autowired
+    private UserServiceImpl userService;
+
+    private ApplicationContext context;
+    @Override
+    public void init(final ServletConfig config) throws ServletException {
+        context = SpringContext.getContext();
+        final AutowireCapableBeanFactory beanFactory = context.getAutowireCapableBeanFactory();
+        beanFactory.autowireBean(this);
+    }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Map<String, String[]> paramMap = request.getParameterMap();
@@ -52,6 +68,7 @@ public class RegistrationServlet extends HttpServlet {
             newUser.setEmail(usrEmail);
             newUser.setPassword(usrPass);
             userService.add(newUser);
+
             request.getRequestDispatcher("/index.jsp").forward(request, response);
         //log new user was created
 

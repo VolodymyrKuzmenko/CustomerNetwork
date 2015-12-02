@@ -2,12 +2,14 @@ package com.kpi.compsys.hibernate.impl;
 
 import com.kpi.compsys.dao.ProjectDao;
 import com.kpi.compsys.model.Project;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 /**
  * Created by Vova on 11/27/2015.
  */
+@Component
 public class ProjectDaoImpl  extends AbstractDaoImpl<Project> implements ProjectDao {
     @Override
     public Project getById(Integer id) {

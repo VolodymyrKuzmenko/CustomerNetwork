@@ -2,12 +2,14 @@ package com.kpi.compsys.hibernate.impl;
 
 import com.kpi.compsys.dao.TaskDao;
 import com.kpi.compsys.model.Task;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 /**
  * Created by Vova on 11/27/2015.
  */
+@Component
 public class TaskDaoImpl  extends AbstractDaoImpl<Task> implements TaskDao {
     @Override
     public Task getById(Integer id) {

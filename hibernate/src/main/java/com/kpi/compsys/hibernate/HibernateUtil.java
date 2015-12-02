@@ -10,7 +10,11 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
+@Component
+@Scope(value = "singleton")
 public class HibernateUtil {
     private static final Logger logger = LogManager.getLogger(HibernateUtil.class);
     private static SessionFactory sessionFactory = null;
@@ -48,6 +52,7 @@ public class HibernateUtil {
         }else{
             if (!session.isOpen()){
                 session = getSessionFactory().openSession();
+                System.out.println("Session is open.");
             }
         }
         return  session;

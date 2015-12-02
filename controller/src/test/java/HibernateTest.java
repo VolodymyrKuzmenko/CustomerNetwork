@@ -7,17 +7,17 @@ import org.junit.Test;
 /**
  * Created by Vova on 11/27/2015.
  */
-
+@Deprecated
 public class HibernateTest {
-    @Test
-    public void hiberTest(){
-        UserService service = new UserServiceImpl();
-
-        for (User user :service.getAll() ){
-            System.out.println(user.getEmail());
-        }
-
-        Assert.assertTrue(true);
-    }
+//    @Test
+//    public void hiberTest(){
+//        UserService service = new UserServiceImpl();
+//
+//        for (User user :service.getAll() ){
+//            System.out.println(user.getEmail());
+//        }
+//
+//        Assert.assertTrue(true);
+//    }
 
 }

@@ -2,9 +2,11 @@ package com.kpi.compsys.hibernate.impl;
 
 import com.kpi.compsys.dao.UserDao;
 import com.kpi.compsys.model.User;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class UserDaoImpl extends AbstractDaoImpl<User> implements UserDao{
 
     @Override

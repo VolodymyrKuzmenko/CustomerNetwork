@@ -4,15 +4,19 @@ import com.kpi.compsys.dao.UserInfoDao;
 import com.kpi.compsys.hibernate.impl.UserInfoDaoImpl;
 import com.kpi.compsys.model.UserInfo;
 import com.kpi.compsys.service.UserInfoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * Created by Lilly_94 on 27.10.2015.
  */
+@Service
 public class UserInfoServiceImpl implements UserInfoService {
 
-    private UserInfoDao dao = (UserInfoDao) new UserInfoDaoImpl();
+    @Autowired
+    private UserInfoDao dao;
 
 
     @Override
