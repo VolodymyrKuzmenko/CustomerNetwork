@@ -1,6 +1,6 @@
 # CustomerNetwork
 
-[Специфікація проекту](https://github.com/VolodymyrKuzmenko/CustomerNetwork/wiki)
+[Специфікація проекту](https://github.com/VolodymyrKuzmenko/CustomerNetwork/wiki) 
 Для завантаження необхідно 
 Java 8
 MySQL база даних
