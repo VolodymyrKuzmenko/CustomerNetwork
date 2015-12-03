@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
 /**
  * Created by Vova on 12/2/2015.
@@ -21,20 +22,14 @@ public class AuthentificationController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value="/index",method=RequestMethod.GET)
-    public ModelAndView displayLogin() {
-        ModelAndView model = new ModelAndView("index");
-        User user = new User();
-        model.addObject("userBean", user);
 
-        return model;
-
-    }
-
-
-    @RequestMapping(value="/login",method=RequestMethod.POST)
-    public ModelAndView executeLogin(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("userBean")User loginBean)
+    @RequestMapping(value="/login", method=RequestMethod.POST)
+    public ModelAndView executeLogin(HttpServletRequest request)
     {
+        Map<String, String[]> paramMap = request.getParameterMap();
+        User loginBean = new User();
+        loginBean.setEmail(paramMap.get("email")[0]);
+        loginBean.setPassword(paramMap.get("password")[0]);
         ModelAndView model= null;
         User currentUser = null;
         System.out.println("Start search user");
@@ -47,9 +42,9 @@ public class AuthentificationController {
         }
 
         if (currentUser==null){
-            model = new ModelAndView("error_auth");
+            model = new ModelAndView("index");
         }else {
-            model = new ModelAndView("home");
+            model = new ModelAndView("user-dashboard");
         }
         return model;
     }
