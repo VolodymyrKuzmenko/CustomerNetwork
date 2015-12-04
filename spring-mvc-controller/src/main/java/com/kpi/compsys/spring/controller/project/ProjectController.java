@@ -9,22 +9,20 @@ import org.springframework.stereotype.Controller;
 public class ProjectController {
 
 
-
-
-    void getUserProjects(){
-
+    public String getUserProjects(){
+        return "";
     }
 
-    public void createProject(){
-
+    public String createProject(){
+        return "";
     }
 
-    public void addComment(){
-
+    public String addComment(){
+        return "";
     }
 
-    public void editDescription(){
-
+    public String editDescription(){
+        return "";
     }
 
 
