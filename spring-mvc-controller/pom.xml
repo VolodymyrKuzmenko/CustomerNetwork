@@ -12,7 +12,7 @@
     <artifactId>spring-controller</artifactId>
     <packaging>war</packaging>
 
-    <name>Spring MVC Controller Maven Webapp</name>
+    <name>Spring MVC Controller Module</name>
     <dependencies>
         <dependency>
             <groupId>eu.bitwalker</groupId>

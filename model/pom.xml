@@ -12,5 +12,13 @@
     <packaging>jar</packaging>
     <artifactId>model</artifactId>
 
-    <name>Model Maven Webapp</name>
+    <name>Model Module</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>4.3.0.Final</version>
+        </dependency>
+    </dependencies>
 </project>

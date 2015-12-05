@@ -11,8 +11,23 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>jar</packaging>
     <artifactId>hibernate</artifactId>
-    <name>Dao Maven Webapp</name>
+    <name>Hibernate ORM Module</name>
     <dependencies>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>4.3.0.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>4.3.0.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>4.3.0.Final</version>
+        </dependency>
         <dependency>
             <groupId>customer-nt</groupId>
             <artifactId>dao</artifactId>
