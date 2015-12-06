@@ -72,4 +72,18 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    @NotFound(action = NotFoundAction.IGNORE)
+    @OneToOne(fetch=FetchType.LAZY, mappedBy="user")
+    public UserInfo getUserInfo() {
+        return userInfo;
+    }
+
+    public void setUserInfo(UserInfo userInfo) {
+        this.userInfo = userInfo;
+    }
+
+    private UserInfo userInfo;
+
+
 }

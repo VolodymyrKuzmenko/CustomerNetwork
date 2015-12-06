@@ -3,7 +3,6 @@ package com.kpi.compsys.service.impl;
 import com.kpi.compsys.dao.ProjectDao;
 import com.kpi.compsys.model.Project;
 import com.kpi.compsys.service.ProjectService;
-import com.sun.xml.internal.ws.developer.Serialization;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

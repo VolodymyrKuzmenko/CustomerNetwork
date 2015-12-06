@@ -23,9 +23,10 @@ public class ProjectController {
 
     @RequestMapping(value = "/projects")
     public ModelAndView getUserProjects() {
+        System.out.println("in projects controller");
         ModelAndView projectsModelView = new ModelAndView();
-        projectsModelView.setViewName("projectsList");
-        projectsModelView.addObject("projects", projectService.getAll());
+        projectsModelView.setViewName("projects");
+        projectsModelView.addObject("projectsList", projectService.getAll());
 
         return projectsModelView;
     }
@@ -38,7 +39,7 @@ public class ProjectController {
         return projectModelView;
     }
 
-    @RequestMapping(value = "/projects")
+    @RequestMapping(value = "/create-project")
     public String createProject(
             @RequestParam String name,
             @RequestParam User responsible,

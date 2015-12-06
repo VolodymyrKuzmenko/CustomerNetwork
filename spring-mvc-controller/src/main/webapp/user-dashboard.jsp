@@ -153,10 +153,10 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
                 <li class="active">
-                    <a href="user-dashboard.jsp"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                    <a href="user-dashboard."><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                 </li>
                 <li>
-                    <a href="projects.jsp"><i class="fa fa-fw fa-bar-chart-o"></i> Projects</a>
+                    <a href="/projects"><i class="fa fa-fw fa-bar-chart-o"></i> Projects</a>
                 </li>
                 <li>
                     <a href="tasks.jsp"><i class="fa fa-fw fa-table"></i> Tasks</a>
