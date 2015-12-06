@@ -1,6 +1,8 @@
 package com.kpi.compsys.spring.controller;
 
 import com.kpi.compsys.model.User;
+import com.kpi.compsys.model.UserRole;
+import com.kpi.compsys.service.UserRoleService;
 import com.kpi.compsys.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,12 +22,17 @@ public class RegistrationController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private UserRoleService userRoleService;
+
+
+
     @RequestMapping(value="/registration",method= RequestMethod.POST)
     public ModelAndView registration(HttpServletRequest request){
         Map<String, String[]> paramMap = request.getParameterMap();
         String usrEmail = paramMap.get("email")[0];
         String usrPass = paramMap.get("password")[0];
-        String usrPassConfirm = paramMap.get("passwordConfirm")[0];
+        String usrPassConfirm = paramMap.get("password_confirm")[0];
         ModelAndView model;
 
         if (usrEmail.isEmpty() || usrPass.isEmpty() || usrPassConfirm.isEmpty()) {
@@ -48,6 +55,7 @@ public class RegistrationController {
         User newUser = new User();
         newUser.setEmail(usrEmail);
         newUser.setPassword(usrPass);
+        newUser.setRole(userRoleService.getDefaultUserRole());
         userService.add(newUser);
         //log new user was created
         model = new ModelAndView("index");

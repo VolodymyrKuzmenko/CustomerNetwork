@@ -6,6 +6,7 @@ import com.kpi.compsys.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -35,5 +36,17 @@ public class ProjectServiceImpl implements ProjectService{
     @Override
     public Project getById(Integer id) {
         return projectDao.getById(id);
+    }
+
+    @Override
+    public List<Project> getChildProjects(Integer parrentProjectId) {
+        //TODO create method with query in dao
+        List<Project> childProjectList = new LinkedList<Project>();
+        for (Project project : projectDao.getAll()){
+            if (project.getParrentProject().getId().equals(parrentProjectId)){
+                childProjectList.add(project);
+            }
+        }
+        return childProjectList;
     }
 }

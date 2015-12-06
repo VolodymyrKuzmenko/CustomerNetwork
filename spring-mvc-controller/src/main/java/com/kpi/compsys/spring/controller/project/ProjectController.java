@@ -2,14 +2,17 @@ package com.kpi.compsys.spring.controller.project;
 
 import com.kpi.compsys.model.Project;
 import com.kpi.compsys.model.User;
+import com.kpi.compsys.service.CommentService;
 import com.kpi.compsys.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
 /**
@@ -21,9 +24,11 @@ public class ProjectController {
     @Autowired
     private ProjectService projectService;
 
+    @Autowired
+    private CommentService commentService;
+
     @RequestMapping(value = "/projects")
     public ModelAndView getUserProjects() {
-        System.out.println("in projects controller");
         ModelAndView projectsModelView = new ModelAndView();
         projectsModelView.setViewName("projects");
         projectsModelView.addObject("projectsList", projectService.getAll());
@@ -31,11 +36,13 @@ public class ProjectController {
         return projectsModelView;
     }
 
-    @RequestMapping(value = "/projects/{projectID}")
+    @RequestMapping(value = "/project/{projectID}")
     public ModelAndView getProjectById(@PathVariable(value = "projectID") Integer projectID) {
         ModelAndView projectModelView = new ModelAndView();
-        projectModelView.setViewName("projectView");
-        projectModelView.addObject("project", projectService.getById(projectID));
+        projectModelView.setViewName("project-view");
+        Project project = projectService.getById(projectID);
+        projectModelView.addObject("project", project);
+        projectModelView.addObject("child-projects", projectService.getChildProjects(projectID));
         return projectModelView;
     }
 
@@ -52,6 +59,16 @@ public class ProjectController {
         project.setResponsible(responsible);
         projectService.add(project);
         return "projects";
+    }
+
+    @RequestMapping(value = "/create-project/{projectID}")
+    public String createChildProject(@PathVariable(value = "projectID") Integer projectID){
+        return "";
+    }
+
+    @RequestMapping(value = "project/addcomment/{projectId}}", method = RequestMethod.POST)
+    public void addComment(@PathVariable (value = "projectId") Integer projectId, HttpServletRequest request){
+
     }
 
     public String addComment() {

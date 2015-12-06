@@ -228,6 +228,7 @@
                             </thead>
                             <tbody>
                             <c:forEach items="${projectsList}" var="project">
+                                <!-- <tr onclick="window.location.href='/project/'+${project.getId()}; return false"> -->
                                 <tr onclick="window.location.href='/project/'+${project.getId()}; return false">
                                     <td>${project.getName()}</td>
                                     <td>

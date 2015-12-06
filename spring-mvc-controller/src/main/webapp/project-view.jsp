@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -203,13 +205,13 @@
 
             <div class="row">
                 <div class="col-lg-2">
-                    <p>Name: <span id="proj_name">Projectname</span></p>
+                    <p>Name: <span id="proj_name">${project.getNema()}</span></p>
                 </div>
                 <div class="col-lg-2">
-                    <p>Status: <span id="proj_stat">In progress</span></p>
+                    <p>Status: <span id="proj_stat">${project.getStatus().getName()}</span></p>
                 </div>
                 <div class="col-lg-2">
-                    <p>Last update: <span id="proj_update">12/4/2015</span></p>
+                    <p>Last update: <span id="proj_update">${project.getDateUpdated()}</span></p>
                 </div>
             </div>
 
@@ -217,7 +219,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <h4>Description<i class="fa fa-pencil-square-o edit_ico" onclick="enableTextarea(this)"></i></h4>
-                    <textarea id="description" class="well" disabled="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean lacinia bibendum nulla sed consectetur.</textarea>
+                    <textarea id="description" class="well" disabled="true">${project.getDescriprion()}</textarea>
                     <button type="submit" id="cancel_button" class="btn btn-danger edit" onclick="disableTextarea(this)">Cancel</button>
                     <button type="button" id="update_button" class="btn btn-success edit" onclick="disableTextarea(this)">Update</button>
 
@@ -241,59 +243,22 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr onclick="window.location.href='project.html'; return false">
-                                <td>Projectname</td>
-                                <td>res</td>
-                                <td>ready</td>
-                                <td>2015.11.21</td>
+                            <c:forEach items="${child-projects}" var="childproject">
+                                <tr onclick="window.location.href='/project/'+${childproject.getId()}; return false">
+                                <td>${childproject.getName()}</td>
+                                <td>
+                                    ${childproject.getResponsible().getUserInfo().getName()}
+                                    ${childproject.getResponsible().getUserInfo().getSurname()}
+                                </td>
+                                <td>${childproject.getStatus().getStatusName()}</td>
+                                <td>${childproject.getDateUpdated()}</td>
                                 <td>tag</td>
                             </tr>
-                            <tr onclick="window.location.href='project.html'; return false">
-                                <td>Projectname</td>
-                                <td>res</td>
-                                <td>ready</td>
-                                <td>2015.11.21</td>
-                                <td>tag</td>
-                            </tr>
-                            <tr onclick="window.location.href='project.html'; return false">
-                                <td>Projectname</td>
-                                <td>res</td>
-                                <td>ready</td>
-                                <td>2015.11.21</td>
-                                <td>tag</td>
-                            </tr>
-                            <tr onclick="window.location.href='project.html'; return false">
-                                <td>Projectname</td>
-                                <td>res</td>
-                                <td>ready</td>
-                                <td>2015.11.21</td>
-                                <td>tag</td>
-                            </tr>
-                            <tr onclick="window.location.href='project.html'; return false">
-                                <td>Projectname</td>
-                                <td>res</td>
-                                <td>ready</td>
-                                <td>2015.11.21</td>
-                                <td>tag</td>
-                            </tr>
-                            <tr onclick="window.location.href='project.html'; return false">
-                                <td>Projectname</td>
-                                <td>res</td>
-                                <td>ready</td>
-                                <td>2015.11.21</td>
-                                <td>tag</td>
-                            </tr>
-                            <tr onclick="window.location.href='project.html'; return false">
-                                <td>Projectname</td>
-                                <td>res</td>
-                                <td>ready</td>
-                                <td>2015.11.21</td>
-                                <td>tag</td>
-                            </tr>
+                            </c:forEach>
                             </tbody>
                         </table>
                     </div>
-                    <button type="button" class="btn btn-success add">Add</button>
+                    <a href="/create-project/${project.getId()}"><button type="button" class="btn btn-success add">Add</button></a>
                 </div>
             </div>
             <!-- Parrent projects end -->
@@ -314,59 +279,22 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr onclick="window.location.href='project.html'; return false">
-                                <td>Taskname</td>
-                                <td>res</td>
-                                <td>ready</td>
-                                <td>2015.11.21</td>
+                            <c:forEach items="${project.getTasks()}" var="task">
+                            <tr onclick="window.location.href='/task/'+${task.getId()}; return false">
+                                <td>${task.getName()}</td>
+                                <td>
+                                    ${task.getResponsible().getUserInfo().getName()}
+                                    ${childproject.getResponsible().getUserInfo().getSurname()}
+                                </td>
+                                <td>${task.getStatus().getName()}</td>
+                                <td>${task.getDateUpdated()}</td>
                                 <td>tag</td>
                             </tr>
-                            <tr onclick="window.location.href='project.html'; return false">
-                                <td>Taskname</td>
-                                <td>res</td>
-                                <td>ready</td>
-                                <td>2015.11.21</td>
-                                <td>tag</td>
-                            </tr>
-                            <tr onclick="window.location.href='project.html'; return false">
-                                <td>Taskname</td>
-                                <td>res</td>
-                                <td>ready</td>
-                                <td>2015.11.21</td>
-                                <td>tag</td>
-                            </tr>
-                            <tr onclick="window.location.href='project.html'; return false">
-                                <td>Taskname</td>
-                                <td>res</td>
-                                <td>ready</td>
-                                <td>2015.11.21</td>
-                                <td>tag</td>
-                            </tr>
-                            <tr onclick="window.location.href='project.html'; return false">
-                                <td>Taskname</td>
-                                <td>res</td>
-                                <td>ready</td>
-                                <td>2015.11.21</td>
-                                <td>tag</td>
-                            </tr>
-                            <tr onclick="window.location.href='project.html'; return false">
-                                <td>Taskname</td>
-                                <td>res</td>
-                                <td>ready</td>
-                                <td>2015.11.21</td>
-                                <td>tag</td>
-                            </tr>
-                            <tr onclick="window.location.href='project.html'; return false">
-                                <td>Taskname</td>
-                                <td>res</td>
-                                <td>ready</td>
-                                <td>2015.11.21</td>
-                                <td>tag</td>
-                            </tr>
+                            </c:forEach>
                             </tbody>
                         </table>
                     </div>
-                    <button type="button" class="btn btn-success add">Add</button>
+                   <button onclick="window.location.href='/task-create/'+${project.getId()}" type="button" class="btn btn-success add">Add</button>
                 </div>
             </div>
             <!-- Tasks end -->
@@ -376,20 +304,17 @@
                 <div class="col-lg-6">
                     <h4>Comments</h4>
                     <div class="comments">
+                        <c:forEach items="${project.getComments()}"  var="comment">
                         <div class="comment clearfix">
-                            <p class="user_name">User 1</p>
-                            <p class="comm_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere delectus numquam animi quae unde est, nesciunt? Vero, repellat, nam. Dolor beatae error, voluptatum laborum tenetur dolorum obcaecati nam provident pariatur.</p>
+                            <p class="user_name">
+                                ${comment.getAuthor().getUserInfo().getName()}
+                                ${comment.getAuthor().getUserInfo().getSurname()}
+                            </p>
+                            <p class="comm_text">${comment.getTextComment()}</p>
                         </div>
-                        <div class="comment clearfix">
-                            <p class="user_name">User 2</p>
-                            <p class="comm_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea sunt fuga, fugiat similique dicta voluptas dolores placeat officiis cupiditate eaque, nemo cum! Amet, aperiam quod nobis qui, voluptates totam culpa. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit natus ratione minima minus a! Molestiae iusto, ea porro quia nam! Inventore temporibus amet aliquid laboriosam est harum ab maxime fuga.</p>
-                        </div>
-                        <div class="comment clearfix">
-                            <p class="user_name">User 3</p>
-                            <p class="comm_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere delectus numquam animi quae unde est, nesciunt?</p>
-                        </div>
+                        </c:forEach>
                     </div>
-                    <form action="">
+                    <form action="project/addcomment/${project.getId()}" method="post">
                         <div class="form-group">
                             <label>Add Comment</label>
                             <textarea class="form-control" rows="3" placeholder="Write a comment..."></textarea>

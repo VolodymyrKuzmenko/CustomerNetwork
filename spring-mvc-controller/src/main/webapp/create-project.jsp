@@ -219,7 +219,7 @@
                                 <option>User 3</option>
                                 <option>User 4</option>
                                 <option>User 5</option>
-                            </select>
+                            </select >
                         </div>
                         <div class="form-group">
                             <label>Tags:</label>

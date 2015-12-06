@@ -1,7 +1,6 @@
 package com.kpi.compsys.service.impl;
 
 import com.kpi.compsys.dao.UserDao;
-import com.kpi.compsys.hibernate.impl.UserDaoImpl;
 import com.kpi.compsys.model.User;
 import com.kpi.compsys.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +13,7 @@ import java.util.List;
  */
 @Service
 public class UserServiceImpl implements UserService {
+
     @Autowired
     private UserDao dao;
 

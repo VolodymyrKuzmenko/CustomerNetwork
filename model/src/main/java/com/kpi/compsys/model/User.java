@@ -8,6 +8,7 @@ import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="user")
@@ -84,6 +85,22 @@ public class User {
     }
 
     private UserInfo userInfo;
+
+    @NotFound(action = NotFoundAction.IGNORE)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "user_comment", joinColumns = {
+            @JoinColumn(name = "user_user_id", nullable = false, updatable = true)},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "Comment_idComment", nullable = false, updatable = true)})
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    private List<Comment> comments;
 
 
 }
