@@ -53,7 +53,8 @@
         <!-- Top Menu Items -->
         <ul class="nav navbar-right top-nav">
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b
+                        class="caret"></b></a>
                 <ul class="dropdown-menu message-dropdown">
                     <li class="message-preview">
                         <a href="#">
@@ -61,10 +62,13 @@
                                     <span class="pull-left">
                                         <img class="media-object" src="http://placehold.it/50x50" alt="">
                                     </span>
+
                                 <div class="media-body">
                                     <h5 class="media-heading"><strong>John Smith</strong>
                                     </h5>
+
                                     <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+
                                     <p>Lorem ipsum dolor sit amet, consectetur...</p>
                                 </div>
                             </div>
@@ -76,10 +80,13 @@
                                     <span class="pull-left">
                                         <img class="media-object" src="http://placehold.it/50x50" alt="">
                                     </span>
+
                                 <div class="media-body">
                                     <h5 class="media-heading"><strong>John Smith</strong>
                                     </h5>
+
                                     <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+
                                     <p>Lorem ipsum dolor sit amet, consectetur...</p>
                                 </div>
                             </div>
@@ -91,10 +98,13 @@
                                     <span class="pull-left">
                                         <img class="media-object" src="http://placehold.it/50x50" alt="">
                                     </span>
+
                                 <div class="media-body">
                                     <h5 class="media-heading"><strong>John Smith</strong>
                                     </h5>
+
                                     <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+
                                     <p>Lorem ipsum dolor sit amet, consectetur...</p>
                                 </div>
                             </div>
@@ -106,7 +116,8 @@
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b
+                        class="caret"></b></a>
                 <ul class="dropdown-menu alert-dropdown">
                     <li>
                         <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
@@ -133,7 +144,12 @@
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    </i>
+                    ${sessionScope.user.getUserInfo().getName()}
+                    ${sessionScope.user.getUserInfo().getSurname()}
+                    <b class="caret"></b>
+                </a>
                 <ul class="dropdown-menu">
                     <li>
                         <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -189,7 +205,7 @@
                     </h1>
                     <ol class="breadcrumb">
                         <li>
-                            <i class="fa fa-dashboard"></i>  <a href="user-dashboard.jsp">Dashboard</a>
+                            <i class="fa fa-dashboard"></i> <a href="user-dashboard.jsp">Dashboard</a>
                         </li>
                         <li>
                             <i class="fa fa-table"></i> <a href="/tasks">Tasks</a>
@@ -234,8 +250,12 @@
                 <div class="col-lg-6">
                     <h4>Description<i class="fa fa-pencil-square-o edit_ico" onclick="enableTextarea(this)"></i></h4>
                     <textarea id="description" class="well" disabled="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean lacinia bibendum nulla sed consectetur.</textarea>
-                    <button type="submit" id="cancel_button" class="btn btn-danger edit" onclick="disableTextarea(this)">Cancel</button>
-                    <button type="button" id="update_button" class="btn btn-success edit" onclick="disableTextarea(this)">Update</button>
+                    <button type="submit" id="cancel_button" class="btn btn-danger edit"
+                            onclick="disableTextarea(this)">Cancel
+                    </button>
+                    <button type="button" id="update_button" class="btn btn-success edit"
+                            onclick="disableTextarea(this)">Update
+                    </button>
 
                 </div>
             </div>
@@ -245,18 +265,30 @@
             <div class="row">
                 <div class="col-lg-6">
                     <h4>Comments</h4>
+
                     <div class="comments">
                         <div class="comment clearfix">
                             <p class="user_name">User 1</p>
-                            <p class="comm_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere delectus numquam animi quae unde est, nesciunt? Vero, repellat, nam. Dolor beatae error, voluptatum laborum tenetur dolorum obcaecati nam provident pariatur.</p>
+
+                            <p class="comm_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere
+                                delectus numquam animi quae unde est, nesciunt? Vero, repellat, nam. Dolor beatae error,
+                                voluptatum laborum tenetur dolorum obcaecati nam provident pariatur.</p>
                         </div>
                         <div class="comment clearfix">
                             <p class="user_name">User 2</p>
-                            <p class="comm_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea sunt fuga, fugiat similique dicta voluptas dolores placeat officiis cupiditate eaque, nemo cum! Amet, aperiam quod nobis qui, voluptates totam culpa. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit natus ratione minima minus a! Molestiae iusto, ea porro quia nam! Inventore temporibus amet aliquid laboriosam est harum ab maxime fuga.</p>
+
+                            <p class="comm_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea sunt fuga,
+                                fugiat similique dicta voluptas dolores placeat officiis cupiditate eaque, nemo cum!
+                                Amet, aperiam quod nobis qui, voluptates totam culpa. Lorem ipsum dolor sit amet,
+                                consectetur adipisicing elit. Sit natus ratione minima minus a! Molestiae iusto, ea
+                                porro quia nam! Inventore temporibus amet aliquid laboriosam est harum ab maxime
+                                fuga.</p>
                         </div>
                         <div class="comment clearfix">
                             <p class="user_name">User 3</p>
-                            <p class="comm_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere delectus numquam animi quae unde est, nesciunt?</p>
+
+                            <p class="comm_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere
+                                delectus numquam animi quae unde est, nesciunt?</p>
                         </div>
                     </div>
                     <form action="">
@@ -296,11 +328,11 @@
     autosize(document.querySelectorAll('textarea'));
 
 
-    function enableTextarea(element){
+    function enableTextarea(element) {
         current_input = document.getElementById('description');
-        current_input.disabled=false;
+        current_input.disabled = false;
         current_input.focus();
-        current_input.setSelectionRange(current_input.value.length,current_input.value.length);
+        current_input.setSelectionRange(current_input.value.length, current_input.value.length);
         update_button = document.getElementById('update_button');
         update_button.style.display = (update_button.style.display == 'inline-block') ? '' : 'inline-block'
         cancel_button = document.getElementById('cancel_button');
@@ -308,9 +340,9 @@
 
     }
 
-    function disableTextarea(element){
+    function disableTextarea(element) {
         current_input = document.getElementById('description');
-        current_input.disabled=true;
+        current_input.disabled = true;
         update_button = document.getElementById('update_button');
         update_button.style.display = 'none';
         cancel_button = document.getElementById('cancel_button');
@@ -319,7 +351,8 @@
 </script>
 
 <!-- Flot Charts JavaScript -->
-<!--[if lte IE 8]><script src="js/excanvas.min.js"></script><![endif]-->
+<!--[if lte IE 8]>
+<script src="js/excanvas.min.js"></script><![endif]-->
 <script src="js/plugins/flot/jquery.flot.js"></script>
 <script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
 <script src="js/plugins/flot/jquery.flot.resize.js"></script>
