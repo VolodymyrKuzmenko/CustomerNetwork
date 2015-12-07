@@ -1,7 +1,6 @@
-<!DOCTYPE html>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -26,6 +25,7 @@
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -55,8 +55,7 @@
         <!-- Top Menu Items -->
         <ul class="nav navbar-right top-nav">
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b
-                        class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
                 <ul class="dropdown-menu message-dropdown">
                     <li class="message-preview">
                         <a href="#">
@@ -64,13 +63,10 @@
                                     <span class="pull-left">
                                         <img class="media-object" src="http://placehold.it/50x50" alt="">
                                     </span>
-
                                 <div class="media-body">
                                     <h5 class="media-heading"><strong>John Smith</strong>
                                     </h5>
-
                                     <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-
                                     <p>Lorem ipsum dolor sit amet, consectetur...</p>
                                 </div>
                             </div>
@@ -82,13 +78,10 @@
                                     <span class="pull-left">
                                         <img class="media-object" src="http://placehold.it/50x50" alt="">
                                     </span>
-
                                 <div class="media-body">
                                     <h5 class="media-heading"><strong>John Smith</strong>
                                     </h5>
-
                                     <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-
                                     <p>Lorem ipsum dolor sit amet, consectetur...</p>
                                 </div>
                             </div>
@@ -100,13 +93,10 @@
                                     <span class="pull-left">
                                         <img class="media-object" src="http://placehold.it/50x50" alt="">
                                     </span>
-
                                 <div class="media-body">
                                     <h5 class="media-heading"><strong>John Smith</strong>
                                     </h5>
-
                                     <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-
                                     <p>Lorem ipsum dolor sit amet, consectetur...</p>
                                 </div>
                             </div>
@@ -118,8 +108,7 @@
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b
-                        class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
                 <ul class="dropdown-menu alert-dropdown">
                     <li>
                         <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
@@ -146,8 +135,8 @@
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    </i>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user">
+                </i>
                     ${sessionScope.user.getUserInfo().getName()}
                     ${sessionScope.user.getUserInfo().getSurname()}
                     <b class="caret"></b>
@@ -207,18 +196,46 @@
                     </h1>
                     <ol class="breadcrumb">
                         <li>
-                            <i class="fa fa-dashboard"></i> <a href="user-dashboard.jsp">Dashboard</a>
+                            <i class="fa fa-dashboard"></i>  <a href="user-dashboard.jsp">Dashboard</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-bar-chart-o"></i> <a href="/projects">Projects</a>
                         </li>
                         <li class="active">
-                            <i class="fa fa-bar-chart-o"></i> Projects
+                            <i class="fa fa-file-text"></i> Project
                         </li>
                     </ol>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-lg-2">
+                    <p>Name: <span id="proj_name">${project.getNema()}</span></p>
+                </div>
+                <div class="col-lg-2">
+                    <p>Status: <span id="proj_stat">${project.getStatus().getName()}</span></p>
+                </div>
+                <div class="col-lg-2">
+                    <p>Last update: <span id="proj_update">${project.getDateUpdated()}</span></p>
+                </div>
+            </div>
+
+            <!-- Description start-->
             <div class="row">
                 <div class="col-lg-6">
-                    <h4>Aviliable Projects</h4>
+                    <h4>Description<i class="fa fa-pencil-square-o edit_ico" onclick="enableTextarea(this)"></i></h4>
+                    <textarea id="description" class="well" disabled="true">${project.getDescriprion()}</textarea>
+                    <button type="submit" id="cancel_button" class="btn btn-danger edit" onclick="disableTextarea(this)">Cancel</button>
+                    <button type="button" id="update_button" class="btn btn-success edit" onclick="disableTextarea(this)">Update</button>
 
+                </div>
+            </div>
+            <!-- Description end -->
+
+            <!-- Parrent projects start -->
+            <div class="row">
+                <div class="col-lg-6">
+                    <h4>Parrent projects</h4>
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover table-striped">
                             <thead>
@@ -231,27 +248,87 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach items="${projectsList}" var="project">
-                                <tr onclick="window.location.href='/project/'+${project.getId()}; return false">
-                                    <td>${project.getName()}</td>
-                                    <td>
-                                        ${project.getResponsible().getUserInfo().getName()}
-                                        ${project.getResponsible().getUserInfo().getSurname()}
-                                    </td>
-                                    <td>${project.getStatus().getStatusName()}</td>
-                                    <td>${project.getDateUpdated()}</td>
-                                    <td>tag</td>
-                                </tr>
+                            <c:forEach items="${child-projects}" var="childproject">
+                                <tr onclick="window.location.href='/project/'+${childproject.getId()}; return false">
+                                <td>${childproject.getName()}</td>
+                                <td>
+                                    ${childproject.getResponsible().getUserInfo().getName()}
+                                    ${childproject.getResponsible().getUserInfo().getSurname()}
+                                </td>
+                                <td>${childproject.getStatus().getStatusName()}</td>
+                                <td>${childproject.getDateUpdated()}</td>
+                                <td>tag</td>
+                            </tr>
                             </c:forEach>
                             </tbody>
                         </table>
                     </div>
-                    <a href="new-project.jsp">
-                        <button type="button" class="btn btn-success add">Create new</button>
-                    </a>
+                    <a href="/create-project/${project.getId()}"><button type="button" class="btn btn-success add">Add</button></a>
                 </div>
             </div>
+            <!-- Parrent projects end -->
 
+            <!-- Tasks start -->
+            <div class="row">
+                <div class="col-lg-6">
+                    <h4>Tasks</h4>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-striped">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Responsible</th>
+                                <th>Status</th>
+                                <th>Last update</th>
+                                <th>Tags</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <c:forEach items="${project.getTasks()}" var="task">
+                            <tr onclick="window.location.href='/task/'+${task.getId()}; return false">
+                                <td>${task.getName()}</td>
+                                <td>
+                                    ${task.getResponsible().getUserInfo().getName()}
+                                    ${childproject.getResponsible().getUserInfo().getSurname()}
+                                </td>
+                                <td>${task.getStatus().getName()}</td>
+                                <td>${task.getDateUpdated()}</td>
+                                <td>tag</td>
+                            </tr>
+                            </c:forEach>
+                            </tbody>
+                        </table>
+                    </div>
+                   <button onclick="window.location.href='/task-create/'+${project.getId()}" type="button" class="btn btn-success add">Add</button>
+                </div>
+            </div>
+            <!-- Tasks end -->
+
+            <!-- Comments start-->
+            <div class="row">
+                <div class="col-lg-6">
+                    <h4>Comments</h4>
+                    <div class="comments">
+                        <c:forEach items="${project.getComments()}"  var="comment">
+                        <div class="comment clearfix">
+                            <p class="user_name">
+                                ${comment.getAuthor().getUserInfo().getName()}
+                                ${comment.getAuthor().getUserInfo().getSurname()}
+                            </p>
+                            <p class="comm_text">${comment.getTextComment()}</p>
+                        </div>
+                        </c:forEach>
+                    </div>
+                    <form action="project/addcomment/${project.getId()}" method="post">
+                        <div class="form-group">
+                            <label>Add Comment</label>
+                            <textarea class="form-control" rows="3" placeholder="Write a comment..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success add">Send</button>
+                    </form>
+                </div>
+            </div>
+            <!-- Comments end -->
 
         </div>
         <!-- /.container-fluid -->
@@ -273,9 +350,36 @@
 <script src="js/plugins/morris/morris.min.js"></script>
 <script src="js/plugins/morris/morris-data.js"></script>
 
+<!-- Autosize for textarea -->
+<script src="js/autosize.min.js"></script>
+<script>
+    autosize(document.querySelectorAll('textarea'));
+
+
+    function enableTextarea(element){
+        current_input = document.getElementById('description');
+        current_input.disabled=false;
+        current_input.focus();
+        current_input.setSelectionRange(current_input.value.length,current_input.value.length);
+        update_button = document.getElementById('update_button');
+        update_button.style.display = (update_button.style.display == 'inline-block') ? '' : 'inline-block'
+        cancel_button = document.getElementById('cancel_button');
+        cancel_button.style.display = (cancel_button.style.display == 'inline-block') ? '' : 'inline-block'
+
+    }
+
+    function disableTextarea(element){
+        current_input = document.getElementById('description');
+        current_input.disabled=true;
+        update_button = document.getElementById('update_button');
+        update_button.style.display = 'none';
+        cancel_button = document.getElementById('cancel_button');
+        cancel_button.style.display = 'none';
+    }
+</script>
+
 <!-- Flot Charts JavaScript -->
-<!--[if lte IE 8]>
-<script src="js/excanvas.min.js"></script><![endif]-->
+<!--[if lte IE 8]><script src="js/excanvas.min.js"></script><![endif]-->
 <script src="js/plugins/flot/jquery.flot.js"></script>
 <script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
 <script src="js/plugins/flot/jquery.flot.resize.js"></script>

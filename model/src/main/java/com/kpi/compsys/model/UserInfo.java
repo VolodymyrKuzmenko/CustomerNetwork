@@ -58,7 +58,6 @@ public class UserInfo {
     @GenericGenerator(name="increment", strategy = "increment")
     @Column(name="info_id")
     public int getInfo_id() {
-
         return info_id;
     }
 
@@ -75,4 +74,6 @@ public class UserInfo {
     {
         this.user = user;
     }
+
+
 }

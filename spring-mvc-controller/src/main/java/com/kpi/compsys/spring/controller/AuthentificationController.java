@@ -35,7 +35,6 @@ public class AuthentificationController {
         User loginBean = new User();
         loginBean.setEmail(paramMap.get("email")[0]);
         loginBean.setPassword(paramMap.get("password")[0]);
-        ModelAndView model = null;
         User currentUser = null;
         for (User user : userService.getAll()) {
             if (user.getEmail().equals(loginBean.getEmail()) && user.getPassword().equals(loginBean.getPassword())) {
@@ -45,14 +44,14 @@ public class AuthentificationController {
         }
 
         if (currentUser == null) {
-            model = new ModelAndView("index");
+            return new ModelAndView("index");
         } else {
             request.getSession().setAttribute("user", currentUser);
             rememberSessionHistory(currentUser, request);
 
-            model = new ModelAndView("user-dashboard");
+            return new ModelAndView("user-dashboard");
         }
-        return model;
+
     }
 
 

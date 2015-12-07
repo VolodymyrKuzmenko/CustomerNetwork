@@ -1,7 +1,4 @@
 <!DOCTYPE html>
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 
 <head>
@@ -12,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Customer Networ</title>
+    <title>Customer Network</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -26,6 +23,7 @@
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -175,20 +173,20 @@
                 <li>
                     <a href="user-dashboard.jsp"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="/projects"><i class="fa fa-fw fa-bar-chart-o"></i> Projects</a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="/tasks"><i class="fa fa-fw fa-table"></i> Tasks</a>
                 </li>
                 <li>
-                    <a href="deals.jsp"><i class="fa fa-fw fa-edit"></i> Deals</a>
+                    <a href="deals.html"><i class="fa fa-fw fa-edit"></i> Deals</a>
                 </li>
                 <li>
-                    <a href="analytics.jsp"><i class="fa fa-fw fa-desktop"></i> Analytics</a>
+                    <a href="analytics.html"><i class="fa fa-fw fa-desktop"></i> Analytics</a>
                 </li>
                 <li>
-                    <a href="contacts.jsp"><i class="fa fa-fw fa-wrench"></i> Contacts</a>
+                    <a href="contacts.html"><i class="fa fa-fw fa-wrench"></i> Contacts</a>
                 </li>
             </ul>
         </div>
@@ -203,55 +201,106 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Projects
+                        Task view
                     </h1>
                     <ol class="breadcrumb">
                         <li>
                             <i class="fa fa-dashboard"></i> <a href="user-dashboard.jsp">Dashboard</a>
                         </li>
+                        <li>
+                            <i class="fa fa-table"></i> <a href="/tasks">Tasks</a>
+                        </li>
                         <li class="active">
-                            <i class="fa fa-bar-chart-o"></i> Projects
+                            <i class="fa fa-file-text"></i> Task view
                         </li>
                     </ol>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <h4>Aviliable Projects</h4>
 
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-hover table-striped">
-                            <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Responsible</th>
-                                <th>Status</th>
-                                <th>Last update</th>
-                                <th>Tags</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <c:forEach items="${projectsList}" var="project">
-                                <tr onclick="window.location.href='/project/'+${project.getId()}; return false">
-                                    <td>${project.getName()}</td>
-                                    <td>
-                                        ${project.getResponsible().getUserInfo().getName()}
-                                        ${project.getResponsible().getUserInfo().getSurname()}
-                                    </td>
-                                    <td>${project.getStatus().getStatusName()}</td>
-                                    <td>${project.getDateUpdated()}</td>
-                                    <td>tag</td>
-                                </tr>
-                            </c:forEach>
-                            </tbody>
-                        </table>
-                    </div>
-                    <a href="new-project.jsp">
-                        <button type="button" class="btn btn-success add">Create new</button>
-                    </a>
+            <div class="row">
+                <div class="col-lg-3">
+                    <p>Name: <span id="proj_name">Taskname</span></p>
+                </div>
+                <div class="col-lg-3">
+                    <p>Last update: <span id="proj_update">12/4/2015</span></p>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-lg-3">
+                    <p>Responsible:</p>
+                    <select class="form-control input-sm">
+                        <option>User 1</option>
+                        <option>User 2</option>
+                        <option>User 3</option>
+                        <option>User 4</option>
+                    </select>
+                </div>
+                <div class="col-lg-3">
+                    <p>Status:</p>
+                    <select class="form-control input-sm">
+                        <option>In progres</option>
+                        <option>Code view</option>
+                        <option>Testing</option>
+                        <option>Done</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Description start-->
+            <div class="row">
+                <div class="col-lg-6">
+                    <h4>Description<i class="fa fa-pencil-square-o edit_ico" onclick="enableTextarea(this)"></i></h4>
+                    <textarea id="description" class="well" disabled="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean lacinia bibendum nulla sed consectetur.</textarea>
+                    <button type="submit" id="cancel_button" class="btn btn-danger edit"
+                            onclick="disableTextarea(this)">Cancel
+                    </button>
+                    <button type="button" id="update_button" class="btn btn-success edit"
+                            onclick="disableTextarea(this)">Update
+                    </button>
 
+                </div>
+            </div>
+            <!-- Description end -->
+
+            <!-- Comments start-->
+            <div class="row">
+                <div class="col-lg-6">
+                    <h4>Comments</h4>
+
+                    <div class="comments">
+                        <div class="comment clearfix">
+                            <p class="user_name">User 1</p>
+
+                            <p class="comm_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere
+                                delectus numquam animi quae unde est, nesciunt? Vero, repellat, nam. Dolor beatae error,
+                                voluptatum laborum tenetur dolorum obcaecati nam provident pariatur.</p>
+                        </div>
+                        <div class="comment clearfix">
+                            <p class="user_name">User 2</p>
+
+                            <p class="comm_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea sunt fuga,
+                                fugiat similique dicta voluptas dolores placeat officiis cupiditate eaque, nemo cum!
+                                Amet, aperiam quod nobis qui, voluptates totam culpa. Lorem ipsum dolor sit amet,
+                                consectetur adipisicing elit. Sit natus ratione minima minus a! Molestiae iusto, ea
+                                porro quia nam! Inventore temporibus amet aliquid laboriosam est harum ab maxime
+                                fuga.</p>
+                        </div>
+                        <div class="comment clearfix">
+                            <p class="user_name">User 3</p>
+
+                            <p class="comm_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere
+                                delectus numquam animi quae unde est, nesciunt?</p>
+                        </div>
+                    </div>
+                    <form action="">
+                        <div class="form-group">
+                            <label>Add Comment</label>
+                            <textarea class="form-control" rows="3" placeholder="Write a comment..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success add">Send</button>
+                    </form>
+                </div>
+            </div>
+            <!-- Comments end -->
 
         </div>
         <!-- /.container-fluid -->
@@ -272,6 +321,34 @@
 <script src="js/plugins/morris/raphael.min.js"></script>
 <script src="js/plugins/morris/morris.min.js"></script>
 <script src="js/plugins/morris/morris-data.js"></script>
+
+<!-- Autosize for textarea -->
+<script src="js/autosize.min.js"></script>
+<script>
+    autosize(document.querySelectorAll('textarea'));
+
+
+    function enableTextarea(element) {
+        current_input = document.getElementById('description');
+        current_input.disabled = false;
+        current_input.focus();
+        current_input.setSelectionRange(current_input.value.length, current_input.value.length);
+        update_button = document.getElementById('update_button');
+        update_button.style.display = (update_button.style.display == 'inline-block') ? '' : 'inline-block'
+        cancel_button = document.getElementById('cancel_button');
+        cancel_button.style.display = (cancel_button.style.display == 'inline-block') ? '' : 'inline-block'
+
+    }
+
+    function disableTextarea(element) {
+        current_input = document.getElementById('description');
+        current_input.disabled = true;
+        update_button = document.getElementById('update_button');
+        update_button.style.display = 'none';
+        cancel_button = document.getElementById('cancel_button');
+        cancel_button.style.display = 'none';
+    }
+</script>
 
 <!-- Flot Charts JavaScript -->
 <!--[if lte IE 8]>
