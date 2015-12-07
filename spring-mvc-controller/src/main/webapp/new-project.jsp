@@ -10,14 +10,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Customer Network</title>
+    <title>Customer Networ</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/sb-admin.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/main.css" rel="stylesheet">
+    <link href="css/sb-admin.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
     <link href="css/plugins/morris.css" rel="stylesheet">
@@ -157,20 +156,20 @@
                 <li>
                     <a href="user-dashboard.jsp"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="/projects"><i class="fa fa-fw fa-bar-chart-o"></i> Projects</a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="/tasks"><i class="fa fa-fw fa-table"></i> Tasks</a>
                 </li>
                 <li>
-                    <a href="deals.html"><i class="fa fa-fw fa-edit"></i> Deals</a>
+                    <a href="deals.jsp"><i class="fa fa-fw fa-edit"></i> Deals</a>
                 </li>
                 <li>
-                    <a href="analytics.html"><i class="fa fa-fw fa-desktop"></i> Analytics</a>
+                    <a href="analytics.jsp"><i class="fa fa-fw fa-desktop"></i> Analytics</a>
                 </li>
                 <li>
-                    <a href="contacts.html"><i class="fa fa-fw fa-wrench"></i> Contacts</a>
+                    <a href="contacts.jsp"><i class="fa fa-fw fa-wrench"></i> Contacts</a>
                 </li>
             </ul>
         </div>
@@ -185,81 +184,83 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Tasks
+                        Projects
                     </h1>
                     <ol class="breadcrumb">
                         <li>
                             <i class="fa fa-dashboard"></i>  <a href="user-dashboard.jsp">Dashboard</a>
                         </li>
-                        <li class="active">
-                            <i class="fa fa-table"></i>Tasks
+                        <li>
+                            <i class="fa fa-bar-chart-o"></i>
+                            <a href="/projects">Projects</a>
                         </li>
-
+                        <li class="active">
+                            <i class="fa fa-pencil"></i> New project
+                        </li>
                     </ol>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-lg-6">
-                    <h4>Aviliable tasks</h4>
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-hover table-striped">
-                            <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Responsible</th>
-                                <th>Status</th>
-                                <th>Last update</th>
-                                <th>Tags</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <c:forEach items="${taskList}" var="task">
-                                <tr onclick="window.location.href='task/'+${task.getTaskId()}; return false">
-                                    <td>${task.getName()}</td>
-                                    <td>
-                                            ${task.getResponsible().getUserInfo().getName()}
-                                            ${task.getResponsible().getUserInfo().getSurname()}
-                                    </td>
-                                    <td>${task.getStatus().getStatusName()}</td>
-                                    <td>${task.getDateUpdated()}</td>
-                                    <td>tag</td>
-                                </tr>
-                            </c:forEach>
-                            </tbody>
-                        </table>
-                    </div>
+                    <h2>Create new project</h2>
+                    <form action="">
+                        <div class="form-group">
+                            <label>Name:</label>
+                            <input class="form-control" placeholder="Enter text">
+                        </div>
+                        <div class="form-group">
+                            <label>Description:</label>
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Responsible:</label>
+                            <select class="form-control">
+                                <c:forEach items="${usersList}" var="user">
+                                <option>
+                                    ${user.getUserInfo().getName()} </option>
+                                    <option>${user.getUserInfo().getSurname()}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Tags:</label>
+                            <input class="form-control" placeholder="Some tegs">
+                        </div>
+                        <button type="submit" class="btn btn-default">Save</button>
+                        <button type="reset" class="btn btn-default">Cancel</button>
+                    </form>
                 </div>
-            </div>
+                <!-- /.row -->
 
+                <!-- /.row -->
+
+            </div>
+            <!-- /.container-fluid -->
 
         </div>
-        <!-- /.container-fluid -->
+        <!-- /#page-wrapper -->
 
     </div>
-    <!-- /#page-wrapper -->
+    <!-- /#wrapper -->
 
-</div>
-<!-- /#wrapper -->
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
 
-<!-- jQuery -->
-<script src="js/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
+    <!-- Morris Charts JavaScript -->
+    <script src="js/plugins/morris/raphael.min.js"></script>
+    <script src="js/plugins/morris/morris.min.js"></script>
+    <script src="js/plugins/morris/morris-data.js"></script>
 
-<!-- Morris Charts JavaScript -->
-<script src="js/plugins/morris/raphael.min.js"></script>
-<script src="js/plugins/morris/morris.min.js"></script>
-<script src="js/plugins/morris/morris-data.js"></script>
-
-<!-- Flot Charts JavaScript -->
-<!--[if lte IE 8]><script src="js/excanvas.min.js"></script><![endif]-->
-<script src="js/plugins/flot/jquery.flot.js"></script>
-<script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
-<script src="js/plugins/flot/jquery.flot.resize.js"></script>
-<script src="js/plugins/flot/jquery.flot.pie.js"></script>
-<script src="js/plugins/flot/flot-data.js"></script>
+    <!-- Flot Charts JavaScript -->
+    <!--[if lte IE 8]><script src="js/excanvas.min.js"></script><![endif]-->
+    <script src="js/plugins/flot/jquery.flot.js"></script>
+    <script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="js/plugins/flot/jquery.flot.resize.js"></script>
+    <script src="js/plugins/flot/jquery.flot.pie.js"></script>
+    <script src="js/plugins/flot/flot-data.js"></script>
 
 </body>
 

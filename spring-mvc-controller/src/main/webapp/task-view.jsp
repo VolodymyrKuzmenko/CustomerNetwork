@@ -9,19 +9,21 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Customer Networ</title>
+    <title>Customer Network</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/sb-admin.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
     <link href="css/plugins/morris.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -144,7 +146,7 @@
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                        <a href="/logout"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                     </li>
                 </ul>
             </li>
@@ -153,13 +155,13 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
                 <li>
-                    <a href="user-dashboard.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
-                </li>
-                <li class="active">
-                    <a href="projects.html"><i class="fa fa-fw fa-bar-chart-o"></i> Projects</a>
+                    <a href="user-dashboard.jsp"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                 </li>
                 <li>
-                    <a href="tasks.html"><i class="fa fa-fw fa-table"></i> Tasks</a>
+                    <a href="/projects"><i class="fa fa-fw fa-bar-chart-o"></i> Projects</a>
+                </li>
+                <li class="active">
+                    <a href="/tasks"><i class="fa fa-fw fa-table"></i> Tasks</a>
                 </li>
                 <li>
                     <a href="deals.html"><i class="fa fa-fw fa-edit"></i> Deals</a>
@@ -183,83 +185,146 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Projects
+                        Task view
                     </h1>
                     <ol class="breadcrumb">
                         <li>
-                            <i class="fa fa-dashboard"></i>  <a href="user-dashboard.html">Dashboard</a>
+                            <i class="fa fa-dashboard"></i>  <a href="user-dashboard.jsp">Dashboard</a>
                         </li>
                         <li>
-                            <i class="fa fa-bar-chart-o"></i>
-                            <a href="projects.html">Projects</a>
+                            <i class="fa fa-table"></i> <a href="/tasks">Tasks</a>
                         </li>
                         <li class="active">
-                            <i class="fa fa-pencil"></i> New project
+                            <i class="fa fa-file-text"></i> Task view
                         </li>
                     </ol>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-lg-3">
+                    <p>Name: <span id="proj_name">Taskname</span></p>
+                </div>
+                <div class="col-lg-3">
+                    <p>Last update: <span id="proj_update">12/4/2015</span></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                    <p>Responsible:</p>
+                    <select class="form-control input-sm">
+                        <option>User 1</option>
+                        <option>User 2</option>
+                        <option>User 3</option>
+                        <option>User 4</option>
+                    </select>
+                </div>
+                <div class="col-lg-3">
+                    <p>Status:</p>
+                    <select class="form-control input-sm">
+                        <option>In progres</option>
+                        <option>Code view</option>
+                        <option>Testing</option>
+                        <option>Done</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Description start-->
             <div class="row">
                 <div class="col-lg-6">
-                    <h2>Create new project</h2>
+                    <h4>Description<i class="fa fa-pencil-square-o edit_ico" onclick="enableTextarea(this)"></i></h4>
+                    <textarea id="description" class="well" disabled="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean lacinia bibendum nulla sed consectetur.</textarea>
+                    <button type="submit" id="cancel_button" class="btn btn-danger edit" onclick="disableTextarea(this)">Cancel</button>
+                    <button type="button" id="update_button" class="btn btn-success edit" onclick="disableTextarea(this)">Update</button>
+
+                </div>
+            </div>
+            <!-- Description end -->
+
+            <!-- Comments start-->
+            <div class="row">
+                <div class="col-lg-6">
+                    <h4>Comments</h4>
+                    <div class="comments">
+                        <div class="comment clearfix">
+                            <p class="user_name">User 1</p>
+                            <p class="comm_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere delectus numquam animi quae unde est, nesciunt? Vero, repellat, nam. Dolor beatae error, voluptatum laborum tenetur dolorum obcaecati nam provident pariatur.</p>
+                        </div>
+                        <div class="comment clearfix">
+                            <p class="user_name">User 2</p>
+                            <p class="comm_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea sunt fuga, fugiat similique dicta voluptas dolores placeat officiis cupiditate eaque, nemo cum! Amet, aperiam quod nobis qui, voluptates totam culpa. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit natus ratione minima minus a! Molestiae iusto, ea porro quia nam! Inventore temporibus amet aliquid laboriosam est harum ab maxime fuga.</p>
+                        </div>
+                        <div class="comment clearfix">
+                            <p class="user_name">User 3</p>
+                            <p class="comm_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere delectus numquam animi quae unde est, nesciunt?</p>
+                        </div>
+                    </div>
                     <form action="">
                         <div class="form-group">
-                            <label>Name:</label>
-                            <input class="form-control" placeholder="Enter text">
+                            <label>Add Comment</label>
+                            <textarea class="form-control" rows="3" placeholder="Write a comment..."></textarea>
                         </div>
-                        <div class="form-group">
-                            <label>Description:</label>
-                            <textarea class="form-control" rows="3"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Responsible:</label>
-                            <select class="form-control">
-                                <option>User 1</option>
-                                <option>User 2</option>
-                                <option>User 3</option>
-                                <option>User 4</option>
-                                <option>User 5</option>
-                            </select >
-                        </div>
-                        <div class="form-group">
-                            <label>Tags:</label>
-                            <input class="form-control" placeholder="Some tegs">
-                        </div>
-                        <button type="submit" class="btn btn-default">Save</button>
-                        <button type="reset" class="btn btn-default">Cancel</button>
+                        <button type="submit" class="btn btn-success add">Send</button>
                     </form>
                 </div>
-                <!-- /.row -->
-
-                <!-- /.row -->
-
             </div>
-            <!-- /.container-fluid -->
+            <!-- Comments end -->
 
         </div>
-        <!-- /#page-wrapper -->
+        <!-- /.container-fluid -->
 
     </div>
-    <!-- /#wrapper -->
+    <!-- /#page-wrapper -->
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+</div>
+<!-- /#wrapper -->
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+<!-- jQuery -->
+<script src="js/jquery.js"></script>
 
-    <!-- Morris Charts JavaScript -->
-    <script src="js/plugins/morris/raphael.min.js"></script>
-    <script src="js/plugins/morris/morris.min.js"></script>
-    <script src="js/plugins/morris/morris-data.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
 
-    <!-- Flot Charts JavaScript -->
-    <!--[if lte IE 8]><script src="js/excanvas.min.js"></script><![endif]-->
-    <script src="js/plugins/flot/jquery.flot.js"></script>
-    <script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
-    <script src="js/plugins/flot/jquery.flot.resize.js"></script>
-    <script src="js/plugins/flot/jquery.flot.pie.js"></script>
-    <script src="js/plugins/flot/flot-data.js"></script>
+<!-- Morris Charts JavaScript -->
+<script src="js/plugins/morris/raphael.min.js"></script>
+<script src="js/plugins/morris/morris.min.js"></script>
+<script src="js/plugins/morris/morris-data.js"></script>
+
+<!-- Autosize for textarea -->
+<script src="js/autosize.min.js"></script>
+<script>
+    autosize(document.querySelectorAll('textarea'));
+
+
+    function enableTextarea(element){
+        current_input = document.getElementById('description');
+        current_input.disabled=false;
+        current_input.focus();
+        current_input.setSelectionRange(current_input.value.length,current_input.value.length);
+        update_button = document.getElementById('update_button');
+        update_button.style.display = (update_button.style.display == 'inline-block') ? '' : 'inline-block'
+        cancel_button = document.getElementById('cancel_button');
+        cancel_button.style.display = (cancel_button.style.display == 'inline-block') ? '' : 'inline-block'
+
+    }
+
+    function disableTextarea(element){
+        current_input = document.getElementById('description');
+        current_input.disabled=true;
+        update_button = document.getElementById('update_button');
+        update_button.style.display = 'none';
+        cancel_button = document.getElementById('cancel_button');
+        cancel_button.style.display = 'none';
+    }
+</script>
+
+<!-- Flot Charts JavaScript -->
+<!--[if lte IE 8]><script src="js/excanvas.min.js"></script><![endif]-->
+<script src="js/plugins/flot/jquery.flot.js"></script>
+<script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+<script src="js/plugins/flot/jquery.flot.resize.js"></script>
+<script src="js/plugins/flot/jquery.flot.pie.js"></script>
+<script src="js/plugins/flot/flot-data.js"></script>
 
 </body>
 

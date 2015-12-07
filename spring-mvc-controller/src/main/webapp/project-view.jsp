@@ -148,7 +148,7 @@
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                        <a href="/logout"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                     </li>
                 </ul>
             </li>
@@ -163,7 +163,7 @@
                     <a href="/projects"><i class="fa fa-fw fa-bar-chart-o"></i> Projects</a>
                 </li>
                 <li>
-                    <a href="tasks.jsp"><i class="fa fa-fw fa-table"></i> Tasks</a>
+                    <a href="/tasks"><i class="fa fa-fw fa-table"></i> Tasks</a>
                 </li>
                 <li>
                     <a href="deals.jsp"><i class="fa fa-fw fa-edit"></i> Deals</a>

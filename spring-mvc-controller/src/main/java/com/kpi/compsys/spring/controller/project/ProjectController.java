@@ -4,6 +4,8 @@ import com.kpi.compsys.model.Project;
 import com.kpi.compsys.model.User;
 import com.kpi.compsys.service.CommentService;
 import com.kpi.compsys.service.ProjectService;
+import com.kpi.compsys.service.UserService;
+import com.sun.javafx.sg.prism.NGShape;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +25,9 @@ public class ProjectController {
 
     @Autowired
     private ProjectService projectService;
+
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private CommentService commentService;
@@ -46,7 +51,7 @@ public class ProjectController {
         return projectModelView;
     }
 
-    @RequestMapping(value = "/create-project")
+    @RequestMapping(value = "new-project", method = RequestMethod.POST)
     public String createProject(
             @RequestParam String name,
             @RequestParam User responsible,
@@ -59,6 +64,16 @@ public class ProjectController {
         project.setResponsible(responsible);
         projectService.add(project);
         return "projects";
+    }
+
+    @RequestMapping(value = "/new-project", method = RequestMethod.GET)
+    public ModelAndView loadUsersForCreateProject(){
+        System.out.println("GET work new proect");
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("new-project");
+        modelAndView.addObject("usersList",userService.getAll());
+
+        return modelAndView;
     }
 
     @RequestMapping(value = "/create-project/{projectID}")
