@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]> <html class="lt-ie9 lt-ie8" lang="en"> <![endif]-->
@@ -32,7 +33,8 @@
 <div class="container-fluid">
     <div class="row-fluid">
         <div class="registration-form center-block">
-            <form class="form-horizontal" action='/login' method="POST">
+            <c:url value="/j_spring_security_check" var="loginUrl" />
+            <form class="form-horizontal" action='/j_spring_security_check' method="POST">
                 <fieldset>
                     <div id="legend">
                         <legend class="">Sign In</legend>
@@ -42,7 +44,7 @@
                         <label class="control-label" for="email">E-mail</label>
 
                         <div class="controls">
-                            <input type="email" id="email" name="email" placeholder="youremail@example.com" class="form-control">
+                            <input type="email" id="email" name="j_username" placeholder="youremail@example.com" class="form-control">
 
                         </div>
                     </div>
@@ -52,7 +54,7 @@
                         <label class="control-label" for="password">Password</label>
 
                         <div class="controls">
-                            <input type="password" id="password" name="password" placeholder="***********" class="form-control">
+                            <input type="password" id="password" name="j_password" placeholder="******" class="form-control">
                         </div>
                     </div>
 

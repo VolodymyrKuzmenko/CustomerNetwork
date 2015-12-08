@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by Vova on 10/13/2015.
  */
-@Service
+@Service(value = "default-user-service")
 public class UserServiceImpl implements UserService {
 
     @Autowired
@@ -36,5 +36,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getById(Integer id) {
         return null;
+    }
+
+    //TODO govnocode. Need using prepare statement and JDBC Template
+    //WARNING SQL must'n use in this class
+    @Override
+    public List<User> getByEmail(String email) {
+        return dao.getByFilter("FROM User WHERE email = '"+email+"'");
     }
 }
