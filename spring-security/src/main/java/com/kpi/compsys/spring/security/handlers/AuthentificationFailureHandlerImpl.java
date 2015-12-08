@@ -20,6 +20,8 @@ public class AuthentificationFailureHandlerImpl implements AuthenticationFailure
     @Override
     public void onAuthenticationFailure(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
         //TODO set message into index.jsp about failure login/password
+        System.out.println("FAIL login");
+        httpServletResponse.sendRedirect("/index.jsp");
     }
 
 

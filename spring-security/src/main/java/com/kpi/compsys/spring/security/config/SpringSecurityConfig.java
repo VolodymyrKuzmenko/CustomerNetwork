@@ -34,16 +34,15 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     private LogoutHandler logoutHandler;
 
     @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
     public void registerGlobalAuthentication(final AuthenticationManagerBuilder auth) throws Exception {
-
         auth
-                .userDetailsService(userService);
-        //   .passwordEncoder(getPasswordEncoder());
+                .userDetailsService(userService)
+                .passwordEncoder(passwordEncoder);
     }
 
-    public PasswordEncoder getPasswordEncoder() {
-        return new BCryptPasswordEncoder(12);
-    }
 
     @Override
     public void configure(WebSecurity web) throws Exception {
@@ -55,7 +54,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
 
         http.csrf()
                 .disable()
@@ -75,9 +73,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureHandler(authenticationFailureHandler)
                 .usernameParameter("j_username")
                 .passwordParameter("j_password")
-                .permitAll();
-
-        http.logout()
+                .permitAll()
+                .and()
+            .logout()
                 .permitAll()
                 .logoutUrl("/j_spring_security_logout")
                 .logoutSuccessUrl("/index.jsp")

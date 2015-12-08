@@ -12,11 +12,14 @@ INSERT INTO `social_network`.`UserRole` (`role_id`,`role_name`)VALUES(1,'User');
 INSERT INTO `social_network`.`UserRole` (`role_id`,`role_name`)VALUES(2,'admin');
 INSERT INTO `social_network`.`UserRole` (`role_id`,`role_name`)VALUES(3,'superadmin');
 INSERT INTO `social_network`.`UserRole` (`role_id`,`role_name`)VALUES(4,'manager');
-
-INSERT INTO `social_network`.`User` (`User_id`,`email`,`password`,`role`,`manager`)VALUES(1,"admin@gmail.com","admin",2,0);
-INSERT INTO `social_network`.`User` (`User_id`,`email`,`password`,`role`,`manager`)VALUES(2,"User@gmail.com","User",1,0);
-INSERT INTO `social_network`.`User` (`User_id`,`email`,`password`,`role`,`manager`)VALUES(3,"vasia@gmail.com","vasia44",1,0);
-INSERT INTO `social_network`.`User` (`User_id`,`email`,`password`,`role`,`manager`)VALUES(4,"ivan@gmail.com","ivan34",1,0);
+/*email = admin@gmail.com  password = admin */
+INSERT INTO `social_network`.`User` (`User_id`,`email`,`password`,`role`,`manager`)VALUES(1,"admin@gmail.com","$2a$12$ocIwWFnIY1yRJPRYgKgsBu10OcLFEKEe1I1SrZrxW/GQ3KXUZ/1X6",2,0);
+/*email = User@gmail.com  password = User */
+INSERT INTO `social_network`.`User` (`User_id`,`email`,`password`,`role`,`manager`)VALUES(2,"User@gmail.com","$2a$12$zO6v3C2MyjTFQuwiJpM4VO/28wX081keJ7brprmYxJrvJ1hdz.7f6",1,0);
+/*email = vasiar@gmail.com  password = vasia44 */
+INSERT INTO `social_network`.`User` (`User_id`,`email`,`password`,`role`,`manager`)VALUES(3,"vasia@gmail.com","$2a$12$jGl7pa/fZJ395z8cOFsogeS5cmN/7ZeEkIsgCutZOnUhf2nUhSBzS",1,0);
+/*email = ivan@gmail.com  password = ivan34 */
+INSERT INTO `social_network`.`User` (`User_id`,`email`,`password`,`role`,`manager`)VALUES(4,"ivan@gmail.com","$2a$12$wJH.ZyGEdg7ftlFah9NxA.i3GkgqzzCDky/pR4GfQAitXnQz9YhQS",1,0);
 
 INSERT INTO `social_network`.`UserInfo`(`info_id`,`name`,`surname`,`birthday`,`photo`,`User_id`)VALUES(1,"Admin","Adminkovich",'1996-09-08',234234234234,1);
 INSERT INTO `social_network`.`UserInfo`(`info_id`,`name`,`surname`,`birthday`,`photo`,`User_id`)VALUES(2,"Vova","Kuzmenko",'1995-05-08',234234234234,2);
