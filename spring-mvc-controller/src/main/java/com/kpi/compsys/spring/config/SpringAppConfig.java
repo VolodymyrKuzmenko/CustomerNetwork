@@ -1,8 +1,9 @@
 package com.kpi.compsys.spring.config;
 
-import com.kpi.compsys.model.User;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import com.kpi.compsys.spring.security.config.SpringSecurityConfig;
+import com.kpi.compsys.spring.security.service.SecurityUserServiceImpl;
+import org.springframework.context.annotation.*;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -13,6 +14,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
  */
 @Configuration
 @EnableWebMvc
+@ImportResource({"/WEB-INF/spring-servlet.xml"})
+@ComponentScan("com.kpi.compsys")
 public class SpringAppConfig extends WebMvcConfigurerAdapter {
     @Bean
     public InternalResourceViewResolver viewResolver() {

@@ -102,5 +102,20 @@ public class User {
 
     private List<Comment> comments;
 
+    public User(User user){
+        this.comments = user.comments;
+        this.email = user.email;
+        this.id = user.id;
+        this.manager = user.manager;
+        this.password = user.password;
+        this.role = user.role;
+        this.userInfo = user.userInfo;
+    }
+
+    public User (){
+
+    }
+
+
 
 }

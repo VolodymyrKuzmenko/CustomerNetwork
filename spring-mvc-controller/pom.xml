@@ -15,11 +15,6 @@
     <name>Spring MVC Controller Module</name>
     <dependencies>
         <dependency>
-            <groupId>eu.bitwalker</groupId>
-            <artifactId>UserAgentUtils</artifactId>
-            <version>1.18</version>
-        </dependency>
-        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.6</version>
@@ -52,6 +47,11 @@
         <dependency>
             <groupId>customer-nt</groupId>
             <artifactId>service</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>customer-nt</groupId>
+            <artifactId>spring-security</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>

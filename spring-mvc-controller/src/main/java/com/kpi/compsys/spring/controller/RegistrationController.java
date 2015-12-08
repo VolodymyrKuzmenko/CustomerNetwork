@@ -5,6 +5,7 @@ import com.kpi.compsys.model.UserRole;
 import com.kpi.compsys.service.UserRoleService;
 import com.kpi.compsys.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,6 +27,10 @@ public class RegistrationController {
     private UserRoleService userRoleService;
 
 
+    @RequestMapping(value = "/register")
+    public String registerStart(){
+        return "register";
+    }
 
     @RequestMapping(value="/registration",method= RequestMethod.POST)
     public ModelAndView registration(HttpServletRequest request){

@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,22 +14,24 @@
     <title>Customer Networ</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="<c:url value="resources/css/bootstrap.min.css"/>" rel="stylesheet">
+
+    <link href="<c:url value="resources/css/sb-admin.css"/>" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="<c:url value="resources/css/main.css"/>" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
-    <link href="css/plugins/morris.css" rel="stylesheet">
+    <link href="<c:url value="resources/font-awesome/css/font-awesome.min.css"/>" rel="stylesheet">
 
-    <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!--Custom Fonts-->
+    <link href="<c:url value="resources/css/plugins/morris.css"/>" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script type="text/javascript" src="<c:url value="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"/>"></script>
+    <script type="text/javascript" src="<c:url value="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"/>"></script>
     <![endif]-->
 
 </head>
@@ -47,7 +50,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="user-dashboard.html">SB Admin</a>
+            <a class="navbar-brand" href="/user-dashboard">SB Admin</a>
         </div>
         <!-- Top Menu Items -->
         <ul class="nav navbar-right top-nav">
@@ -150,7 +153,7 @@
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="/logout"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                        <a href="/j_spring_security_logout"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                     </li>
                 </ul>
             </li>
@@ -159,7 +162,7 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
                 <li>
-                    <a href="user-dashboard.jsp"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                    <a href="/user-dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                 </li>
                 <li class="active">
                     <a href="/projects"><i class="fa fa-fw fa-bar-chart-o"></i> Projects</a>
@@ -193,7 +196,7 @@
                     </h1>
                     <ol class="breadcrumb">
                         <li>
-                            <i class="fa fa-dashboard"></i>  <a href="user-dashboard.jsp">Dashboard</a>
+                            <i class="fa fa-dashboard"></i>  <a href="/user-dashboard">Dashboard</a>
                         </li>
                         <li>
                             <i class="fa fa-bar-chart-o"></i>
@@ -249,23 +252,24 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
+    <script type="text/javascript" src="<c:url value="resources/js/jquery.js"/>"></script>
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
 
+    <script type="text/javascript" src="<c:url value="resources/js/bootstrap.min.js"/>"></script>
     <!-- Morris Charts JavaScript -->
-    <script src="js/plugins/morris/raphael.min.js"></script>
-    <script src="js/plugins/morris/morris.min.js"></script>
-    <script src="js/plugins/morris/morris-data.js"></script>
 
+    <script type="text/javascript" src="<c:url value="resources/js/plugins/morris/raphael.min.js"/>"></script>
+
+    <script type="text/javascript" src="<c:url value="resources/js/plugins/morris/morris.min.js"/>"></script>
+
+    <script type="text/javascript" src="<c:url value="resources/js/plugins/morris/morris-data.js"/>"></script>
     <!-- Flot Charts JavaScript -->
-    <!--[if lte IE 8]><script src="js/excanvas.min.js"></script><![endif]-->
-    <script src="js/plugins/flot/jquery.flot.js"></script>
-    <script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
-    <script src="js/plugins/flot/jquery.flot.resize.js"></script>
-    <script src="js/plugins/flot/jquery.flot.pie.js"></script>
-    <script src="js/plugins/flot/flot-data.js"></script>
+
+    <script type="text/javascript" src="<c:url value="resources/js/plugins/flot/jquery.flot.js"/>"></script>
+    <script type="text/javascript" src="<c:url value="resources/js/plugins/flot/jquery.flot.tooltip.min.js"/>"></script>
+    <script type="text/javascript" src="<c:url value="resources/js/plugins/flot/jquery.flot.resize.js"/>"></script>
+    <script type="text/javascript" src="<c:url value="resources/js/plugins/flot/jquery.flot.pie.js"/>"></script>
+    <script type="text/javascript" src="<c:url value="resources/js/plugins/flot/flot-data.js"/>"></script>
 
 </body>
 
