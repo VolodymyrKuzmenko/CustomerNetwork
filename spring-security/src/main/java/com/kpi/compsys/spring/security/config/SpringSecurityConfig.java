@@ -35,9 +35,10 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void registerGlobalAuthentication(final AuthenticationManagerBuilder auth) throws Exception {
+
         auth
                 .userDetailsService(userService);
-             //   .passwordEncoder(getPasswordEncoder());
+        //   .passwordEncoder(getPasswordEncoder());
     }
 
     public PasswordEncoder getPasswordEncoder() {
@@ -49,20 +50,26 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         // Spring Security should completely ignore URLs ending with .html
         web
                 .ignoring()
-                .antMatchers("/*.html")
                 .antMatchers("/resources/**");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
+
         http.csrf()
                 .disable()
                 .authorizeRequests()
                 .antMatchers("/index.jsp", "/registration.*", "/register")
                 .permitAll();
 
-        http.formLogin()
-                .loginPage("/index")
+        http
+            .authorizeRequests()
+                .antMatchers("/", "/resources/**", "/register.jsp", "/register", "/registration" ).permitAll()
+                .anyRequest().authenticated()
+                .and()
+            .formLogin()
+                .loginPage("/index.jsp")
                 .loginProcessingUrl("/j_spring_security_check")
                 .successHandler(authenticationSuccessHandler)
                 .failureHandler(authenticationFailureHandler)
@@ -72,10 +79,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.logout()
                 .permitAll()
-                .logoutUrl("/logout")
+                .logoutUrl("/j_spring_security_logout")
                 .logoutSuccessUrl("/index.jsp")
                 .addLogoutHandler(logoutHandler)
                 .invalidateHttpSession(true);
+
 
     }
 

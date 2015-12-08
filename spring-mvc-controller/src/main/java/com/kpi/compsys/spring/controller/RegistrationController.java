@@ -27,6 +27,10 @@ public class RegistrationController {
     private UserRoleService userRoleService;
 
 
+    @RequestMapping(value = "/register")
+    public String registerStart(){
+        return "register";
+    }
 
     @RequestMapping(value="/registration",method= RequestMethod.POST)
     public ModelAndView registration(HttpServletRequest request){

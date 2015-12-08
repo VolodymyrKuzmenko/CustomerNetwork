@@ -32,12 +32,12 @@ public class AuthentificationController {
     private SessionHistoryService sessionHistoryService;
 
 
-//    @RequestMapping(value = {"index", "/"}, method = RequestMethod.GET)
-//    public ModelAndView start(Model model){
+    @RequestMapping(value = {"index", "/", "/index.jsp"})
+    public String start(Model model){
 //        System.out.println("start method controller");
 //        ModelAndView loginModeAndView = new ModelAndView("index");
-//        return loginModeAndView;
-//    }
+        return "index";
+    }
 
 
 //    @RequestMapping(value = "/login", method = RequestMethod.POST)
