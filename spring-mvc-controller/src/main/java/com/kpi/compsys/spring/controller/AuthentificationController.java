@@ -66,18 +66,18 @@ public class AuthentificationController {
 //    }
 
 
-    private void rememberSessionHistory(User user, HttpServletRequest request) {
-        UserAgent userAgent = UserAgent.parseUserAgentString(request.getHeader("User-Agent"));
-        SessionHistory sessionHistory = new SessionHistory();
-        sessionHistory.setBrouserType(userAgent.getBrowser().getBrowserType().getName());
-        sessionHistory.setIpAddres(request.getRemoteAddr());
-        sessionHistory.setUser(user);
-        Date date = new Date();
-        date.setTime(System.currentTimeMillis());
-        sessionHistory.setDate(date);
-        sessionHistoryService.saveSuccsesAuthorizationInformation(sessionHistory);
-        request.getSession().setAttribute("sessionHistory", sessionHistory);
-        System.out.println(((SessionHistory) request.getSession().getAttribute("sessionHistory")).getIpAddres());
-
-    }
+//    private void rememberSessionHistory(User user, HttpServletRequest request) {
+//        UserAgent userAgent = UserAgent.parseUserAgentString(request.getHeader("User-Agent"));
+//        SessionHistory sessionHistory = new SessionHistory();
+//        sessionHistory.setBrouserType(userAgent.getBrowser().getBrowserType().getName());
+//        sessionHistory.setIpAddres(request.getRemoteAddr());
+//        sessionHistory.setUser(user);
+//        Date date = new Date();
+//        date.setTime(System.currentTimeMillis());
+//        sessionHistory.setDate(date);
+//        sessionHistoryService.saveSuccsesAuthorizationInformation(sessionHistory);
+//        request.getSession().setAttribute("sessionHistory", sessionHistory);
+//        System.out.println(((SessionHistory) request.getSession().getAttribute("sessionHistory")).getIpAddres());
+//
+//    }
 }

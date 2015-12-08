@@ -10,6 +10,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.logout.LogoutHandler;
 
 /**
  * Created by Vova on 12/7/2015.
@@ -22,8 +25,16 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     private UserDetailsService userService;
 
     @Autowired
+    private AuthenticationFailureHandler authenticationFailureHandler;
+
+    @Autowired
+    private AuthenticationSuccessHandler authenticationSuccessHandler;
+
+    @Autowired
+    private LogoutHandler logoutHandler;
+
+    @Autowired
     public void registerGlobalAuthentication(final AuthenticationManagerBuilder auth) throws Exception {
-        System.out.println("in cinfig "+userService);
         auth
                 .userDetailsService(userService);
              //   .passwordEncoder(getPasswordEncoder());
@@ -53,8 +64,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         http.formLogin()
                 .loginPage("/index")
                 .loginProcessingUrl("/j_spring_security_check")
-                .failureUrl("/failure")
-                .defaultSuccessUrl("/user-dashboard", true)
+                .successHandler(authenticationSuccessHandler)
+                .failureHandler(authenticationFailureHandler)
                 .usernameParameter("j_username")
                 .passwordParameter("j_password")
                 .permitAll();
@@ -62,7 +73,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         http.logout()
                 .permitAll()
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/success-logout")
+                .logoutSuccessUrl("/index.jsp")
+                .addLogoutHandler(logoutHandler)
                 .invalidateHttpSession(true);
 
     }
