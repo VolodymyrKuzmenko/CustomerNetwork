@@ -42,7 +42,7 @@ SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `social_network`.`User` (
   `user_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `email` VARCHAR(45) NOT NULL COMMENT '',
-  `password` VARCHAR(45) NOT NULL COMMENT '',
+  `password` VARCHAR(100) NOT NULL COMMENT '',
   `role` INT NOT NULL COMMENT '',
   `manager` INT NULL COMMENT '',
   PRIMARY KEY (`user_id`)  COMMENT '')

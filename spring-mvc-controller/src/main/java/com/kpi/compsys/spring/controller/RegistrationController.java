@@ -1,11 +1,10 @@
 package com.kpi.compsys.spring.controller;
 
 import com.kpi.compsys.model.User;
-import com.kpi.compsys.model.UserRole;
 import com.kpi.compsys.service.UserRoleService;
 import com.kpi.compsys.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,6 +24,9 @@ public class RegistrationController {
 
     @Autowired
     private UserRoleService userRoleService;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
 
     @RequestMapping(value = "/register")
@@ -59,12 +61,11 @@ public class RegistrationController {
 
         User newUser = new User();
         newUser.setEmail(usrEmail);
-        newUser.setPassword(usrPass);
+        newUser.setPassword(passwordEncoder.encode(usrPass));
         newUser.setRole(userRoleService.getDefaultUserRole());
         userService.add(newUser);
         //log new user was created
         model = new ModelAndView("index");
-        model.addObject("userBean", new User());
         return model;
 
     }
