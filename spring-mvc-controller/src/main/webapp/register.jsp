@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]> <html class="lt-ie9 lt-ie8" lang="en"> <![endif]-->
 <!--[if IE 8]> <html class="lt-ie9" lang="en"> <![endif]-->
@@ -13,18 +15,23 @@
     <title>Customer Network</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/sb-admin.css" rel="stylesheet">
+    <!-- Bootstrap Core CSS -->
+    <link href="<c:url value="resources/css/bootstrap.min.css"/>" rel="stylesheet">
+
+    <link href="<c:url value="resources/css/sb-admin.css"/>" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/main.css" rel="stylesheet">
+    <link href="<c:url value="resources/css/main.css"/>" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
-    <link href="css/plugins/morris.css" rel="stylesheet">
+    <link href="<c:url value="resources/font-awesome/css/font-awesome.min.css"/>" rel="stylesheet">
 
-    <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <!--Custom Fonts-->
+    <link href="<c:url value="resources/css/plugins/morris.css"/>" rel="stylesheet">
+
+    <!--[if lt IE 9]><script type="text/javascript" src="<c:url value="//html5shim.googlecode.com/svn/trunk/html5.js"/>"></script><![endif]-->
+
+
 </head>
 <body>
 <div class="container-fluid">
@@ -39,7 +46,7 @@
                         <!-- E-mail -->
                         <label class="control-label" for="email">E-mail</label>
                         <div class="controls">
-                            <input type="text" id="email" name="email" placeholder="" class="form-control">
+                            <input type="text" id="email" name="email" placeholder="Enter your email" class="form-control">
                             <p class="help-block">Please provide your E-mail</p>
                         </div>
                     </div>
@@ -48,16 +55,16 @@
                         <!-- Password-->
                         <label class="control-label" for="password">Password</label>
                         <div class="controls">
-                            <input type="password" id="password" name="password" placeholder="" class="form-control">
+                            <input type="password" id="password" name="password" placeholder="Enter your password" class="form-control">
                             <p class="help-block">Password should be at least 4 characters</p>
                         </div>
                     </div>
 
                     <div class="control-group">
                         <!-- Password -->
-                        <label class="control-label"  for="password_confirm">Password (Confirm)</label>
+                        <label class="control-label"  for="password_confirm">Confirm Password</label>
                         <div class="controls">
-                            <input type="password" id="password_confirm" name="password_confirm" placeholder="" class="form-control">
+                            <input type="password" id="password_confirm" name="password_confirm" placeholder="Enter password again" class="form-control">
                             <p class="help-block">Please confirm password</p>
                         </div>
                     </div>
@@ -68,8 +75,8 @@
                             <button type="submit" class="btn btn-success left">Register</button>
                         </div>
                         <div class="controls">
-                            <a href="index.jsp">
-                                <button type="button" class="btn btn-success right">Sign In</button>
+                            <a href="/index.jsp">
+                                <button type="button" class="btn btn-success right">Cancel</button>
                             </a>
                         </div>
                     </div>
@@ -82,21 +89,23 @@
 
 
 <!-- jQuery -->
-<script src="js/jquery.js"></script>
-
+<script type="text/javascript" src="<c:url value="resources/js/jquery.js"/>"></script>
 <!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
 
+<script type="text/javascript" src="<c:url value="resources/js/bootstrap.min.js"/>"></script>
 <!-- Morris Charts JavaScript -->
-<script src="js/plugins/morris/raphael.min.js"></script>
-<script src="js/plugins/morris/morris.min.js"></script>
-<script src="js/plugins/morris/morris-data.js"></script>
+
+<script type="text/javascript" src="<c:url value="resources/js/plugins/morris/raphael.min.js"/>"></script>
+
+<script type="text/javascript" src="<c:url value="resources/js/plugins/morris/morris.min.js"/>"></script>
+
+<script type="text/javascript" src="<c:url value="resources/js/plugins/morris/morris-data.js"/>"></script>
 <!-- Flot Charts JavaScript -->
-<!--[if lte IE 8]><script src="js/excanvas.min.js"></script><![endif]-->
-<script src="js/plugins/flot/jquery.flot.js"></script>
-<script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
-<script src="js/plugins/flot/jquery.flot.resize.js"></script>
-<script src="js/plugins/flot/jquery.flot.pie.js"></script>
-<script src="js/plugins/flot/flot-data.js"></script>
+
+<script type="text/javascript" src="<c:url value="resources/js/plugins/flot/jquery.flot.js"/>"></script>
+<script type="text/javascript" src="<c:url value="resources/js/plugins/flot/jquery.flot.tooltip.min.js"/>"></script>
+<script type="text/javascript" src="<c:url value="resources/js/plugins/flot/jquery.flot.resize.js"/>"></script>
+<script type="text/javascript" src="<c:url value="resources/js/plugins/flot/jquery.flot.pie.js"/>"></script>
+<script type="text/javascript" src="<c:url value="resources/js/plugins/flot/flot-data.js"/>"></script>
 </body>
 </html>
