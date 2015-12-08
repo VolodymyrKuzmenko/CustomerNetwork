@@ -44,4 +44,5 @@ public class UserServiceImpl implements UserService {
     public List<User> getByEmail(String email) {
         return dao.getByFilter("FROM User WHERE email = '"+email+"'");
     }
+
 }

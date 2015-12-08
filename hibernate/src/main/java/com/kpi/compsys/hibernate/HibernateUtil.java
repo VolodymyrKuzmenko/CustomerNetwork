@@ -20,6 +20,10 @@ public class HibernateUtil {
     private static SessionFactory sessionFactory = null;
     private static Session session;
 
+    public HibernateUtil(){
+        buildSessionFactory().openSession();
+    }
+
     private static SessionFactory buildSessionFactory() {
         SessionFactory sessionFactory = null;
         try {
@@ -34,7 +38,7 @@ public class HibernateUtil {
         return sessionFactory;
     }
 
-    private static SessionFactory getSessionFactory() {
+    public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             sessionFactory = buildSessionFactory();
         }

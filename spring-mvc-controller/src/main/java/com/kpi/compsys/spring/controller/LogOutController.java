@@ -21,15 +21,16 @@ public class LogOutController {
     @Autowired
     private SessionHistoryService sessionHistoryService;
 
-
-    @RequestMapping(value = "/logout")
+    //TODO would use when work with handlers
+    @RequestMapping(value = "/success-logout")
     public String processLogOut(HttpServletRequest request) {
-        SessionHistory sessionHistory = (SessionHistory) request.getSession().getAttribute("sessionHistory");
-        User user = (User)  request.getSession().getAttribute("user");
-        long timeSession = System.currentTimeMillis() - sessionHistory.getDate().getTime();
-        sessionHistory.setDate(new Date(timeSession));
-        sessionHistoryService.update(sessionHistory);
-        request.getSession().invalidate();
+//        System.out.println("logout in controller");
+//        SessionHistory sessionHistory = (SessionHistory) request.getSession().getAttribute("sessionHistory");
+//        User user = (User)  request.getSession().getAttribute("user");
+//        long timeSession = System.currentTimeMillis() - sessionHistory.getDate().getTime();
+//        sessionHistory.setDate(new Date(timeSession));
+//        sessionHistoryService.update(sessionHistory);
+//        request.getSession().invalidate();
         return "index";
     }
 }
