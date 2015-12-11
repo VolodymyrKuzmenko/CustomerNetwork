@@ -42,7 +42,7 @@ SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `social_network`.`User` (
   `user_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `email` VARCHAR(45) NOT NULL COMMENT '',
-  `password` VARCHAR(45) NOT NULL COMMENT '',
+  `password` VARCHAR(100) NOT NULL COMMENT '',
   `role` INT NOT NULL COMMENT '',
   `manager` INT NULL COMMENT '',
   PRIMARY KEY (`user_id`)  COMMENT '')
@@ -167,6 +167,7 @@ CREATE TABLE IF NOT EXISTS `social_network`.`Project` (
   `date_updated` TIMESTAMP(6) NULL COMMENT '',
   `responsible` INT NOT NULL COMMENT '',
   PRIMARY KEY (`project_id`)  COMMENT '')
+  parrent_project INT FOREIGN KEY REFERENCES Book(Pk_Book_Id)
 ENGINE = InnoDB;
 
 SHOW WARNINGS;

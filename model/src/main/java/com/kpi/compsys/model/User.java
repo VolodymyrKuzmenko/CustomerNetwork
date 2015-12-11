@@ -8,6 +8,7 @@ import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="user")
@@ -72,4 +73,49 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    @NotFound(action = NotFoundAction.IGNORE)
+    @OneToOne(fetch=FetchType.LAZY, mappedBy="user")
+    public UserInfo getUserInfo() {
+        return userInfo;
+    }
+
+    public void setUserInfo(UserInfo userInfo) {
+        this.userInfo = userInfo;
+    }
+
+    private UserInfo userInfo;
+
+    @NotFound(action = NotFoundAction.IGNORE)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "user_comment", joinColumns = {
+            @JoinColumn(name = "user_user_id", nullable = false, updatable = true)},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "Comment_idComment", nullable = false, updatable = true)})
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    private List<Comment> comments;
+
+    public User(User user){
+        this.comments = user.comments;
+        this.email = user.email;
+        this.id = user.id;
+        this.manager = user.manager;
+        this.password = user.password;
+        this.role = user.role;
+        this.userInfo = user.userInfo;
+    }
+
+    public User (){
+
+    }
+
+
+
 }

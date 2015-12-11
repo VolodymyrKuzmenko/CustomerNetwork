@@ -1,7 +1,6 @@
 package com.kpi.compsys.service.impl;
 
 import com.kpi.compsys.dao.UserDao;
-import com.kpi.compsys.hibernate.impl.UserDaoImpl;
 import com.kpi.compsys.model.User;
 import com.kpi.compsys.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +11,9 @@ import java.util.List;
 /**
  * Created by Vova on 10/13/2015.
  */
-@Service
+@Service()
 public class UserServiceImpl implements UserService {
+
     @Autowired
     private UserDao dao;
 
@@ -35,6 +35,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getById(Integer id) {
-        return null;
+        return dao.getById(id);
     }
+
+    //TODO govnocode. Need using prepare statement and JDBC Template
+    //WARNING SQL must'n use in this class
+    @Override
+    public List<User> getByEmail(String email) {
+        return dao.getByFilter("FROM User WHERE email = '" + email + "'");
+    }
+
 }

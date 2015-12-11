@@ -12,7 +12,7 @@
     <artifactId>spring-controller</artifactId>
     <packaging>war</packaging>
 
-    <name>Spring MVC Controller Maven Webapp</name>
+    <name>Spring MVC Controller Module</name>
     <dependencies>
         <dependency>
             <groupId>mysql</groupId>
@@ -47,6 +47,11 @@
         <dependency>
             <groupId>customer-nt</groupId>
             <artifactId>service</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>customer-nt</groupId>
+            <artifactId>spring-security</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>

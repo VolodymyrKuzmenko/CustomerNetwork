@@ -12,7 +12,7 @@
     <artifactId>controller</artifactId>
     <packaging>war</packaging>
 
-    <name>Controller Maven Webapp</name>
+    <name>Controller Module {deprecated}</name>
     <dependencies>
         <dependency>
             <groupId>mysql</groupId>

@@ -20,6 +20,11 @@ public class HibernateUtil {
     private static SessionFactory sessionFactory = null;
     private static Session session;
 
+    public HibernateUtil(){
+        System.out.println("open session");
+       session= buildSessionFactory().openSession();
+    }
+
     private static SessionFactory buildSessionFactory() {
         SessionFactory sessionFactory = null;
         try {
@@ -29,12 +34,13 @@ public class HibernateUtil {
             sessionFactory = configuration.buildSessionFactory(builder.build());
 
         } catch (Exception e) {
+            System.out.println("ERROR BUILD SESSION FACTORY "+ e.getMessage());
             logger.error("Initial SessionFactory creation failed.\n" + e.getMessage());
         }
         return sessionFactory;
     }
 
-    private static SessionFactory getSessionFactory() {
+    public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             sessionFactory = buildSessionFactory();
         }

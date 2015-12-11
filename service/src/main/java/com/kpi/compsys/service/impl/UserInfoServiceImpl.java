@@ -1,7 +1,6 @@
 package com.kpi.compsys.service.impl;
 
 import com.kpi.compsys.dao.UserInfoDao;
-import com.kpi.compsys.hibernate.impl.UserInfoDaoImpl;
 import com.kpi.compsys.model.UserInfo;
 import com.kpi.compsys.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;

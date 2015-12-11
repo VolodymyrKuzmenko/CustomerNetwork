@@ -59,4 +59,15 @@ public class Comment {
     private Date updated;
     private Boolean deleted;
 
+    @ManyToOne (cascade=CascadeType.ALL)
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
+    }
+
+    private User author;
+
 }

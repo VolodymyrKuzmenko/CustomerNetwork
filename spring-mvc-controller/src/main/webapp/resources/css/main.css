@@ -1,0 +1,78 @@
+tr {
+	cursor: pointer;
+}
+
+thead tr {
+	cursor: text;
+}
+
+textarea {
+	resize: none;
+	width: 100%;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.add {
+	margin-bottom: 20px;
+	min-width: 80px;
+	float: right;
+}
+
+.edit {
+	display: none;
+	float: right;
+	margin: 0 20px 20px 0;
+}
+
+.edit:nth-child(3) {
+	margin-right: 0;
+}
+
+.edit_ico {
+	padding: 0 20px;
+	opacity: 0.5;
+}
+
+.edit_ico:hover {
+	opacity: 1;
+	cursor: pointer;
+}
+
+.comments {
+	border-top: 1px solid #eee;
+}
+
+.comment {
+	margin: 20px 0;
+}
+
+p.user_name {
+	display: inline;
+	width: 20%;
+	vertical-align: top;
+}
+p.comm_text {
+	display: inline-block;
+	width: 80%;
+	float: right;
+}
+
+.registration-form {
+	width: 400px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+}
+
+.controls {
+	margin-bottom: 20px;
+}
