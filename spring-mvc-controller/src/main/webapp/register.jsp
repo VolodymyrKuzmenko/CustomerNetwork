@@ -64,8 +64,13 @@
                         <!-- Password -->
                         <label class="control-label"  for="password_confirm">Confirm Password</label>
                         <div class="controls">
+<<<<<<< .merge_file_a04904
                             <input type="password" id="password_confirm" name="password_confirm" placeholder="Enter password again" class="form-control">
                             <p class="help-block">Please confirm password</p>
+=======
+                            <input type="password" id="password_confirm" name="password_confirm" placeholder="Confirm your password" class="form-control" pattern=".{4,}" required>
+                            <p class="help-block passf">Please confirm password</p>
+>>>>>>> .merge_file_a10620
                         </div>
                     </div>
 
