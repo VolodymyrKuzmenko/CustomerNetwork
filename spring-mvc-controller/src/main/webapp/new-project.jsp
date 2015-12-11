@@ -30,8 +30,13 @@
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script type="text/javascript" src="<c:url value="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"/>"></script>
-    <script type="text/javascript" src="<c:url value="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"/>"></script>
+    <script type="text/javascript" src="<c:url value="
+            https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"/>"></script>
+    <
+    script
+    type = "text/javascript"
+    src = "<c:url value="
+    https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"/>"></script>
     <![endif]-->
 
 </head>
@@ -55,7 +60,8 @@
         <!-- Top Menu Items -->
         <ul class="nav navbar-right top-nav">
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b
+                        class="caret"></b></a>
                 <ul class="dropdown-menu message-dropdown">
                     <li class="message-preview">
                         <a href="#">
@@ -63,10 +69,13 @@
                                     <span class="pull-left">
                                         <img class="media-object" src="http://placehold.it/50x50" alt="">
                                     </span>
+
                                 <div class="media-body">
                                     <h5 class="media-heading"><strong>John Smith</strong>
                                     </h5>
+
                                     <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+
                                     <p>Lorem ipsum dolor sit amet, consectetur...</p>
                                 </div>
                             </div>
@@ -78,10 +87,13 @@
                                     <span class="pull-left">
                                         <img class="media-object" src="http://placehold.it/50x50" alt="">
                                     </span>
+
                                 <div class="media-body">
                                     <h5 class="media-heading"><strong>John Smith</strong>
                                     </h5>
+
                                     <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+
                                     <p>Lorem ipsum dolor sit amet, consectetur...</p>
                                 </div>
                             </div>
@@ -93,10 +105,13 @@
                                     <span class="pull-left">
                                         <img class="media-object" src="http://placehold.it/50x50" alt="">
                                     </span>
+
                                 <div class="media-body">
                                     <h5 class="media-heading"><strong>John Smith</strong>
                                     </h5>
+
                                     <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+
                                     <p>Lorem ipsum dolor sit amet, consectetur...</p>
                                 </div>
                             </div>
@@ -108,7 +123,8 @@
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b
+                        class="caret"></b></a>
                 <ul class="dropdown-menu alert-dropdown">
                     <li>
                         <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
@@ -196,7 +212,7 @@
                     </h1>
                     <ol class="breadcrumb">
                         <li>
-                            <i class="fa fa-dashboard"></i>  <a href="/user-dashboard">Dashboard</a>
+                            <i class="fa fa-dashboard"></i> <a href="/user-dashboard">Dashboard</a>
                         </li>
                         <li>
                             <i class="fa fa-bar-chart-o"></i>
@@ -211,32 +227,39 @@
             <div class="row">
                 <div class="col-lg-6">
                     <h2>Create new project</h2>
-                    <form action="">
+                    <c:url var="createProjectUrl" value="/createproject">
+                        <c:if test="${project!=null}">
+                            <c:param name="parrentProjectId" value="${project.getId()}"/>
+                        </c:if>
+                    </c:url>
+                    <form method="post" action="${createProjectUrl}" id="createProject">
                         <div class="form-group">
-                            <label>Name:</label>
-                            <input class="form-control" placeholder="Enter text">
-                        </div>
-                        <div class="form-group">
-                            <label>Description:</label>
-                            <textarea class="form-control" rows="3"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Responsible:</label>
-                            <select class="form-control">
-                                <c:forEach items="${usersList}" var="user">
-                                <option>
-                                    ${user.getUserInfo().getName()} </option>
-                                    <option>${user.getUserInfo().getSurname()}</option>
-                                </c:forEach>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Tags:</label>
-                            <input class="form-control" placeholder="Some tegs">
-                        </div>
-                        <button type="submit" class="btn btn-default">Save</button>
-                        <button type="reset" class="btn btn-default">Cancel</button>
-                    </form>
+                                <label>Name:</label>
+                                <input class="form-control" name="projectName" placeholder="Enter text">
+                            </div>
+                            <div class="form-group">
+                                <label>Description:</label>
+                                <textarea class="form-control" name="projectDescription" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Responsible:</label>
+                                <select class="form-control" name="responsibleId" form="createProject">
+                                    <c:forEach items="${usersList}" var="user">
+                                        <option value="${user.getId()}">
+                                                ${user.getUserInfo().getName()}
+                                                ${user.getUserInfo().getSurname()}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Tags:</label>
+                                <input class="form-control" placeholder="Some tegs">
+                            </div>
+                            <button type="submit" class="btn btn-default">Save</button>
+                            <a href="/projects">
+                                <button type="button" class="btn btn-default">Cancel</button>
+                            </a>
+                        </form>
                 </div>
                 <!-- /.row -->
 
