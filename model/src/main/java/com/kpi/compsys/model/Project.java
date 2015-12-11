@@ -5,7 +5,9 @@ import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -13,7 +15,7 @@ import java.util.List;
  */
 @Entity
 @Table(name= "Project")
-public class Project {
+public class Project implements Serializable {
     private Integer id;
     private String name;
     private Status status;
@@ -22,8 +24,8 @@ public class Project {
     private Date dateCreated;
     private Date dateUpdated;
     private User responsible;
-    private List<Comment> comments;
-    private List<Task> tasks;
+    private List<Comment> comments = new LinkedList<>();
+    private List<Task> tasks = new LinkedList<>();
 
     @Id
     @GeneratedValue
