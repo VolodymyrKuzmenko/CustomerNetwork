@@ -23,6 +23,7 @@ import java.util.Map;
  * Created by Vova on 12/2/2015.
  */
 @Controller
+@RequestMapping
 public class AuthentificationController {
 
     @Autowired

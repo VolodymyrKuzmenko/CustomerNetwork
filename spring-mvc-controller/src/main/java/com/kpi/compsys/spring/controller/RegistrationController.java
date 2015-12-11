@@ -17,6 +17,7 @@ import java.util.Map;
  * Created by Vova on 12/2/2015.
  */
 @Controller
+@RequestMapping
 public class RegistrationController {
 
     @Autowired
@@ -34,7 +35,7 @@ public class RegistrationController {
         return "register";
     }
 
-    @RequestMapping(value="/registration",method= RequestMethod.POST)
+    @RequestMapping(value="/registration", method= RequestMethod.POST)
     public ModelAndView registration(HttpServletRequest request){
         Map<String, String[]> paramMap = request.getParameterMap();
         String usrEmail = paramMap.get("email")[0];
