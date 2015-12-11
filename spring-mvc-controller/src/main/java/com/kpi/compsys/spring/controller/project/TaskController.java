@@ -1,24 +1,29 @@
 package com.kpi.compsys.spring.controller.project;
 
+import com.kpi.compsys.model.Task;
 import com.kpi.compsys.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Created by Vova on 12/5/2015.
  */
 @Controller
+@RequestMapping
 public class TaskController {
 
     @Autowired
     private TaskService taskService;
 
-    @RequestMapping(value = "/task/{taskId}}")
-    public ModelAndView getTaskById(@PathVariable(value = "taskId") Integer taskId){
-        ModelAndView taskModeAndView = new ModelAndView("");
+    @RequestMapping(value = "/task")
+    public ModelAndView getTaskById(@RequestParam("taskId") Integer taskId){
+        ModelAndView taskModeAndView = new ModelAndView("task-view");
+        Task task = taskService.getById(taskId);
+        taskModeAndView.setViewName("task-view");
         return taskModeAndView;
 
     }

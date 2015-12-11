@@ -230,6 +230,7 @@
                                 <th>Status</th>
                                 <th>Last update</th>
                                 <th>Tags</th>
+                                <th>Project</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -243,6 +244,7 @@
                                     <td>${task.getStatus().getStatusName()}</td>
                                     <td>${task.getDateUpdated()}</td>
                                     <td>tag</td>
+                                    <td>${task.getProject().getName()}</td>
                                 </tr>
                             </c:forEach>
                             </tbody>
