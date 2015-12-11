@@ -1,14 +1,17 @@
 package com.kpi.compsys.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by Vova on 11/27/2015.
  */
 @Entity
 @Table(name = "Task")
-public class Task {
+public class Task implements Serializable {
     private Integer taskId;
     private String name;
     private Date dateCreated;
@@ -16,6 +19,7 @@ public class Task {
     private Boolean deleted;
     private User responsible;
     private Project project;
+    private List<Comment> comments = new LinkedList<>();
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "status")
@@ -27,8 +31,8 @@ public class Task {
         this.status = status;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "project")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "project", nullable = false)
     public Project getProject() {
         return project;
     }
@@ -38,7 +42,7 @@ public class Task {
     }
 
     @ManyToOne
-    @JoinColumn(name = "responsible")
+    @JoinColumn(name = "responsible", nullable = false)
     public User getResponsible() {
         return responsible;
     }
@@ -98,4 +102,17 @@ public class Task {
     }
 
     private Status status;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "comment_task", joinColumns = {
+            @JoinColumn(name = "Task_task_id", nullable = false, updatable = true)},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "Comment_idComment", nullable = false, updatable = true)})
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
 }
