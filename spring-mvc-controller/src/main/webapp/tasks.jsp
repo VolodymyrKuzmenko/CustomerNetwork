@@ -235,7 +235,7 @@
                             </thead>
                             <tbody>
                             <c:forEach items="${taskList}" var="task">
-                                <tr onclick="window.location.href='task/'+${task.getTaskId()}; return false">
+                                <tr onclick="window.location.href='task?taskId='+${task.getTaskId()}; return false">
                                     <td>${task.getName()}</td>
                                     <td>
                                             ${task.getResponsible().getUserInfo().getName()}

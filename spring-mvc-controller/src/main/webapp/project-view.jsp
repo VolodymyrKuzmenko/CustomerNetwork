@@ -286,7 +286,7 @@
                         </table>
                     </div>
                     </c:if>
-                    <a href="/create-project?parrrentProjectId=${project.getId()}">
+                    <a href="/createproject?projectId=${project.getId()}">
                         <button type="button" class="btn btn-success add">Add</button>
                     </a>
                 </div>
@@ -326,7 +326,7 @@
                         </table>
                     </div>
                     </c:if>
-                    <button onclick="window.location.href='/task-create?projectId='+${project.getId()}" type="button"
+                    <button onclick="window.location.href='/createtask?projectId='+${project.getId()}" type="button"
                             class="btn btn-success add">Add
                     </button>
                 </div>

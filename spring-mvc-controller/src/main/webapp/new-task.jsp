@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Customer Networ</title>
+    <title>Customer Network</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<c:url value="resources/css/bootstrap.min.css"/>" rel="stylesheet">
@@ -55,7 +54,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/user-dashboard">SB Admin</a>
+            <a class="navbar-brand" href="user-dashboard.html">SB Admin</a>
         </div>
         <!-- Top Menu Items -->
         <ul class="nav navbar-right top-nav">
@@ -151,12 +150,8 @@
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user">
-                </i>
-                    ${sessionScope.user.getUserInfo().getName()}
-                    ${sessionScope.user.getUserInfo().getSurname()}
-                    <b class="caret"></b>
-                </a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b
+                        class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li>
                         <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -180,20 +175,20 @@
                 <li>
                     <a href="/user-dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="/projects"><i class="fa fa-fw fa-bar-chart-o"></i> Projects</a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="/tasks"><i class="fa fa-fw fa-table"></i> Tasks</a>
                 </li>
                 <li>
-                    <a href="deals.jsp"><i class="fa fa-fw fa-edit"></i> Deals</a>
+                    <a href="deals.html"><i class="fa fa-fw fa-edit"></i> Deals</a>
                 </li>
                 <li>
-                    <a href="analytics.jsp"><i class="fa fa-fw fa-desktop"></i> Analytics</a>
+                    <a href="analytics.html"><i class="fa fa-fw fa-desktop"></i> Analytics</a>
                 </li>
                 <li>
-                    <a href="contacts.jsp"><i class="fa fa-fw fa-wrench"></i> Contacts</a>
+                    <a href="contacts.html"><i class="fa fa-fw fa-wrench"></i> Contacts</a>
                 </li>
             </ul>
         </div>
@@ -208,58 +203,58 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Projects
+                        New task
                     </h1>
                     <ol class="breadcrumb">
                         <li>
                             <i class="fa fa-dashboard"></i> <a href="/user-dashboard">Dashboard</a>
                         </li>
                         <li>
-                            <i class="fa fa-bar-chart-o"></i>
-                            <a href="/projects">Projects</a>
+                            <i class="fa fa-table"></i> <a href="/tasks">Tasks</a>
                         </li>
                         <li class="active">
-                            <i class="fa fa-pencil"></i> New project
+                            <i class="fa fa-pencil"></i> New task
                         </li>
                     </ol>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-lg-6">
-                    <h2>Create new project</h2>
-                    <c:url var="createProjectUrl" value="/createproject">
-                        <c:if test="${project!=null}">
-                            <c:param name="parrentProjectId" value="${project.getId()}"/>
-                        </c:if>
+                    <h4>Create new task</h4>
+                    <c:url var="createTaskUrl" value="/createtask">
+                        <c:param name="projectId" value="${projectId}"/>
                     </c:url>
-                    <form method="post" action="${createProjectUrl}" id="createProject">
+                    <form method="post" action="${createTaskUrl}" id="createTask">
                         <div class="form-group">
-                                <label>Name:</label>
-                                <input class="form-control" name="projectName" placeholder="Enter text">
-                            </div>
-                            <div class="form-group">
-                                <label>Description:</label>
-                                <textarea class="form-control" name="projectDescription" rows="3"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>Responsible:</label>
-                                <select class="form-control" name="responsibleId" form="createProject">
-                                    <c:forEach items="${usersList}" var="user">
-                                        <option value="${user.getId()}">
-                                                ${user.getUserInfo().getName()}
-                                                ${user.getUserInfo().getSurname()}</option>
-                                    </c:forEach>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Tags:</label>
-                                <input class="form-control" placeholder="Some tegs">
-                            </div>
-                            <button type="submit" class="btn btn-default">Save</button>
-                            <a href="/projects">
-                                <button type="button" class="btn btn-default">Cancel</button>
-                            </a>
-                        </form>
+                            <label>Name:</label>
+                            <input class="form-control" name="taskName" placeholder="Enter text">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Responsible:</label>
+                            <select class="form-control" name="responsibleId" form="createTask">
+                                <c:forEach items="${usersList}" var="user">
+                                    <option value="${user.getId()}">
+                                            ${user.getUserInfo().getName()}
+                                            ${user.getUserInfo().getSurname()}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
+
+                        <!--
+                        <div class="form-group">
+                            <label>Description:</label>
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                         -->
+                        <div class="form-group">
+                            <label>Tags:</label>
+                            <input class="form-control" placeholder="Some tegs">
+                        </div>
+                        <button type="submit" class="btn btn-default">Save</button>
+                        <button type="reset" class="btn btn-default right">Cancel</button>
+                    </form>
                 </div>
                 <!-- /.row -->
 
