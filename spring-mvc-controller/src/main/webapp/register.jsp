@@ -64,7 +64,7 @@
                         <!-- Password -->
                         <label class="control-label"  for="password_confirm">Confirm Password</label>
                         <div class="controls">
-                            <input type="password" id="password_confirm" name="password_confirm" placeholder="Enter password again" class="form-control" pattern=".{4,}" required>
+                            <input type="password" id="password_confirm" name="password_confirm" placeholder="Confirm your password" class="form-control" pattern=".{4,}" required>
                             <p class="help-block passf">Please confirm password</p>
                         </div>
                     </div>
