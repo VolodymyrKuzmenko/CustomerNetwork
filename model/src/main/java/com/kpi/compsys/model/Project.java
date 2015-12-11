@@ -4,6 +4,7 @@ import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
 
@@ -93,8 +94,9 @@ public class Project {
         this.dateUpdated = dateUpdated;
     }
 
-    @JoinColumn(name = "responsible")
     @OneToOne
+    @NotNull
+    @JoinColumn(name = "responsible")
     public User getResponsible() {
         return responsible;
     }
@@ -102,6 +104,7 @@ public class Project {
     public void setResponsible(User responsible) {
         this.responsible = responsible;
     }
+
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "comment_project", joinColumns = {
             @JoinColumn(name = "project_id", nullable = false, updatable = true)},
