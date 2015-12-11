@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Customer Networ</title>
+    <title>Customer Network</title>
 
 
     <!-- Bootstrap Core CSS -->
@@ -234,7 +234,7 @@
                             </thead>
                             <tbody>
                             <c:forEach items="${projectsList}" var="project">
-                                <tr onclick="window.location.href='/project/'+${project.getId()}; return false">
+                                <tr onclick= " window.location.href='/project?projectID=${project.getId()}'" >
                                     <td>${project.getName()}</td>
                                     <td>
                                         ${project.getResponsible().getUserInfo().getName()}
@@ -243,6 +243,7 @@
                                     <td>${project.getStatus().getStatusName()}</td>
                                     <td>${project.getDateUpdated()}</td>
                                     <td>tag</td>
+
                                 </tr>
                             </c:forEach>
                             </tbody>
