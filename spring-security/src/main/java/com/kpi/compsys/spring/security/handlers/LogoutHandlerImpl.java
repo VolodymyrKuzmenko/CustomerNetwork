@@ -3,6 +3,7 @@ package com.kpi.compsys.spring.security.handlers;
 import com.kpi.compsys.model.SessionHistory;
 import com.kpi.compsys.model.User;
 import com.kpi.compsys.service.SessionHistoryService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.WebAttributes;
@@ -19,7 +20,7 @@ import java.util.Date;
  */
 @Component
 public class LogoutHandlerImpl implements LogoutHandler {
-
+    private static final Logger logger = Logger.getLogger(LogoutHandlerImpl.class);
     @Autowired
     private SessionHistoryService sessionHistoryService;
 
@@ -32,7 +33,7 @@ public class LogoutHandlerImpl implements LogoutHandler {
         sessionHistory.setDate(new Date(timeSession));
         sessionHistoryService.update(sessionHistory);
         clearAuthenticationAttributes(request);
-
+        logger.info("User '"+user.getEmail()+"' has log out. Time session: "+ timeSession);
     }
 
     private void clearAuthenticationAttributes(HttpServletRequest request) {

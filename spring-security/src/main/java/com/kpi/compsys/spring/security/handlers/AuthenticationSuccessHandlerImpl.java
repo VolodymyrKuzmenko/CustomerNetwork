@@ -5,6 +5,7 @@ import com.kpi.compsys.model.User;
 import com.kpi.compsys.service.SessionHistoryService;
 import com.kpi.compsys.spring.security.userdetails.SecurityUser;
 import eu.bitwalker.useragentutils.UserAgent;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -21,7 +22,7 @@ import java.util.Date;
  */
 @Component
 public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHandler {
-
+    private static final Logger logger = Logger.getLogger(AuthenticationSuccessHandlerImpl.class);
     @Autowired
     private SessionHistoryService sessionHistoryService;
 
@@ -30,7 +31,7 @@ public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHa
         User user = ((SecurityUser) authentication.getPrincipal()).getUser();
         request.getSession().setAttribute("user", user);
         rememberSession(user, request);
-
+        logger.info("User with email '" + user.getEmail()+"' is authenticated with role"+ user.getRole().getRoleName());
         httpServletResponse.sendRedirect("/user-dashboard");
     }
 

@@ -1,15 +1,13 @@
 package com.kpi.compsys.spring.security.handlers;
 
-import org.springframework.cache.annotation.Cacheable;
+import org.apache.log4j.Logger;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.web.WebAttributes;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
@@ -17,10 +15,11 @@ import java.io.IOException;
  */
 @Component
 public class AuthentificationFailureHandlerImpl implements AuthenticationFailureHandler {
+    private static final Logger logger = Logger.getLogger(AuthentificationFailureHandlerImpl.class);
     @Override
     public void onAuthenticationFailure(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
         //TODO set message into index.jsp about failure login/password
-        System.out.println("FAIL login");
+        logger.info("Failure login");
         httpServletResponse.sendRedirect("/index.jsp");
     }
 
