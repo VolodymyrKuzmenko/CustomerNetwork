@@ -1,5 +1,6 @@
 package com.kpi.compsys.spring.controller.project;
 
+import com.kpi.compsys.model.Project;
 import com.kpi.compsys.model.Status;
 import com.kpi.compsys.model.Task;
 import com.kpi.compsys.service.ProjectService;
@@ -63,10 +64,11 @@ public class TaskController {
         task.setDateCreated(new Date(System.currentTimeMillis()));
         task.setDateUpdated(task.getDateCreated());
         task.setName(taskName);
-        task.setProject(projectService.getById(projectId));
+        Project project = projectService.getById(projectId);
+        task.setProject(project);
         task.setResponsible(userService.getById(responsibleId));
         task.setStatus(statusService.getTODOStatus());
-
+        project.getTasks().add(task);
         taskService.add(task);
 
         return "redirect:/project?projectID="+projectId;
