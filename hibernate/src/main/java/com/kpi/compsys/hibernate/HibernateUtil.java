@@ -21,7 +21,8 @@ public class HibernateUtil {
     private static Session session;
 
     public HibernateUtil(){
-        buildSessionFactory().openSession();
+        System.out.println("open session");
+       session= buildSessionFactory().openSession();
     }
 
     private static SessionFactory buildSessionFactory() {
@@ -33,6 +34,7 @@ public class HibernateUtil {
             sessionFactory = configuration.buildSessionFactory(builder.build());
 
         } catch (Exception e) {
+            System.out.println("ERROR BUILD SESSION FACTORY "+ e.getMessage());
             logger.error("Initial SessionFactory creation failed.\n" + e.getMessage());
         }
         return sessionFactory;
