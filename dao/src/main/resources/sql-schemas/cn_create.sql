@@ -167,6 +167,7 @@ CREATE TABLE IF NOT EXISTS `social_network`.`Project` (
   `date_updated` TIMESTAMP(6) NULL COMMENT '',
   `responsible` INT NOT NULL COMMENT '',
   PRIMARY KEY (`project_id`)  COMMENT '')
+  parrent_project INT FOREIGN KEY REFERENCES Book(Pk_Book_Id)
 ENGINE = InnoDB;
 
 SHOW WARNINGS;

@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
  * Created by Vova on 12/8/2015.
  */
 @Controller
+@RequestMapping
 public class DashBoardController {
 
     @RequestMapping(value = "/user-dashboard")

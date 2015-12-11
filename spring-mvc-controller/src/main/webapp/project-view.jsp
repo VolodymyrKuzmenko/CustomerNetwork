@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Customer Networ</title>
+    <title>Customer Network</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<c:url value="resources/css/bootstrap.min.css"/>" rel="stylesheet">
@@ -31,8 +31,13 @@
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script type="text/javascript" src="<c:url value="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"/>"></script>
-    <script type="text/javascript" src="<c:url value="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"/>"></script>
+    <script type="text/javascript" src="<c:url value="
+            https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"/>"></script>
+    <
+    script
+    type = "text/javascript"
+    src = "<c:url value="
+    https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"/>"></script>
     <![endif]-->
 
 </head>
@@ -56,7 +61,8 @@
         <!-- Top Menu Items -->
         <ul class="nav navbar-right top-nav">
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b
+                        class="caret"></b></a>
                 <ul class="dropdown-menu message-dropdown">
                     <li class="message-preview">
                         <a href="#">
@@ -64,10 +70,13 @@
                                     <span class="pull-left">
                                         <img class="media-object" src="http://placehold.it/50x50" alt="">
                                     </span>
+
                                 <div class="media-body">
                                     <h5 class="media-heading"><strong>John Smith</strong>
                                     </h5>
+
                                     <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+
                                     <p>Lorem ipsum dolor sit amet, consectetur...</p>
                                 </div>
                             </div>
@@ -79,10 +88,13 @@
                                     <span class="pull-left">
                                         <img class="media-object" src="http://placehold.it/50x50" alt="">
                                     </span>
+
                                 <div class="media-body">
                                     <h5 class="media-heading"><strong>John Smith</strong>
                                     </h5>
+
                                     <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+
                                     <p>Lorem ipsum dolor sit amet, consectetur...</p>
                                 </div>
                             </div>
@@ -94,10 +106,13 @@
                                     <span class="pull-left">
                                         <img class="media-object" src="http://placehold.it/50x50" alt="">
                                     </span>
+
                                 <div class="media-body">
                                     <h5 class="media-heading"><strong>John Smith</strong>
                                     </h5>
+
                                     <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+
                                     <p>Lorem ipsum dolor sit amet, consectetur...</p>
                                 </div>
                             </div>
@@ -109,7 +124,8 @@
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b
+                        class="caret"></b></a>
                 <ul class="dropdown-menu alert-dropdown">
                     <li>
                         <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
@@ -197,7 +213,7 @@
                     </h1>
                     <ol class="breadcrumb">
                         <li>
-                            <i class="fa fa-dashboard"></i>  <a href="/user-dashboard">Dashboard</a>
+                            <i class="fa fa-dashboard"></i> <a href="/user-dashboard">Dashboard</a>
                         </li>
                         <li>
                             <i class="fa fa-bar-chart-o"></i> <a href="/projects">Projects</a>
@@ -211,10 +227,10 @@
 
             <div class="row">
                 <div class="col-lg-2">
-                    <p>Name: <span id="proj_name">${project.getNema()}</span></p>
+                    <p>Name: <span id="proj_name">${project.getName()}</span></p>
                 </div>
                 <div class="col-lg-2">
-                    <p>Status: <span id="proj_stat">${project.getStatus().getName()}</span></p>
+                    <p>Status: <span id="proj_stat">${project.getStatus().getStatusName()}</span></p>
                 </div>
                 <div class="col-lg-2">
                     <p>Last update: <span id="proj_update">${project.getDateUpdated()}</span></p>
@@ -226,17 +242,22 @@
                 <div class="col-lg-6">
                     <h4>Description<i class="fa fa-pencil-square-o edit_ico" onclick="enableTextarea(this)"></i></h4>
                     <textarea id="description" class="well" disabled="true">${project.getDescriprion()}</textarea>
-                    <button type="submit" id="cancel_button" class="btn btn-danger edit" onclick="disableTextarea(this)">Cancel</button>
-                    <button type="button" id="update_button" class="btn btn-success edit" onclick="disableTextarea(this)">Update</button>
+                    <button type="submit" id="cancel_button" class="btn btn-danger edit"
+                            onclick="disableTextarea(this)">Cancel
+                    </button>
+                    <button type="button" id="update_button" class="btn btn-success edit"
+                            onclick="disableTextarea(this)">Update
+                    </button>
 
                 </div>
             </div>
             <!-- Description end -->
 
-            <!-- Parrent projects start -->
+            <!-- Child projects start -->
             <div class="row">
                 <div class="col-lg-6">
-                    <h4>Parrent projects</h4>
+                    <h4>Child projects</h4>
+                    <c:if test="${!childProjectsList.isEmpty()}">
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover table-striped">
                             <thead>
@@ -249,30 +270,34 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach items="${child-projects}" var="childproject">
-                                <tr onclick="window.location.href='/project/'+${childproject.getId()}; return false">
-                                <td>${childproject.getName()}</td>
-                                <td>
-                                    ${childproject.getResponsible().getUserInfo().getName()}
-                                    ${childproject.getResponsible().getUserInfo().getSurname()}
-                                </td>
-                                <td>${childproject.getStatus().getStatusName()}</td>
-                                <td>${childproject.getDateUpdated()}</td>
-                                <td>tag</td>
-                            </tr>
+                            <c:forEach items="${childProjectsList}" var="childproject">
+                                <tr onclick="window.location.href='/project?projectID='+${childproject.getId()}; return false">
+                                    <td>${childproject.getName()}</td>
+                                    <td>
+                                            ${childproject.getResponsible().getUserInfo().getName()}
+                                            ${childproject.getResponsible().getUserInfo().getSurname()}
+                                    </td>
+                                    <td>${childproject.getStatus().getStatusName()}</td>
+                                    <td>${childproject.getDateUpdated()}</td>
+                                    <td>tag</td>
+                                </tr>
                             </c:forEach>
                             </tbody>
                         </table>
                     </div>
-                    <a href="/create-project/${project.getId()}"><button type="button" class="btn btn-success add">Add</button></a>
+                    </c:if>
+                    <a href="/create-project?parrrentProjectId=${project.getId()}">
+                        <button type="button" class="btn btn-success add">Add</button>
+                    </a>
                 </div>
             </div>
             <!-- Parrent projects end -->
-
             <!-- Tasks start -->
+
             <div class="row">
                 <div class="col-lg-6">
                     <h4>Tasks</h4>
+                    <c:if test="${!tasksList.isEmpty()}">
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover table-striped">
                             <thead>
@@ -285,22 +310,25 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach items="${project.getTasks()}" var="task">
-                            <tr onclick="window.location.href='/task/'+${task.getId()}; return false">
-                                <td>${task.getName()}</td>
-                                <td>
-                                    ${task.getResponsible().getUserInfo().getName()}
-                                    ${childproject.getResponsible().getUserInfo().getSurname()}
-                                </td>
-                                <td>${task.getStatus().getName()}</td>
-                                <td>${task.getDateUpdated()}</td>
-                                <td>tag</td>
-                            </tr>
+                            <c:forEach items="${tasksList}" var="task">
+                                <tr onclick="window.location.href='/task?taskId='+${task.getTaskId()}; return false">
+                                    <td>${task.getName()}</td>
+                                    <td>
+                                            ${task.getResponsible().getUserInfo().getName()}
+                                            ${task.getResponsible().getUserInfo().getSurname()}
+                                    </td>
+                                    <td>${task.getStatus().getStatusName()}</td>
+                                    <td>${task.getDateUpdated()}</td>
+                                    <td>tag</td>
+                                </tr>
                             </c:forEach>
                             </tbody>
                         </table>
                     </div>
-                   <button onclick="window.location.href='/task-create/'+${project.getId()}" type="button" class="btn btn-success add">Add</button>
+                    </c:if>
+                    <button onclick="window.location.href='/task-create?projectId='+${project.getId()}" type="button"
+                            class="btn btn-success add">Add
+                    </button>
                 </div>
             </div>
             <!-- Tasks end -->
@@ -309,28 +337,28 @@
             <div class="row">
                 <div class="col-lg-6">
                     <h4>Comments</h4>
+                    <c:if test="${!project.getComments().isEmpty()}">
                     <div class="comments">
-                        <c:forEach items="${project.getComments()}"  var="comment">
-                        <div class="comment clearfix">
-                            <p class="user_name">
-                                ${comment.getAuthor().getUserInfo().getName()}
-                                ${comment.getAuthor().getUserInfo().getSurname()}
-                            </p>
-                            <p class="comm_text">${comment.getTextComment()}</p>
-                        </div>
+                        <c:forEach items="${project.getComments()}" var="comment">
+                            <div class="comment clearfix">
+                                <p class="user_name">
+                                        ${comment.getAuthor().getUserInfo().getName()}
+                                        ${comment.getAuthor().getUserInfo().getSurname()}
+                                </p>
+                                <p class="comm_text">${comment.getTextComment()}</p>
+                            </div>
                         </c:forEach>
                     </div>
-                    <form action="project/addcomment/${project.getId()}" method="post">
-                        <div class="form-group">
-                            <label>Add Comment</label>
-                            <textarea class="form-control" rows="3" placeholder="Write a comment..."></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-success add">Send</button>
-                    </form>
+                    </c:if>
+                    <div class="form-group">
+                        <label>Add Comment</label>
+                        <textarea class="form-control" rows="3" placeholder="Write a comment..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success add">Send</button>
+
                 </div>
             </div>
             <!-- Comments end -->
-
         </div>
         <!-- /.container-fluid -->
 
@@ -356,53 +384,18 @@
 
 <!-- Autosize for textarea -->
 <script type="text/javascript" src="<c:url value="resources/js/autosize.min.js"/>"></script>
-
-<script
-        src="<c:url value="
-    autosize(document.querySelectorAll('textarea'));
-
-
-    function enableTextarea(element) {
-        current_input = document.getElementById('description');
-        current_input.disabled = false;
-        current_input.focus();
-        current_input.setSelectionRange(current_input.value.length, current_input.value.length);
-        update_button = document.getElementById('update_button');
-        update_button.style.display = (update_button.style.display == 'inline-block') ? '' : 'inline-block'
-        cancel_button = document.getElementById('cancel_button');
-        cancel_button.style.display = (cancel_button.style.display == 'inline-block') ? '' : 'inline-block'
-
-    }
-
-    function disableTextarea(element) {
-        current_input = document.getElementById('description');
-        current_input.disabled = true;
-        update_button = document.getElementById('update_button');
-        update_button.style.display = 'none';
-        cancel_button = document.getElementById('cancel_button');
-        cancel_button.style.display = 'none';
-    }
-   "/>">
-</script>
+<script type="text/javascript" src="<c:url value="resources/js/descriptionFunc.js"/>"></script>
 
 
 <!-- Flot Charts JavaScript -->
 <!--[if lte IE 8]>
-<script type="text/javascript" src="<c:url value="resources/js/plugins/flot/excanvas.min.js"/>"></script><![endif]-->
+<script type="text/javascript" src="<c:url value=" resources/js/plugins/flot/excanvas.min.js"/>"></script><![endif]-->
 <script type="text/javascript" src="<c:url value="resources/js/plugins/flot/jquery.flot.js"/>"></script>
 <script type="text/javascript" src="<c:url value="resources/js/plugins/flot/jquery.flot.tooltip.min.js"/>"></script>
 <script type="text/javascript" src="<c:url value="resources/js/plugins/flot/jquery.flot.resize.js"/>"></script>
 <script type="text/javascript" src="<c:url value="resources/js/plugins/flot/jquery.flot.pie.js"/>"></script>
 <script type="text/javascript" src="<c:url value="resources/js/plugins/flot/flot-data.js"/>"></script>
 
-
-<!-- Flot Charts JavaScript -->
-<!--[if lte IE 8]><script src="js/excanvas.min.js"></script><![endif]-->
-<script src="js/plugins/flot/jquery.flot.js"></script>
-<script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
-<script src="js/plugins/flot/jquery.flot.resize.js"></script>
-<script src="js/plugins/flot/jquery.flot.pie.js"></script>
-<script src="js/plugins/flot/flot-data.js"></script>
 
 </body>
 

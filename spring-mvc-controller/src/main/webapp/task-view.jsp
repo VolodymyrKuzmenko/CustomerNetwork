@@ -224,37 +224,35 @@
 
             <div class="row">
                 <div class="col-lg-3">
-                    <p>Name: <span id="proj_name">Taskname</span></p>
+                    <p>Name: <span id="proj_name">${task.getName()}</span></p>
                 </div>
                 <div class="col-lg-3">
-                    <p>Last update: <span id="proj_update">12/4/2015</span></p>
+                    <p>Last update: <span id="proj_update">${task.getDateUpdated()}</span></p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-3">
                     <p>Responsible:</p>
                     <select class="form-control input-sm">
-                        <option>User 1</option>
-                        <option>User 2</option>
-                        <option>User 3</option>
-                        <option>User 4</option>
+                        <option>
+                            ${task.getResponsible().getUserInfo().getName()}
+                            ${task.getResponsible().getUserInfo().getSurname()}
+                        </option>
                     </select>
                 </div>
                 <div class="col-lg-3">
                     <p>Status:</p>
                     <select class="form-control input-sm">
-                        <option>In progres</option>
-                        <option>Code view</option>
-                        <option>Testing</option>
-                        <option>Done</option>
+                        <option>${task.getStatus().getStatusName()}</option>
+
                     </select>
                 </div>
             </div>
-            <!-- Description start-->
+            <!-- Description start
             <div class="row">
                 <div class="col-lg-6">
                     <h4>Description<i class="fa fa-pencil-square-o edit_ico" onclick="enableTextarea(this)"></i></h4>
-                    <textarea id="description" class="well" disabled="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean lacinia bibendum nulla sed consectetur.</textarea>
+                    <textarea id="description" class="well" disabled="true">task.getDescription()</textarea>
                     <button type="submit" id="cancel_button" class="btn btn-danger edit"
                             onclick="disableTextarea(this)">Cancel
                     </button>
@@ -270,39 +268,25 @@
             <div class="row">
                 <div class="col-lg-6">
                     <h4>Comments</h4>
-
-                    <div class="comments">
-                        <div class="comment clearfix">
-                            <p class="user_name">User 1</p>
-
-                            <p class="comm_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere
-                                delectus numquam animi quae unde est, nesciunt? Vero, repellat, nam. Dolor beatae error,
-                                voluptatum laborum tenetur dolorum obcaecati nam provident pariatur.</p>
+                    <c:if test="${!task.getComments().isEmpty()}">
+                        <div class="comments">
+                            <c:forEach items="${task.getComments()}" var="comment">
+                                <div class="comment clearfix">
+                                    <p class="user_name">
+                                            ${comment.getAuthor().getUserInfo().getName()}
+                                            ${comment.getAuthor().getUserInfo().getSurname()}
+                                    </p>
+                                    <p class="comm_text">${comment.getTextComment()}</p>
+                                </div>
+                            </c:forEach>
                         </div>
-                        <div class="comment clearfix">
-                            <p class="user_name">User 2</p>
-
-                            <p class="comm_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea sunt fuga,
-                                fugiat similique dicta voluptas dolores placeat officiis cupiditate eaque, nemo cum!
-                                Amet, aperiam quod nobis qui, voluptates totam culpa. Lorem ipsum dolor sit amet,
-                                consectetur adipisicing elit. Sit natus ratione minima minus a! Molestiae iusto, ea
-                                porro quia nam! Inventore temporibus amet aliquid laboriosam est harum ab maxime
-                                fuga.</p>
-                        </div>
-                        <div class="comment clearfix">
-                            <p class="user_name">User 3</p>
-
-                            <p class="comm_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere
-                                delectus numquam animi quae unde est, nesciunt?</p>
-                        </div>
+                    </c:if>
+                    <div class="form-group">
+                        <label>Add Comment</label>
+                        <textarea class="form-control" rows="3" placeholder="Write a comment..."></textarea>
                     </div>
-                    <form action="">
-                        <div class="form-group">
-                            <label>Add Comment</label>
-                            <textarea class="form-control" rows="3" placeholder="Write a comment..."></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-success add">Send</button>
-                    </form>
+                    <button type="submit" class="btn btn-success add">Send</button>
+
                 </div>
             </div>
             <!-- Comments end -->
@@ -332,33 +316,8 @@
 <!-- Autosize for textarea -->
 <script type="text/javascript" src="<c:url value="resources/js/autosize.min.js"/>"></script>
 
-<script
-    src="<c:url value="
-    autosize(document.querySelectorAll('textarea'));
+<script type="text/javascript" src="<c:url value="resources/js/descriptionFunc.js"/>"></script>
 
-
-    function enableTextarea(element) {
-        current_input = document.getElementById('description');
-        current_input.disabled = false;
-        current_input.focus();
-        current_input.setSelectionRange(current_input.value.length, current_input.value.length);
-        update_button = document.getElementById('update_button');
-        update_button.style.display = (update_button.style.display == 'inline-block') ? '' : 'inline-block'
-        cancel_button = document.getElementById('cancel_button');
-        cancel_button.style.display = (cancel_button.style.display == 'inline-block') ? '' : 'inline-block'
-
-    }
-
-    function disableTextarea(element) {
-        current_input = document.getElementById('description');
-        current_input.disabled = true;
-        update_button = document.getElementById('update_button');
-        update_button.style.display = 'none';
-        cancel_button = document.getElementById('cancel_button');
-        cancel_button.style.display = 'none';
-    }
-   "/>">
-</script>
 
 
 <!-- Flot Charts JavaScript -->

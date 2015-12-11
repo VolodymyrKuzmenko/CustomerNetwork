@@ -1,9 +1,11 @@
 package com.kpi.compsys.spring.controller.project;
 
 import com.kpi.compsys.model.Project;
+import com.kpi.compsys.model.Task;
 import com.kpi.compsys.model.User;
 import com.kpi.compsys.service.CommentService;
 import com.kpi.compsys.service.ProjectService;
+import com.kpi.compsys.service.TaskService;
 import com.kpi.compsys.service.UserService;
 import com.sun.javafx.sg.prism.NGShape;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,7 @@ import java.util.Date;
  * Created by Vova on 12/4/2015.
  */
 @Controller
+@RequestMapping
 public class ProjectController {
 
     @Autowired
@@ -33,6 +36,9 @@ public class ProjectController {
     @Autowired
     private CommentService commentService;
 
+    @Autowired
+    private TaskService taskService;
+
     @RequestMapping(value = "/projects")
     public ModelAndView getUserProjects() {
         ModelAndView projectsModelView = new ModelAndView();
@@ -42,17 +48,19 @@ public class ProjectController {
         return projectsModelView;
     }
 
-    @RequestMapping(value = "/project/{projectID}")
-    public ModelAndView getProjectById(@PathVariable(value = "projectID") Integer projectID) {
+    @RequestMapping(value = "/project")
+    public ModelAndView getProjectById(@RequestParam("projectID") Integer projectID) {
         ModelAndView projectModelView = new ModelAndView();
         projectModelView.setViewName("project-view");
         Project project = projectService.getById(projectID);
         projectModelView.addObject("project", project);
-        projectModelView.addObject("child-projects", projectService.getChildProjects(projectID));
+        projectModelView.addObject("childProjectsList", projectService.getChildProjects(projectID));
+        projectModelView.addObject("tasksList", project.getTasks());
+
         return projectModelView;
     }
 
-    @RequestMapping(value = "new-project", method = RequestMethod.POST)
+    @RequestMapping(value = "/new-project", method = RequestMethod.POST)
     public String createProject(
             @RequestParam String name,
             @RequestParam User responsible,
@@ -73,6 +81,7 @@ public class ProjectController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("new-project");
         modelAndView.addObject("usersList",userService.getAll());
+        modelAndView.addObject("taskList", taskService.getAll());
 
         return modelAndView;
     }
