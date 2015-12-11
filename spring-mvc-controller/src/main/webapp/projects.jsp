@@ -249,7 +249,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <a href="new-project.jsp">
+                    <a href="/createproject?projectId=">
                         <button type="button" class="btn btn-success add">Create new</button>
                     </a>
                 </div>
