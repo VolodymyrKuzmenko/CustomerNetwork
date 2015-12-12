@@ -46,18 +46,18 @@ public class RegistrationController {
 
         if (usrEmail.isEmpty() || usrPass.isEmpty() || usrPassConfirm.isEmpty()) {
             logger.info("Error registraion, field is empty");
-            return new ModelAndView("error_registration");
+            return new ModelAndView("register");
         }
 
         if (!usrPass.equals(usrPassConfirm)) {
             logger.info("Error registration, passwords don't equal");
-                return new ModelAndView("error_registration");
+                return new ModelAndView("register");
         }
 
         for (User user : userService.getAll()) {
             if (usrEmail.equals(user.getEmail())) {
                 logger.info("Error registration, email"+usrEmail+"' has been registered in system");
-                return new ModelAndView("error_registration");
+                return new ModelAndView("register");
             }
         }
 
