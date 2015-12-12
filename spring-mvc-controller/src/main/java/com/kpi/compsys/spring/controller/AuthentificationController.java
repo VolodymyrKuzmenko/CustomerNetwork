@@ -26,59 +26,9 @@ import java.util.Map;
 @RequestMapping
 public class AuthentificationController {
 
-    @Autowired
-    private UserService userService;
-
-    @Autowired
-    private SessionHistoryService sessionHistoryService;
-
-
     @RequestMapping(value = {"index", "/", "/index.jsp"})
     public String start(Model model){
-//        System.out.println("start method controller");
-//        ModelAndView loginModeAndView = new ModelAndView("index");
         return "index";
     }
 
-
-//    @RequestMapping(value = "/login", method = RequestMethod.POST)
-//    public ModelAndView executeLogin(HttpServletRequest request) {
-//        Map<String, String[]> paramMap = request.getParameterMap();
-//        User loginBean = new User();
-//        loginBean.setEmail(paramMap.get("email")[0]);
-//        loginBean.setPassword(paramMap.get("password")[0]);
-//        User currentUser = null;
-//        for (User user : userService.getAll()) {
-//            if (user.getEmail().equals(loginBean.getEmail()) && user.getPassword().equals(loginBean.getPassword())) {
-//                currentUser = user;
-//                break;
-//            }
-//        }
-//
-//        if (currentUser == null) {
-//            return new ModelAndView("index");
-//        } else {
-//            request.getSession().setAttribute("user", currentUser);
-//            rememberSessionHistory(currentUser, request);
-//
-//            return new ModelAndView("user-dashboard");
-//        }
-//
-//    }
-
-
-//    private void rememberSessionHistory(User user, HttpServletRequest request) {
-//        UserAgent userAgent = UserAgent.parseUserAgentString(request.getHeader("User-Agent"));
-//        SessionHistory sessionHistory = new SessionHistory();
-//        sessionHistory.setBrouserType(userAgent.getBrowser().getBrowserType().getName());
-//        sessionHistory.setIpAddres(request.getRemoteAddr());
-//        sessionHistory.setUser(user);
-//        Date date = new Date();
-//        date.setTime(System.currentTimeMillis());
-//        sessionHistory.setDate(date);
-//        sessionHistoryService.saveSuccsesAuthorizationInformation(sessionHistory);
-//        request.getSession().setAttribute("sessionHistory", sessionHistory);
-//        System.out.println(((SessionHistory) request.getSession().getAttribute("sessionHistory")).getIpAddres());
-//
-//    }
 }

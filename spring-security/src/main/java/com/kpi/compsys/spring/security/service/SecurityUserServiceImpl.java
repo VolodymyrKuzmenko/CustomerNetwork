@@ -17,13 +17,13 @@ import org.springframework.stereotype.Service;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
+import org.apache.log4j.Logger;
 /**
  * Created by Vova on 12/7/2015.
  */
 @Service
 public class SecurityUserServiceImpl implements UserDetailsService {
-
+    private static final Logger logger = Logger.getLogger(SecurityUserServiceImpl.class);
     @Autowired
     private UserService userService;
 
@@ -31,9 +31,11 @@ public class SecurityUserServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         List<User> users = userService.getByEmail(email);
         if (users.size()>2){
+            logger.warn("Two or more users with email"+email);
             throw new UsernameNotFoundException("two or more equal emails");
         }
         if (users.isEmpty()){
+            logger.info("User with email"+email+" not found");
             throw new UsernameNotFoundException("email not found");
         }
 

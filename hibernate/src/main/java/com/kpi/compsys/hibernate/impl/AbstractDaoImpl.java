@@ -27,7 +27,6 @@ public abstract class AbstractDaoImpl<T> implements AbstractDao<T> {
 
     @Override
     public T create(T entity) {
-//        util.getSesssion().merge(entity);
         util.getSesssion().save(entity);
         return entity;
     }
