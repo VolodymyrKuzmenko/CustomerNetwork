@@ -4,7 +4,6 @@ package com.kpi.compsys.hibernate;
  * Created by Vova on 10/12/2015.
  */
 
-import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -16,13 +15,13 @@ import org.springframework.stereotype.Component;
 @Component
 @Scope(value = "singleton")
 public class HibernateUtil {
-    private static final Logger logger = LogManager.getLogger(HibernateUtil.class);
+    private static final Logger logger = Logger.getLogger(HibernateUtil.class);
     private static SessionFactory sessionFactory = null;
     private static Session session;
 
-    public HibernateUtil(){
-        System.out.println("open session");
-       session= buildSessionFactory().openSession();
+    public HibernateUtil() {
+        session = buildSessionFactory().openSession();
+        logger.info("Init session has open.");
     }
 
     private static SessionFactory buildSessionFactory() {
@@ -30,11 +29,12 @@ public class HibernateUtil {
         try {
             Configuration configuration = new Configuration()
                     .configure();
+            logger.info("Hibernate configuration created.");
             StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
             sessionFactory = configuration.buildSessionFactory(builder.build());
+            logger.info("Session Factory has build.");
 
         } catch (Exception e) {
-            System.out.println("ERROR BUILD SESSION FACTORY "+ e.getMessage());
             logger.error("Initial SessionFactory creation failed.\n" + e.getMessage());
         }
         return sessionFactory;
@@ -49,22 +49,23 @@ public class HibernateUtil {
 
     public static void shutdownSessionFactory() {
         getSessionFactory().close();
-        logger.info("Session factory has closed");
+        logger.info("Session factory has closed.");
     }
 
-    public Session getSesssion(){
-        if (session == null){
+    public Session getSesssion() {
+        if (session == null) {
             session = getSessionFactory().openSession();
-        }else{
-            if (!session.isOpen()){
+        } else {
+            if (!session.isOpen()) {
                 session = getSessionFactory().openSession();
-                System.out.println("Session is open.");
+                logger.info("Hibernate Session is open. ");
             }
         }
-        return  session;
+        return session;
     }
 
-    public void shutdownSession(){
+    public void shutdownSession() {
         session.close();
+        logger.info("Hibernate session is closed.");
     }
 }
