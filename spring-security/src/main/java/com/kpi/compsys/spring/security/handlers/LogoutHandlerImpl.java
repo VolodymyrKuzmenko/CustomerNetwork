@@ -13,7 +13,14 @@ import org.springframework.stereotype.Component;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.ZoneId;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
+import java.util.Timer;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Vova on 12/8/2015.
@@ -29,11 +36,13 @@ public class LogoutHandlerImpl implements LogoutHandler {
 
         SessionHistory sessionHistory = (SessionHistory) request.getSession().getAttribute("sessionHistory");
         User user = (User)  request.getSession().getAttribute("user");
-        long timeSession = System.currentTimeMillis() - sessionHistory.getDate().getTime();
-        sessionHistory.setDate(new Date(timeSession));
+        Date different  = new Date(new Date().getTime() - sessionHistory.getDate().getTime());
+
+        sessionHistory.setDate(different);
         sessionHistoryService.update(sessionHistory);
         clearAuthenticationAttributes(request);
-        logger.info("User '"+user.getEmail()+"' has log out. Time session: "+ timeSession);
+        DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+        logger.info("User '"+user.getEmail()+"' has log out. Time session: "+dateFormat.format(different)+"");
     }
 
     private void clearAuthenticationAttributes(HttpServletRequest request) {

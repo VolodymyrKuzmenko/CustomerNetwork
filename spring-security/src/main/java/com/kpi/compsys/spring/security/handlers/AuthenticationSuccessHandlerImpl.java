@@ -31,7 +31,7 @@ public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHa
         User user = ((SecurityUser) authentication.getPrincipal()).getUser();
         request.getSession().setAttribute("user", user);
         rememberSession(user, request);
-        logger.info("User with email '" + user.getEmail()+"' is authenticated with role"+ user.getRole().getRoleName());
+        logger.info("User with email '" + user.getEmail()+"' is authenticated with role '"+ user.getRole().getRoleName()+"'");
         httpServletResponse.sendRedirect("/user-dashboard");
     }
 
