@@ -11,6 +11,10 @@ textarea {
 	width: 100%;
 }
 
+#page-wrapper {
+	padding-left: 40px;
+}
+
 .left {
 	float: left;
 }
@@ -64,6 +68,10 @@ p.comm_text {
 	float: right;
 }
 
+.inline {
+	display: inline-block;
+}
+
 .registration-form {
 	width: 400px;
 	margin: 0 auto;
@@ -75,4 +83,18 @@ p.comm_text {
 
 .controls {
 	margin-bottom: 20px;
+}
+
+#proj_stat, #proj_name{
+	width: 150px;
+	display: inline-block;
+}
+
+#proj_stat:disabled, #proj_name:disabled {
+	
+	background-color: #fff;
+	border: none;
+	cursor: default;
+	box-shadow: none;
+	-webkit-appearance: none;
 }

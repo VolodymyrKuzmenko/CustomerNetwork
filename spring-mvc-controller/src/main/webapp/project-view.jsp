@@ -226,21 +226,29 @@
             </div>
 
             <div class="row">
-                <div class="col-lg-2">
-                    <p>Name: <span id="proj_name">${project.getName()}</span></p>
-                </div>
-                <div class="col-lg-2">
-                    <p>Status: <span id="proj_stat">${project.getStatus().getStatusName()}</span></p>
-                </div>
-                <div class="col-lg-2">
-                    <p>Last update: <span id="proj_update">${project.getDateUpdated()}</span></p>
-                </div>
+                    <div class="col-lg-4">
+                        <p class="inline">Name:<i class="proj_name fa fa-pencil-square-o edit_ico" onclick="enableTextarea(this)"></i></p>
+                        <input class="form-control" id="proj_name" value="Projectname" disabled="true"></input>
+                    </div>
+                    <div class="col-lg-4">
+                        <p class="inline">Status:<i class="proj_stat fa fa-pencil-square-o edit_ico" onclick="enableTextarea(this)"></i></p>
+                        <select id="proj_stat" class="form-control" disabled="true">
+                                    <option>TODO</option>
+                                    <option>In progres</option>
+                                    <option>Testing</option>
+                                    <option>Done</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-2 pull-right">
+                        <p class="inline">Last update:</p>
+                        <span id="proj_update">12/4/2015</span>
+                    </div>
             </div>
 
             <!-- Description start-->
             <div class="row">
-                <div class="col-lg-6">
-                    <h4>Description<i class="fa fa-pencil-square-o edit_ico" onclick="enableTextarea(this)"></i></h4>
+                <div class="col-lg-9">
+                    <h4>Description<i class="description fa fa-pencil-square-o edit_ico" onclick="enableTextarea(this)"></i></h4>
                     <textarea id="description" class="well" disabled="true">${project.getDescriprion()}</textarea>
                     <button type="submit" id="cancel_button" class="btn btn-danger edit"
                             onclick="disableTextarea(this)">Cancel
@@ -255,7 +263,7 @@
 
             <!-- Child projects start -->
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-9">
                     <h4>Child projects</h4>
                     <c:if test="${!childProjectsList.isEmpty()}">
                     <div class="table-responsive">
@@ -295,7 +303,7 @@
             <!-- Tasks start -->
 
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-9">
                     <h4>Tasks</h4>
                     <c:if test="${!tasksList.isEmpty()}">
                     <div class="table-responsive">
@@ -335,7 +343,7 @@
 
             <!-- Comments start-->
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-9">
                     <h4>Comments</h4>
                     <c:if test="${!project.getComments().isEmpty()}">
                     <div class="comments">
