@@ -255,9 +255,9 @@
                                 <label>Tags:</label>
                                 <input class="form-control" placeholder="Some tegs">
                             </div>
-                            <button type="submit" class="btn btn-default">Save</button>
+                            <button type="submit" class="btn btn-success">Save</button>
                             <a href="/projects">
-                                <button type="button" class="btn btn-default">Cancel</button>
+                                <button type="button" class="btn btn-danger right">Cancel</button>
                             </a>
                         </form>
                 </div>
