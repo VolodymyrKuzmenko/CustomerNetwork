@@ -46,7 +46,7 @@
                         <!-- E-mail -->
                         <label class="control-label" for="email">E-mail</label>
                         <div class="controls">
-                            <input type="text" id="email" name="email" placeholder="Enter your email" class="form-control">
+                            <input type="email" id="email" name="email" placeholder="Enter your email" class="form-control">
                             <p class="help-block">Please provide your E-mail</p>
                         </div>
                     </div>
@@ -55,7 +55,7 @@
                         <!-- Password-->
                         <label class="control-label" for="password">Password</label>
                         <div class="controls">
-                            <input type="password" id="password" name="password" placeholder="Enter your password" class="form-control">
+                            <input type="password" id="password" name="password" placeholder="Enter your password" class="form-control" pattern=".{4,}" required >
                             <p class="help-block">Password should be at least 4 characters</p>
                         </div>
                     </div>
@@ -64,8 +64,8 @@
                         <!-- Password -->
                         <label class="control-label"  for="password_confirm">Confirm Password</label>
                         <div class="controls">
-                            <input type="password" id="password_confirm" name="password_confirm" placeholder="Enter password again" class="form-control">
-                            <p class="help-block">Please confirm password</p>
+                            <input type="password" id="password_confirm" name="password_confirm" placeholder="Confirm your password" class="form-control" pattern=".{4,}" required>
+                            <p class="help-block passf">Please confirm password</p>
                         </div>
                     </div>
 

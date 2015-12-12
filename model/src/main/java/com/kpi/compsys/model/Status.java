@@ -1,13 +1,14 @@
 package com.kpi.compsys.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by Vova on 11/27/2015.
  */
 @Entity
 @Table(name="Status")
-public class Status {
+public class Status  implements Serializable {
     private Integer statusId;
 
     @Id

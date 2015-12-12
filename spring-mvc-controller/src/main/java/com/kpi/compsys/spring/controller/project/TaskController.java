@@ -1,11 +1,13 @@
 package com.kpi.compsys.spring.controller.project;
 
+import com.kpi.compsys.model.Project;
 import com.kpi.compsys.model.Status;
 import com.kpi.compsys.model.Task;
 import com.kpi.compsys.service.ProjectService;
 import com.kpi.compsys.service.StatusService;
 import com.kpi.compsys.service.TaskService;
 import com.kpi.compsys.service.UserService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -63,12 +65,12 @@ public class TaskController {
         task.setDateCreated(new Date(System.currentTimeMillis()));
         task.setDateUpdated(task.getDateCreated());
         task.setName(taskName);
-        task.setProject(projectService.getById(projectId));
+        Project project = projectService.getById(projectId);
+        task.setProject(project);
         task.setResponsible(userService.getById(responsibleId));
         task.setStatus(statusService.getTODOStatus());
-
+        project.getTasks().add(task);
         taskService.add(task);
-
         return "redirect:/project?projectID="+projectId;
     }
 

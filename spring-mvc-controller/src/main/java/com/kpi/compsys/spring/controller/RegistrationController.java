@@ -3,6 +3,7 @@ package com.kpi.compsys.spring.controller;
 import com.kpi.compsys.model.User;
 import com.kpi.compsys.service.UserRoleService;
 import com.kpi.compsys.service.UserService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -19,7 +20,7 @@ import java.util.Map;
 @Controller
 @RequestMapping
 public class RegistrationController {
-
+    private static final Logger logger = Logger.getLogger(RegistrationController.class);
     @Autowired
     private UserService userService;
 
@@ -44,19 +45,19 @@ public class RegistrationController {
         ModelAndView model;
 
         if (usrEmail.isEmpty() || usrPass.isEmpty() || usrPassConfirm.isEmpty()) {
-            System.out.println("Error registration!");
-            return new ModelAndView("error_registration");
+            logger.info("Error registraion, field is empty");
+            return new ModelAndView("register");
         }
 
         if (!usrPass.equals(usrPassConfirm)) {
-            System.out.println("Error registration!");
-                return new ModelAndView("error_registration");
+            logger.info("Error registration, passwords don't equal");
+                return new ModelAndView("register");
         }
 
         for (User user : userService.getAll()) {
             if (usrEmail.equals(user.getEmail())) {
-                System.out.println("Error registration!");
-                return new ModelAndView("error_registration");
+                logger.info("Error registration, email"+usrEmail+"' has been registered in system");
+                return new ModelAndView("register");
             }
         }
 
@@ -65,7 +66,7 @@ public class RegistrationController {
         newUser.setPassword(passwordEncoder.encode(usrPass));
         newUser.setRole(userRoleService.getDefaultUserRole());
         userService.add(newUser);
-        //log new user was created
+        logger.info("New user with email '"+usrEmail+"' has registered");
         model = new ModelAndView("index");
         return model;
 

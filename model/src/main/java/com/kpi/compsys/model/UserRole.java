@@ -1,6 +1,7 @@
 package com.kpi.compsys.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by Vova on 11/27/2015.
@@ -8,7 +9,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="UserRole")
-public class UserRole {
+public class UserRole implements Serializable {
 
     private Integer roleId;
 

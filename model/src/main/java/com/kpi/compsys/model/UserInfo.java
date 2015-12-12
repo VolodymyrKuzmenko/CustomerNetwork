@@ -3,6 +3,7 @@ package com.kpi.compsys.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name="userinfo")
-public class UserInfo {
+public class UserInfo implements Serializable {
     private int info_id;
     private User user;
     private String name;

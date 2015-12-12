@@ -1,6 +1,7 @@
 package com.kpi.compsys.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -8,7 +9,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name="SessionHistory")
-public class SessionHistory {
+public class SessionHistory implements Serializable {
     @Id
     @GeneratedValue
     @Column(name = "idSessionHistory")

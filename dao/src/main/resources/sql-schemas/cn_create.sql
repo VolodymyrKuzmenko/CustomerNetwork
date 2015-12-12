@@ -14,7 +14,7 @@ DROP SCHEMA IF EXISTS `social_network` ;
 
 -- -----------------------------------------------------
 -- Schema social_network
--- -----------------------------------------------------
+-- -------------------------------------------comment----------
 CREATE SCHEMA IF NOT EXISTS `social_network` DEFAULT CHARACTER SET utf8 ;
 SHOW WARNINGS;
 USE `social_network` ;
@@ -161,13 +161,13 @@ CREATE TABLE IF NOT EXISTS `social_network`.`Project` (
   `project_id` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `name` VARCHAR(45) NULL COMMENT '',
   `status` INT NOT NULL COMMENT '',
-  `parrent_project` INT NULL COMMENT '',
+  `parrent_project` INT NULL COMMENT '' ,
   `description` VARCHAR(1000) NULL COMMENT '',
   `date_created` TIMESTAMP(6) NULL COMMENT '',
   `date_updated` TIMESTAMP(6) NULL COMMENT '',
   `responsible` INT NOT NULL COMMENT '',
   PRIMARY KEY (`project_id`)  COMMENT '')
-  parrent_project INT FOREIGN KEY REFERENCES Book(Pk_Book_Id)
+
 ENGINE = InnoDB;
 
 SHOW WARNINGS;
@@ -187,9 +187,11 @@ CREATE TABLE IF NOT EXISTS `social_network`.`Task` (
   `responsible` INT(11) NULL COMMENT '',
   `project` INT NOT NULL COMMENT '',
   `status` INT NOT NULL COMMENT '',
-  PRIMARY KEY (`task_id`)  COMMENT '')
-ENGINE = InnoDB;
+  PRIMARY KEY (`task_id`)  COMMENT ''
 
+  )
+ENGINE = InnoDB;
+ALTER TABLE Task ADD CONSTRAINT fk_b FOREIGN KEY Task(project) references Project(project_id);
 SHOW WARNINGS;
 
 -- -----------------------------------------------------
