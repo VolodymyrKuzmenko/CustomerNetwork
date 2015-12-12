@@ -101,7 +101,7 @@ p.comm_text {
 #proj_stat:disabled, #proj_name:disabled, #respon {
 	
 	background-color: #fff;
-	/*border: none;*/
+	border: none;
 	cursor: default;
 	box-shadow: none;
 	-webkit-appearance: none;
