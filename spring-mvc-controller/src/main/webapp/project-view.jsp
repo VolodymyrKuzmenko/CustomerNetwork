@@ -226,11 +226,11 @@
             </div>
 
             <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                         <p class="inline">Name:<i class="proj_name fa fa-pencil-square-o edit_ico" onclick="enableTextarea(this)"></i></p>
                         <input class="form-control" id="proj_name" value="Projectname" disabled="true"></input>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                         <p class="inline">Status:<i class="proj_stat fa fa-pencil-square-o edit_ico" onclick="enableTextarea(this)"></i></p>
                         <select id="proj_stat" class="form-control" disabled="true">
                                     <option>TODO</option>
@@ -239,11 +239,20 @@
                                     <option>Done</option>
                         </select>
                     </div>
+                    <div class="col-lg-3">
+                        <p class="inline">Responsible:<i class="respon fa fa-pencil-square-o edit_ico" onclick="enableTextarea(this)"></i></p>
+                        <select id="respon" class="form-control" disabled="true">
+                                    <option>User1</option>
+                                    <option>User2</option>
+                                    <option>User3</option>
+                                    <option>User4</option>
+                        </select>
+                    </div>
                     <div class="col-lg-2 pull-right">
                         <p class="inline">Last update:</p>
                         <span id="proj_update">12/4/2015</span>
                     </div>
-            </div>
+                </div>
 
             <!-- Description start-->
             <div class="row">

@@ -11,6 +11,10 @@ textarea {
 	width: 100%;
 }
 
+p > i.fa {
+	padding: 5px;
+}
+
 #page-wrapper {
 	padding-left: 40px;
 }
@@ -85,15 +89,19 @@ p.comm_text {
 	margin-bottom: 20px;
 }
 
-#proj_stat, #proj_name{
-	width: 150px;
+#proj_stat, #proj_name, #respon{
+	width: 120px;
 	display: inline-block;
 }
 
-#proj_stat:disabled, #proj_name:disabled {
+#respon{
+	width: 80px;
+}
+
+#proj_stat:disabled, #proj_name:disabled, #respon {
 	
 	background-color: #fff;
-	border: none;
+	/*border: none;*/
 	cursor: default;
 	box-shadow: none;
 	-webkit-appearance: none;
