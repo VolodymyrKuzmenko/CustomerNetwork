@@ -223,31 +223,30 @@
             </div>
 
             <div class="row">
-                <div class="col-lg-3">
-                    <p>Name: <span id="proj_name">${task.getName()}</span></p>
+                    <div class="col-lg-3">
+                        <p class="inline">Name:<i class="task_name fa fa-pencil-square-o edit_ico" onclick="enableTextarea(this)"></i></p>
+                        <input class="form-control" id="task_name" value="${task.getName()}" disabled="true"></input>
+                    </div>
+                    <div class="col-lg-3">
+                        <p class="inline">Status:<i class="task_stat fa fa-pencil-square-o edit_ico" onclick="enableTextarea(this)"></i></p>
+                        <select id="task_stat" class="form-control" disabled="true">
+                                    <option>${task.getStatus().getStatusName()}</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-3">
+                        <p class="inline">Responsible:<i class="task_respon fa fa-pencil-square-o edit_ico" onclick="enableTextarea(this)"></i></p>
+                        <select id="task_respon" class="form-control" disabled="true">
+                                    <option>${task.getResponsible().getUserInfo().getName()}
+                            ${task.getResponsible().getUserInfo().getSurname()}</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-2 pull-right">
+                        <p class="inline">Last update:</p>
+                        <span id="task_update">12/4/2015</span>
+                    </div>
                 </div>
-                <div class="col-lg-3">
-                    <p>Last update: <span id="proj_update">${task.getDateUpdated()}</span></p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-3">
-                    <p>Responsible:</p>
-                    <select class="form-control input-sm">
-                        <option>
-                            ${task.getResponsible().getUserInfo().getName()}
-                            ${task.getResponsible().getUserInfo().getSurname()}
-                        </option>
-                    </select>
-                </div>
-                <div class="col-lg-3">
-                    <p>Status:</p>
-                    <select class="form-control input-sm">
-                        <option>${task.getStatus().getStatusName()}</option>
 
-                    </select>
-                </div>
-            </div>
+
             <!-- Description start
             <div class="row">
                 <div class="col-lg-6">
@@ -266,7 +265,7 @@
 
             <!-- Comments start-->
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-9">
                     <h4>Comments</h4>
                     <c:if test="${!task.getComments().isEmpty()}">
                         <div class="comments">
@@ -316,7 +315,7 @@
 <!-- Autosize for textarea -->
 <script type="text/javascript" src="<c:url value="resources/js/autosize.min.js"/>"></script>
 
-<script type="text/javascript" src="<c:url value="resources/js/descriptionFunc.js"/>"></script>
+<script type="text/javascript" src="<c:url value="resources/js/onclick-edit.js"/>"></script>
 
 
 

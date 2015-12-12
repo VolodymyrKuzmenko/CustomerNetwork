@@ -89,7 +89,8 @@ p.comm_text {
 	margin-bottom: 20px;
 }
 
-#proj_stat, #proj_name, #respon{
+#proj_stat, #proj_name, #respon, 
+#task_stat, #task_name, #task_respon{
 	width: 120px;
 	display: inline-block;
 }
@@ -98,7 +99,8 @@ p.comm_text {
 	width: 80px;
 }
 
-#proj_stat:disabled, #proj_name:disabled, #respon {
+#proj_stat:disabled, #proj_name:disabled, #respon:disabled, 
+#task_stat:disabled, #task_name:disabled, #task_respon:disabled {
 	
 	background-color: #fff;
 	border: none;

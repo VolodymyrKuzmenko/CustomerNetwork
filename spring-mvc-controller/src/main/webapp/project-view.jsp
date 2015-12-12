@@ -401,7 +401,7 @@
 
 <!-- Autosize for textarea -->
 <script type="text/javascript" src="<c:url value="resources/js/autosize.min.js"/>"></script>
-<script type="text/javascript" src="<c:url value="resources/js/descriptionFunc.js"/>"></script>
+<script type="text/javascript" src="<c:url value="resources/js/onclick-edit.js"/>"></script>
 
 
 <!-- Flot Charts JavaScript -->
