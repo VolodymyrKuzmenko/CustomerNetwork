@@ -243,8 +243,9 @@
                 <div class="col-lg-3">
                     <p>Status:</p>
                     <select class="form-control input-sm">
-                        <option>${task.getStatus().getStatusName()}</option>
-
+                        <c:forEach items="${statusList}" var="taskStatus">
+                            <option>${taskStatus.getStatusName()}</option>
+                        </c:forEach>
                     </select>
                 </div>
             </div>

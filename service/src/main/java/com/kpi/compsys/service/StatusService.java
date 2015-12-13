@@ -7,8 +7,8 @@ import com.kpi.compsys.model.Status;
  */
 public interface StatusService extends EntityService<Status> {
 
-    Status getTODOStatus();
-    Status getInProgressStatus();
-    Status getTestingStatus();
-    Status getDoneStatus();
+//    Status getTODOStatus();
+//    Status getInProgressStatus();
+//    Status getTestingStatus();
+//    Status getDoneStatus();
 }

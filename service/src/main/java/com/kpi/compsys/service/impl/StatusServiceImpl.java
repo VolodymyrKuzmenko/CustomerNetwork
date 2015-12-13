@@ -2,7 +2,6 @@ package com.kpi.compsys.service.impl;
 
 import com.kpi.compsys.dao.StatusDao;
 import com.kpi.compsys.model.Status;
-import com.kpi.compsys.model.StatusType;
 import com.kpi.compsys.service.StatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,30 +20,35 @@ public class StatusServiceImpl implements StatusService {
     @Autowired
     public StatusServiceImpl(StatusDao statusDao){
         this.statusDao = statusDao;
-        for (StatusType statusType : StatusType.values()){
-            statusDao.saveOrUpdateStatus(statusType);
+
+//        for (TaskStatus taskStatus : TaskStatus.values()){
+//            statusDao.saveOrUpdateStatus(taskStatus.asStatus());
+//        }
+        for (Status status : Status.values()){
+            statusDao.saveOrUpdateStatus(status.asStatus());
         }
     }
 
-    @Override
-    public Status getTODOStatus() {
-        return statusDao.getById(6);
-    }
+//    @Override
+//    public Status getTODOStatus() {
+//        return null;
+//    }
+//
+//    @Override
+//    public Status getInProgressStatus() {
+//        return null;
+//    }
+//
+//    @Override
+//    public Status getTestingStatus() {
+//        return null;
+//    }
+//
+//    @Override
+//    public Status getDoneStatus() {
+//        return null;
+//    }
 
-    @Override
-    public Status getInProgressStatus() {
-        return statusDao.getById(7);
-    }
-
-    @Override
-    public Status getTestingStatus() {
-        return statusDao.getById(8);
-    }
-
-    @Override
-    public Status getDoneStatus() {
-        return statusDao.getById(9);
-    }
 
     @Override
     public void add(Status entity) {

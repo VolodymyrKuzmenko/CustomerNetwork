@@ -1,12 +1,11 @@
 package com.kpi.compsys.dao;
 
-import com.kpi.compsys.model.Status;
-import com.kpi.compsys.model.StatusType;
+import com.kpi.compsys.model.StatusEntityAdapter;
 
 /**
  * Created by Vova on 11/27/2015.
  */
-public interface StatusDao extends AbstractDao<Status> {
+public interface StatusDao extends AbstractDao<StatusEntityAdapter> {
 
-    void saveOrUpdateStatus(StatusType statusType);
+    void saveOrUpdateStatus(StatusEntityAdapter projectStatus);
 }
