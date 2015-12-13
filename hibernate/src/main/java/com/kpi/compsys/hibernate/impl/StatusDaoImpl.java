@@ -2,6 +2,7 @@ package com.kpi.compsys.hibernate.impl;
 
 import com.kpi.compsys.dao.StatusDao;
 import com.kpi.compsys.model.Status;
+import com.kpi.compsys.model.StatusType;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -29,4 +30,8 @@ public class StatusDaoImpl  extends AbstractDaoImpl<Status> implements StatusDao
         return list;
     }
 
+    @Override
+    public void saveOrUpdateStatus(StatusType statusType) {
+        util.getSesssion().saveOrUpdate(statusType.asStatus());
+    }
 }

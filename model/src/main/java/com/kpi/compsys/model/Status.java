@@ -8,8 +8,17 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name="Status")
-public class Status  implements Serializable {
+public class Status  {
     private Integer statusId;
+
+    public Status(Integer statusId, String statusName, String type) {
+        this.statusId = statusId;
+        this.statusName = statusName;
+        this.type = type;
+    }
+
+
+    public Status (){}
 
     @Id
     @GeneratedValue
