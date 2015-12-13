@@ -244,7 +244,10 @@
                     <p>Status:</p>
                     <select class="form-control input-sm">
                         <c:forEach items="${statusList}" var="taskStatus">
-                            <option>${taskStatus.getStatusName()}</option>
+                            <option
+                                    value="${taskStatus.getId()}"
+                                    <c:if test="${taskStatus == task.getStatus()}"> selected
+                                    </c:if> >${taskStatus.getStatusName()}</option>
                         </c:forEach>
                     </select>
                 </div>
