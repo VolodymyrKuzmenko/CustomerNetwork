@@ -21,34 +21,13 @@ public class StatusServiceImpl implements StatusService {
     public StatusServiceImpl(StatusDao statusDao){
         this.statusDao = statusDao;
 
-//        for (TaskStatus taskStatus : TaskStatus.values()){
-//            statusDao.saveOrUpdateStatus(taskStatus.asStatus());
-//        }
+        Status.sortByFunction();
         for (Status status : Status.values()){
             statusDao.saveOrUpdateStatus(status.asStatus());
         }
+
+
     }
-
-//    @Override
-//    public Status getTODOStatus() {
-//        return null;
-//    }
-//
-//    @Override
-//    public Status getInProgressStatus() {
-//        return null;
-//    }
-//
-//    @Override
-//    public Status getTestingStatus() {
-//        return null;
-//    }
-//
-//    @Override
-//    public Status getDoneStatus() {
-//        return null;
-//    }
-
 
     @Override
     public void add(Status entity) {

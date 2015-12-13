@@ -41,9 +41,8 @@ public class TaskController {
         ModelAndView taskModeAndView = new ModelAndView("task-view");
         Task task = taskService.getById(taskId);
         taskModeAndView.addObject("task", task);
-        taskModeAndView.addObject("statusList", Status.values());
-        logger.info(task.getStatus().getStatusName());
-        logger.info(Status.TASK_DONE.getStatusName());
+        taskModeAndView.addObject("statusList", Status.getTaskStatuses());
+
         return taskModeAndView;
 
     }
