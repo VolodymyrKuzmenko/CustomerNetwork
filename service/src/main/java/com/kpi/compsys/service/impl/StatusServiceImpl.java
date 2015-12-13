@@ -14,27 +14,19 @@ import java.util.List;
 @Service
 public class StatusServiceImpl implements StatusService {
 
-    @Autowired
+
     private StatusDao statusDao;
 
-    @Override
-    public Status getTODOStatus() {
-        return statusDao.getById(6);
-    }
+    @Autowired
+    public StatusServiceImpl(StatusDao statusDao){
+        this.statusDao = statusDao;
 
-    @Override
-    public Status getInProgressStatus() {
-        return statusDao.getById(7);
-    }
+        Status.sortByFunction();
+        for (Status status : Status.values()){
+            statusDao.saveOrUpdateStatus(status.asStatus());
+        }
 
-    @Override
-    public Status getTestingStatus() {
-        return statusDao.getById(8);
-    }
 
-    @Override
-    public Status getDoneStatus() {
-        return statusDao.getById(9);
     }
 
     @Override

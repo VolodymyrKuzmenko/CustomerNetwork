@@ -1,8 +1,5 @@
 package com.kpi.compsys.model;
 
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -47,8 +44,10 @@ public class Project implements Serializable {
         this.name = name;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="status")
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name="status")
+    @Enumerated(EnumType.ORDINAL)
+    //@Column(name = "status")
     public Status getStatus() {
         return status;
     }

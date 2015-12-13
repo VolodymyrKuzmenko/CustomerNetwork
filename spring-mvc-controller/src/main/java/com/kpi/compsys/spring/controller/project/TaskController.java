@@ -10,7 +10,6 @@ import com.kpi.compsys.service.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,7 +23,7 @@ import java.util.Date;
 @Controller
 @RequestMapping
 public class TaskController {
-
+    private static final Logger logger = Logger.getLogger(TaskController.class);
     @Autowired
     private TaskService taskService;
 
@@ -38,9 +37,12 @@ public class TaskController {
 
     @RequestMapping(value = "/task")
     public ModelAndView getTaskById(@RequestParam("taskId") Integer taskId) {
+
         ModelAndView taskModeAndView = new ModelAndView("task-view");
         Task task = taskService.getById(taskId);
         taskModeAndView.addObject("task", task);
+        taskModeAndView.addObject("statusList", Status.getTaskStatuses());
+
         return taskModeAndView;
 
     }
@@ -68,7 +70,7 @@ public class TaskController {
         Project project = projectService.getById(projectId);
         task.setProject(project);
         task.setResponsible(userService.getById(responsibleId));
-        task.setStatus(statusService.getTODOStatus());
+        task.setStatus(Status.TASK_TODO);
         project.getTasks().add(task);
         taskService.add(task);
         return "redirect:/project?projectID="+projectId;

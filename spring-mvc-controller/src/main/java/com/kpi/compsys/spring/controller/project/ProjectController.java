@@ -1,14 +1,10 @@
 package com.kpi.compsys.spring.controller.project;
 
 import com.kpi.compsys.model.Project;
-import com.kpi.compsys.model.Task;
-import com.kpi.compsys.model.User;
+import com.kpi.compsys.model.Status;
 import com.kpi.compsys.service.*;
-import com.sun.javafx.sg.prism.NGShape;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -80,7 +76,7 @@ public class ProjectController {
         project.setDateCreated(new Date(System.currentTimeMillis()));
         project.setDateUpdated(project.getDateCreated());
         project.setResponsible(userService.getById(responsibleId));
-        project.setStatus(statusService.getTODOStatus());
+        project.setStatus(Status.PROJECT_TODO);
         projectService.add(project);
         return "redirect:/projects";
     }
