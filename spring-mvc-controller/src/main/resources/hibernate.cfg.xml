@@ -23,7 +23,7 @@
         <mapping class="com.kpi.compsys.model.File"/>
         <mapping class="com.kpi.compsys.model.Project"/>
         <mapping class="com.kpi.compsys.model.SessionHistory"/>
-        <mapping class="com.kpi.compsys.model.Status"/>
+        <mapping class="com.kpi.compsys.model.StatusEntityAdapter"/>
         <mapping class="com.kpi.compsys.model.Task"/>
         <mapping class="com.kpi.compsys.model.User"/>
         <mapping class="com.kpi.compsys.model.UserInfo"/>

@@ -21,8 +21,9 @@ public class Task implements Serializable {
     private Project project;
     private List<Comment> comments = new LinkedList<>();
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "status")
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "status")
+    @Enumerated(EnumType.ORDINAL)
     public Status getStatus() {
         return status;
     }
