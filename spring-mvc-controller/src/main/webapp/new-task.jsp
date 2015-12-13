@@ -252,8 +252,8 @@
                             <label>Tags:</label>
                             <input class="form-control" placeholder="Some tegs">
                         </div>
-                        <button type="submit" class="btn btn-default">Save</button>
-                        <button type="reset" class="btn btn-default right">Cancel</button>
+                        <button type="submit" class="btn btn-success">Save</button>
+                        <button type="reset" class="btn btn-danger right">Cancel</button>
                     </form>
                 </div>
                 <!-- /.row -->
