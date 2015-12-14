@@ -223,27 +223,34 @@
             </div>
 
             <div class="row">
-                    <div class="col-lg-3">
-                        <p class="inline">Name:<i data-target="task_name" class="update_data fa fa-pencil-square-o"></i></p>
-                        <input class="form-control" id="task_name" value="${task.getName()}" disabled="true"></input>
-                    </div>
-                    <div class="col-lg-3">
+                <div class="col-lg-4 pull-right">
+                    <p class="inline">Last update:</p>
+                    <span id="task_update">${task.getDateUpdated()}</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6 pull-left">
+                    <p class="inline">Name:<i data-target="task_name" class="update_data fa fa-pencil-square-o"></i></p>
+                    <input class="form-control" id="task_name" value="${task.getName()}" disabled="true"></input>
+                </div>
+            </div>
+
+            <div class="row">
+                    <div class="col-lg-4">
                         <p class="inline">Status:<i data-target="task_stat" class="update_data fa fa-pencil-square-o"></i></p>
                         <select id="task_stat" class="form-control" disabled="true">
                                     <option>${task.getStatus().getStatusName()}</option>
                         </select>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-5">
                         <p class="inline">Responsible:<i data-target="task_respon" class="update_data fa fa-pencil-square-o"></i></p>
                         <select id="task_respon" class="form-control" disabled="true">
                                     <option>${task.getResponsible().getUserInfo().getName()}
                             ${task.getResponsible().getUserInfo().getSurname()}</option>
                         </select>
                     </div>
-                    <div class="col-lg-2 pull-right">
-                        <p class="inline">Last update:</p>
-                        <span id="task_update">12/4/2015</span>
-                    </div>
+
                 </div>
 
             <!-- Description start

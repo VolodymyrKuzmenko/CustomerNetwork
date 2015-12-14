@@ -226,11 +226,21 @@
             </div>
 
             <div class="row">
-                    <div class="col-lg-3">
-                        <p class="inline">Name:<i data-target="proj_name" class="update_data fa fa-pencil-square-o"></i></p>
-                        <input class="form-control" id="proj_name" value="${project.getName()}" disabled="true"></input>
-                    </div>
-                    <div class="col-lg-3">
+                <div class="col-lg-4 pull-right">
+                    <p class="inline">Last update:</p>
+                    <span id="proj_update">${project.getDateUpdated()}</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6 pull-left">
+                    <p class="inline">Name:<i data-target="proj_name" class="update_data fa fa-pencil-square-o"></i></p>
+                    <input class="form-control" id="proj_name" value="${project.getName()}" disabled="true"></input>
+                </div>
+            </div>
+
+            <div class="row">
+                    <div class="col-lg-4">
                         <p class="inline">Status:<i data-target="proj_stat" class="update_data fa fa-pencil-square-o"></i></p>
                         <select id="proj_stat" class="form-control" disabled="true">
                                     <option>
@@ -238,7 +248,7 @@
                                     </option>
                         </select>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-5">
                         <p class="inline">Responsible:<i data-target="proj_respon" class="update_data fa fa-pencil-square-o"></i></p>
                         <select id="proj_respon" class="form-control" disabled="true">
                                     <option>
@@ -246,10 +256,6 @@
                                         ${project.getResponsible().getUserInfo().getSurname()}
                                     </option>
                         </select>
-                    </div>
-                    <div class="col-lg-2 pull-right">
-                        <p class="inline">Last update:</p>
-                        <span id="proj_update">${project.getDateUpdated()}</span>
                     </div>
                 </div>
 
