@@ -228,29 +228,28 @@
             <div class="row">
                     <div class="col-lg-3">
                         <p class="inline">Name:<i data-target="proj_name" class="update_data fa fa-pencil-square-o"></i></p>
-                        <input class="form-control" id="proj_name" value="Projectname" disabled="true"></input>
+                        <input class="form-control" id="proj_name" value="${project.getName()}" disabled="true"></input>
                     </div>
                     <div class="col-lg-3">
                         <p class="inline">Status:<i data-target="proj_stat" class="update_data fa fa-pencil-square-o"></i></p>
                         <select id="proj_stat" class="form-control" disabled="true">
-                                    <option>TODO</option>
-                                    <option>In progres</option>
-                                    <option>Testing</option>
-                                    <option>Done</option>
+                                    <option>
+                                        ${project.getStatus().getStatusName()}
+                                    </option>
                         </select>
                     </div>
                     <div class="col-lg-3">
                         <p class="inline">Responsible:<i data-target="proj_respon" class="update_data fa fa-pencil-square-o"></i></p>
                         <select id="proj_respon" class="form-control" disabled="true">
-                                    <option>User1</option>
-                                    <option>User2</option>
-                                    <option>User3</option>
-                                    <option>User4</option>
+                                    <option>
+                                        ${project.getResponsible().getUserInfo().getName()}
+                                        ${project.getResponsible().getUserInfo().getSurname()}
+                                    </option>
                         </select>
                     </div>
                     <div class="col-lg-2 pull-right">
                         <p class="inline">Last update:</p>
-                        <span id="proj_update">12/4/2015</span>
+                        <span id="proj_update">${project.getDateUpdated()}</span>
                     </div>
                 </div>
 
