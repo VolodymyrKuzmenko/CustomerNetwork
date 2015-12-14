@@ -43,12 +43,12 @@ p > i.fa {
 	margin-right: 0;
 }
 
-.edit_ico {
+.update_data {
 	padding: 0 20px;
 	opacity: 0.5;
 }
 
-.edit_ico:hover {
+.update_data:hover {
 	opacity: 1;
 	cursor: pointer;
 }
@@ -89,22 +89,30 @@ p.comm_text {
 	margin-bottom: 20px;
 }
 
-#proj_stat, #proj_name, #respon, 
+#proj_description, #task_description {
+	background-color: #FCFCFC;
+	/*border: none;*/
+	cursor: default;
+	outline: none;
+}
+
+#proj_stat, #proj_name, #proj_respon, 
 #task_stat, #task_name, #task_respon{
 	width: 120px;
 	display: inline-block;
+	background-color: #FCFCFC;
+	box-shadow: none;
 }
 
-#respon{
+#proj_respon, #task_respon{
 	width: 80px;
 }
 
-#proj_stat:disabled, #proj_name:disabled, #respon:disabled, 
-#task_stat:disabled, #task_name:disabled, #task_respon:disabled {
+#proj_stat:disabled, #proj_name:disabled, #proj_respon:disabled, #proj_description:disabled, 
+#task_stat:disabled, #task_name:disabled, #task_respon:disabled, #task_description:disabled {
 	
 	background-color: #fff;
 	border: none;
 	cursor: default;
-	box-shadow: none;
 	-webkit-appearance: none;
 }

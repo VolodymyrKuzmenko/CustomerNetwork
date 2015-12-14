@@ -1,34 +1,45 @@
-/**
- * Created by Vova on 12/10/2015.
- */
-
 autosize(document.querySelectorAll('textarea'));
+$(document).ready(function(){
+    $('.update_data').on('click',function(){
+        var input = $('#'+ $(this).attr('data-target'));
+        input.attr('disabled',false).focus().focusEnd();
+        $('#update_button').css('display','inline-block').on('click',function(){
+            input.attr('disabled',true);
+            $('#update_button').fadeOut('fast');
+            $('#cancel_button').fadeOut('fast');
+        });
+        $('#cancel_button').css('display','inline-block').on('click',function(){
+            $('#update_button').fadeOut('fast');
+            $('#cancel_button').fadeOut('fast');
+        });
+    });
 
-
-function enableTextarea(element){
-    var class_name = element.className.split(' ')[0];
-    current_input = document.getElementById(class_name);
-    current_input.disabled=false;
-    current_input.focus();
-    if (class_name == 'descripton'){
-    current_input.setSelectionRange(current_input.value.length,current_input.value.length);
+    $.fn.setCursorPosition = function(position){
+    if(this.length == 0) return this;
+    return $(this).setSelection(position, position);
     }
-    update_button = document.getElementById('update_button');
-    update_button.style.display = (update_button.style.display == 'inline-block') ? '' : 'inline-block'
-    cancel_button = document.getElementById('cancel_button');
-    cancel_button.style.display = (cancel_button.style.display == 'inline-block') ? '' : 'inline-block'
 
-}
+    $.fn.setSelection = function(selectionStart, selectionEnd) {
+    if(this.length == 0) return this;
+    input = this[0];
 
-function disableTextarea(element){
-    current_input = document.getElementById('proj_name');
-    current_input.disabled=true;
-    current_input = document.getElementById('proj_stat');
-    current_input.disabled=true;
-    current_input = document.getElementById('description');
-    current_input.disabled=true;
-    update_button = document.getElementById('update_button');
-    update_button.style.display = 'none';
-    cancel_button = document.getElementById('cancel_button');
-    cancel_button.style.display = 'none';
-}
+    if (input.createTextRange) {
+        var range = input.createTextRange();
+        range.collapse(true);
+        range.moveEnd('character', selectionEnd);
+        range.moveStart('character', selectionStart);
+        range.select();
+    } else if (input.setSelectionRange) {
+        input.focus();
+        input.setSelectionRange(selectionStart, selectionEnd);
+    }
+
+    return this;
+    }
+
+    $.fn.focusEnd = function(){
+    this.setCursorPosition(this.val().length);
+            return this;
+    }
+
+});

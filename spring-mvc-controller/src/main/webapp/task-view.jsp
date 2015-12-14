@@ -224,17 +224,17 @@
 
             <div class="row">
                     <div class="col-lg-3">
-                        <p class="inline">Name:<i class="task_name fa fa-pencil-square-o edit_ico" onclick="enableTextarea(this)"></i></p>
+                        <p class="inline">Name:<i data-target="task_name" class="update_data fa fa-pencil-square-o"></i></p>
                         <input class="form-control" id="task_name" value="${task.getName()}" disabled="true"></input>
                     </div>
                     <div class="col-lg-3">
-                        <p class="inline">Status:<i class="task_stat fa fa-pencil-square-o edit_ico" onclick="enableTextarea(this)"></i></p>
+                        <p class="inline">Status:<i data-target="task_stat" class="update_data fa fa-pencil-square-o"></i></p>
                         <select id="task_stat" class="form-control" disabled="true">
                                     <option>${task.getStatus().getStatusName()}</option>
                         </select>
                     </div>
                     <div class="col-lg-3">
-                        <p class="inline">Responsible:<i class="task_respon fa fa-pencil-square-o edit_ico" onclick="enableTextarea(this)"></i></p>
+                        <p class="inline">Responsible:<i data-target="task_respon" class="update_data fa fa-pencil-square-o"></i></p>
                         <select id="task_respon" class="form-control" disabled="true">
                                     <option>${task.getResponsible().getUserInfo().getName()}
                             ${task.getResponsible().getUserInfo().getSurname()}</option>
@@ -246,22 +246,20 @@
                     </div>
                 </div>
 
-
             <!-- Description start
+                <div class="row">
+                    <div class="col-lg-9">
+                        <h4>Description<i data-target="task_description" class="update_data fa fa-pencil-square-o"></i></h4>
+                            <textarea id="task_description" class="well" disabled="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean lacinia bibendum nulla sed consectetur.</textarea>
+                    </div>
+                </div>
+                Description end -->
             <div class="row">
-                <div class="col-lg-6">
-                    <h4>Description<i class="fa fa-pencil-square-o edit_ico" onclick="enableTextarea(this)"></i></h4>
-                    <textarea id="description" class="well" disabled="true">task.getDescription()</textarea>
-                    <button type="submit" id="cancel_button" class="btn btn-danger edit"
-                            onclick="disableTextarea(this)">Cancel
-                    </button>
-                    <button type="button" id="update_button" class="btn btn-success edit"
-                            onclick="disableTextarea(this)">Update
-                    </button>
-
+                <div class="col-lg-9">
+                    <button type="submit" id="cancel_button" class="btn btn-danger edit">Cancel</button>
+                    <button type="button" id="update_button" class="btn btn-success edit">Update</button>
                 </div>
             </div>
-            <!-- Description end -->
 
             <!-- Comments start-->
             <div class="row">
@@ -303,21 +301,15 @@
 <!-- Bootstrap Core JavaScript -->
 
 <script type="text/javascript" src="<c:url value="resources/js/bootstrap.min.js"/>"></script>
-<!-- Morris Charts JavaScript -->
-
-<script type="text/javascript" src="<c:url value="resources/js/plugins/morris/raphael.min.js"/>"></script>
-
-<script type="text/javascript" src="<c:url value="resources/js/plugins/morris/morris.min.js"/>"></script>
-
-<script type="text/javascript" src="<c:url value="resources/js/plugins/morris/morris-data.js"/>"></script>
-
 
 <!-- Autosize for textarea -->
 <script type="text/javascript" src="<c:url value="resources/js/autosize.min.js"/>"></script>
-
 <script type="text/javascript" src="<c:url value="resources/js/onclick-edit.js"/>"></script>
 
-
+<!-- Morris Charts JavaScript -->
+<script type="text/javascript" src="<c:url value="resources/js/plugins/morris/raphael.min.js"/>"></script>
+<script type="text/javascript" src="<c:url value="resources/js/plugins/morris/morris.min.js"/>"></script>
+<script type="text/javascript" src="<c:url value="resources/js/plugins/morris/morris-data.js"/>"></script>
 
 <!-- Flot Charts JavaScript -->
 <!--[if lte IE 8]>

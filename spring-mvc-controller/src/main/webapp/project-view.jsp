@@ -227,11 +227,11 @@
 
             <div class="row">
                     <div class="col-lg-3">
-                        <p class="inline">Name:<i class="proj_name fa fa-pencil-square-o edit_ico" onclick="enableTextarea(this)"></i></p>
+                        <p class="inline">Name:<i data-target="proj_name" class="update_data fa fa-pencil-square-o"></i></p>
                         <input class="form-control" id="proj_name" value="Projectname" disabled="true"></input>
                     </div>
                     <div class="col-lg-3">
-                        <p class="inline">Status:<i class="proj_stat fa fa-pencil-square-o edit_ico" onclick="enableTextarea(this)"></i></p>
+                        <p class="inline">Status:<i data-target="proj_stat" class="update_data fa fa-pencil-square-o"></i></p>
                         <select id="proj_stat" class="form-control" disabled="true">
                                     <option>TODO</option>
                                     <option>In progres</option>
@@ -240,8 +240,8 @@
                         </select>
                     </div>
                     <div class="col-lg-3">
-                        <p class="inline">Responsible:<i class="respon fa fa-pencil-square-o edit_ico" onclick="enableTextarea(this)"></i></p>
-                        <select id="respon" class="form-control" disabled="true">
+                        <p class="inline">Responsible:<i data-target="proj_respon" class="update_data fa fa-pencil-square-o"></i></p>
+                        <select id="proj_respon" class="form-control" disabled="true">
                                     <option>User1</option>
                                     <option>User2</option>
                                     <option>User3</option>
@@ -257,19 +257,17 @@
             <!-- Description start-->
             <div class="row">
                 <div class="col-lg-9">
-                    <h4>Description<i class="description fa fa-pencil-square-o edit_ico" onclick="enableTextarea(this)"></i></h4>
-                    <textarea id="description" class="well" disabled="true">${project.getDescriprion()}</textarea>
-                    <button type="submit" id="cancel_button" class="btn btn-danger edit"
-                            onclick="disableTextarea(this)">Cancel
-                    </button>
-                    <button type="button" id="update_button" class="btn btn-success edit"
-                            onclick="disableTextarea(this)">Update
-                    </button>
-
+                    <h4>Description<i data-target="proj_description" class="update_data fa fa-pencil-square-o"></i></h4>
+                    <textarea id="proj_description" class="well" disabled="true">${project.getDescriprion()}</textarea>
                 </div>
             </div>
             <!-- Description end -->
-
+            <div class="row">
+                <div class="col-lg-9">
+                    <button type="submit" id="cancel_button" class="btn btn-danger edit">Cancel</button>
+                    <button type="button" id="update_button" class="btn btn-success edit">Update</button>
+                </div>
+            </div>
             <!-- Child projects start -->
             <div class="row">
                 <div class="col-lg-9">
@@ -390,19 +388,17 @@
 <!-- Bootstrap Core JavaScript -->
 
 <script type="text/javascript" src="<c:url value="resources/js/bootstrap.min.js"/>"></script>
-<!-- Morris Charts JavaScript -->
-
-<script type="text/javascript" src="<c:url value="resources/js/plugins/morris/raphael.min.js"/>"></script>
-
-<script type="text/javascript" src="<c:url value="resources/js/plugins/morris/morris.min.js"/>"></script>
-
-<script type="text/javascript" src="<c:url value="resources/js/plugins/morris/morris-data.js"/>"></script>
-
 
 <!-- Autosize for textarea -->
 <script type="text/javascript" src="<c:url value="resources/js/autosize.min.js"/>"></script>
 <script type="text/javascript" src="<c:url value="resources/js/onclick-edit.js"/>"></script>
 
+<!-- Morris Charts JavaScript -->
+<script type="text/javascript" src="<c:url value="resources/js/plugins/morris/raphael.min.js"/>"></script>
+
+<script type="text/javascript" src="<c:url value="resources/js/plugins/morris/morris.min.js"/>"></script>
+
+<script type="text/javascript" src="<c:url value="resources/js/plugins/morris/morris-data.js"/>"></script>
 
 <!-- Flot Charts JavaScript -->
 <!--[if lte IE 8]>
