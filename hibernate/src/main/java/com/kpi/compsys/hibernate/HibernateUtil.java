@@ -5,6 +5,7 @@ package com.kpi.compsys.hibernate;
  */
 
 import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -15,7 +16,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Scope(value = "singleton")
 public class HibernateUtil {
-    private static final Logger logger = Logger.getLogger(HibernateUtil.class);
+    private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger(HibernateUtil.class);
     private static SessionFactory sessionFactory = null;
     private static Session session;
 

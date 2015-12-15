@@ -4,6 +4,7 @@ import com.kpi.compsys.model.SessionHistory;
 import com.kpi.compsys.model.User;
 import com.kpi.compsys.service.SessionHistoryService;
 import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.WebAttributes;
@@ -27,7 +28,7 @@ import java.util.concurrent.TimeUnit;
  */
 @Component
 public class LogoutHandlerImpl implements LogoutHandler {
-    private static final Logger logger = Logger.getLogger(LogoutHandlerImpl.class);
+    private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger(LogoutHandlerImpl.class);
     @Autowired
     private SessionHistoryService sessionHistoryService;
 

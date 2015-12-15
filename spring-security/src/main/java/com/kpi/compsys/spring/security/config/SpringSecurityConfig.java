@@ -69,8 +69,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/resources/**", "/register.jsp", "/register", "/registration" ).permitAll()
                 .anyRequest().authenticated()
                 .and()
-//                .authorizeRequests()
-//                .antMatchers("/project/**", "/task/**","/projects/**","/tasks/**").permitAll().anyRequest().authenticated().and()
             .formLogin()
                 .loginPage("/index.jsp")
                 .loginProcessingUrl("/j_spring_security_check")
