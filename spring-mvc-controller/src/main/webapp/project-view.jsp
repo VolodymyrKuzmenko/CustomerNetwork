@@ -398,21 +398,7 @@
 <script type="text/javascript" src="<c:url value="resources/js/autosize.min.js"/>"></script>
 <script type="text/javascript" src="<c:url value="resources/js/onclick-edit.js"/>"></script>
 
-<!-- Morris Charts JavaScript -->
-<script type="text/javascript" src="<c:url value="resources/js/plugins/morris/raphael.min.js"/>"></script>
 
-<script type="text/javascript" src="<c:url value="resources/js/plugins/morris/morris.min.js"/>"></script>
-
-<script type="text/javascript" src="<c:url value="resources/js/plugins/morris/morris-data.js"/>"></script>
-
-<!-- Flot Charts JavaScript -->
-<!--[if lte IE 8]>
-<script type="text/javascript" src="<c:url value=" resources/js/plugins/flot/excanvas.min.js"/>"></script><![endif]-->
-<script type="text/javascript" src="<c:url value="resources/js/plugins/flot/jquery.flot.js"/>"></script>
-<script type="text/javascript" src="<c:url value="resources/js/plugins/flot/jquery.flot.tooltip.min.js"/>"></script>
-<script type="text/javascript" src="<c:url value="resources/js/plugins/flot/jquery.flot.resize.js"/>"></script>
-<script type="text/javascript" src="<c:url value="resources/js/plugins/flot/jquery.flot.pie.js"/>"></script>
-<script type="text/javascript" src="<c:url value="resources/js/plugins/flot/flot-data.js"/>"></script>
 
 
 </body>

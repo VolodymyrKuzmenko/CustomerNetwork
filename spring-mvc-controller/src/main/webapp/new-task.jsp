@@ -274,20 +274,7 @@
     <!-- Bootstrap Core JavaScript -->
 
     <script type="text/javascript" src="<c:url value="resources/js/bootstrap.min.js"/>"></script>
-    <!-- Morris Charts JavaScript -->
 
-    <script type="text/javascript" src="<c:url value="resources/js/plugins/morris/raphael.min.js"/>"></script>
-
-    <script type="text/javascript" src="<c:url value="resources/js/plugins/morris/morris.min.js"/>"></script>
-
-    <script type="text/javascript" src="<c:url value="resources/js/plugins/morris/morris-data.js"/>"></script>
-    <!-- Flot Charts JavaScript -->
-
-    <script type="text/javascript" src="<c:url value="resources/js/plugins/flot/jquery.flot.js"/>"></script>
-    <script type="text/javascript" src="<c:url value="resources/js/plugins/flot/jquery.flot.tooltip.min.js"/>"></script>
-    <script type="text/javascript" src="<c:url value="resources/js/plugins/flot/jquery.flot.resize.js"/>"></script>
-    <script type="text/javascript" src="<c:url value="resources/js/plugins/flot/jquery.flot.pie.js"/>"></script>
-    <script type="text/javascript" src="<c:url value="resources/js/plugins/flot/flot-data.js"/>"></script>
 
 </body>
 

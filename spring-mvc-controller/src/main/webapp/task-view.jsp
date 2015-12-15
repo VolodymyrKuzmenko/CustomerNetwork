@@ -239,21 +239,7 @@
                     <input class="form-control" id="task_name" value="${task.getName()}" disabled="true"></input>
                 </div>
             </div>
-            <!--
-<<<<<<< HEAD
-                <div class="col-lg-3">
-                    <p>Status:</p>
-                    <select class="form-control input-sm">
-                        <c:forEach items="${statusList}" var="taskStatus">
-                            <option
-                                    value="${taskStatus.getId()}"
-                                    <c:if test="${taskStatus == task.getStatus()}"> selected
-                                    </c:if> >${taskStatus.getStatusName()}</option>
-                        </c:forEach>
-                    </select>
-=======
-            </div>
--->
+
             <div class="row">
                 <div class="col-lg-4">
                     <p class="inline">Status:<i data-target="task_stat"
@@ -340,20 +326,7 @@
 <script type="text/javascript" src="<c:url value="resources/js/autosize.min.js"/>"></script>
 <script type="text/javascript" src="<c:url value="resources/js/onclick-edit.js"/>"></script>
 
-<!-- Morris Charts JavaScript -->
-<script type="text/javascript" src="<c:url value="resources/js/plugins/morris/raphael.min.js"/>"></script>
-<script type="text/javascript" src="<c:url value="resources/js/plugins/morris/morris.min.js"/>"></script>
-<script type="text/javascript" src="<c:url value="resources/js/plugins/morris/morris-data.js"/>"></script>
 
-<!-- Flot Charts JavaScript -->
-<!--[if lte IE 8]>
-<script type="text/javascript" src="<c:url value=" resources/js/plugins/flot/excanvas.min.js"/>"></script>
-<![endif]-->
-<script type="text/javascript" src="<c:url value="resources/js/plugins/flot/jquery.flot.js"/>"></script>
-<script type="text/javascript" src="<c:url value="resources/js/plugins/flot/jquery.flot.tooltip.min.js"/>"></script>
-<script type="text/javascript" src="<c:url value="resources/js/plugins/flot/jquery.flot.resize.js"/>"></script>
-<script type="text/javascript" src="<c:url value="resources/js/plugins/flot/jquery.flot.pie.js"/>"></script>
-<script type="text/javascript" src="<c:url value="resources/js/plugins/flot/flot-data.js"/>"></script>
 
 
 </body>
