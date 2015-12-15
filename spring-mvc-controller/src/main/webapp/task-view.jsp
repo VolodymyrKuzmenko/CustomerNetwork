@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -33,8 +32,13 @@
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script type="text/javascript" src="<c:url value="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"/>"></script>
-    <script type="text/javascript" src="<c:url value="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"/>"></script>
+    <script type="text/javascript" src="<c:url value="
+            https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"/>"></script>
+    <
+    script
+    type = "text/javascript"
+    src = "<c:url value="
+    https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"/>"></script>
     <![endif]-->
 
 </head>
@@ -223,23 +227,20 @@
             </div>
 
             <div class="row">
-                <div class="col-lg-3">
-                    <p>Name: <span id="proj_name">${task.getName()}</span></p>
-                </div>
-                <div class="col-lg-3">
-                    <p>Last update: <span id="proj_update">${task.getDateUpdated()}</span></p>
+                <div class="col-lg-4 pull-right">
+                    <p class="inline">Last update:</p>
+                    <span id="task_update">${task.getDateUpdated()}</span>
                 </div>
             </div>
+
             <div class="row">
-                <div class="col-lg-3">
-                    <p>Responsible:</p>
-                    <select class="form-control input-sm">
-                        <option>
-                            ${task.getResponsible().getUserInfo().getName()}
-                            ${task.getResponsible().getUserInfo().getSurname()}
-                        </option>
-                    </select>
+                <div class="col-lg-6 pull-left">
+                    <p class="inline">Name:<i data-target="task_name" class="update_data fa fa-pencil-square-o"></i></p>
+                    <input class="form-control" id="task_name" value="${task.getName()}" disabled="true"></input>
                 </div>
+            </div>
+            <!--
+<<<<<<< HEAD
                 <div class="col-lg-3">
                     <p>Status:</p>
                     <select class="form-control input-sm">
@@ -250,27 +251,53 @@
                                     </c:if> >${taskStatus.getStatusName()}</option>
                         </c:forEach>
                     </select>
-                </div>
+=======
             </div>
-            <!-- Description start
+-->
             <div class="row">
-                <div class="col-lg-6">
-                    <h4>Description<i class="fa fa-pencil-square-o edit_ico" onclick="enableTextarea(this)"></i></h4>
-                    <textarea id="description" class="well" disabled="true">task.getDescription()</textarea>
-                    <button type="submit" id="cancel_button" class="btn btn-danger edit"
-                            onclick="disableTextarea(this)">Cancel
-                    </button>
-                    <button type="button" id="update_button" class="btn btn-success edit"
-                            onclick="disableTextarea(this)">Update
-                    </button>
+                <div class="col-lg-4">
+                    <p class="inline">Status:<i data-target="task_stat"
+                                                class="update_data fa fa-pencil-square-o"></i></p>
+                    <select id="task_stat" class="form-control" disabled="true">
+                        <c:forEach items="${statusList}" var="taskStatus">
+                            <option
+                                    value="${taskStatus.getId()}"
+                                    <c:if test="${taskStatus == task.getStatus()}"> selected
+                                    </c:if> >${taskStatus.getStatusName()}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+                <div class="col-lg-5">
+                    <p class="inline">Responsible:<i data-target="task_respon"
+                                                     class="update_data fa fa-pencil-square-o"></i></p>
+                    <select id="task_respon" class="form-control" disabled="true">
+                        <option>${task.getResponsible().getUserInfo().getName()}
+                            ${task.getResponsible().getUserInfo().getSurname()}</option>
+                    </select>
+                </div>
 
+
+                <!-- >>>>>>> edit-project-and-task -->
+            </div>
+
+            <!-- Description start
+                <div class="row">
+                    <div class="col-lg-9">
+                        <h4>Description<i data-target="task_description" class="update_data fa fa-pencil-square-o"></i></h4>
+                            <textarea id="task_description" class="well" disabled="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean lacinia bibendum nulla sed consectetur.</textarea>
+                    </div>
+                </div>
+                Description end -->
+            <div class="row">
+                <div class="col-lg-9">
+                    <button type="submit" id="cancel_button" class="btn btn-danger edit">Cancel</button>
+                    <button type="button" id="update_button" class="btn btn-success edit">Update</button>
                 </div>
             </div>
-            <!-- Description end -->
 
             <!-- Comments start-->
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-9">
                     <h4>Comments</h4>
                     <c:if test="${!task.getComments().isEmpty()}">
                         <div class="comments">
@@ -308,31 +335,25 @@
 <!-- Bootstrap Core JavaScript -->
 
 <script type="text/javascript" src="<c:url value="resources/js/bootstrap.min.js"/>"></script>
-<!-- Morris Charts JavaScript -->
-
-<script type="text/javascript" src="<c:url value="resources/js/plugins/morris/raphael.min.js"/>"></script>
-
-<script type="text/javascript" src="<c:url value="resources/js/plugins/morris/morris.min.js"/>"></script>
-
-<script type="text/javascript" src="<c:url value="resources/js/plugins/morris/morris-data.js"/>"></script>
-
 
 <!-- Autosize for textarea -->
 <script type="text/javascript" src="<c:url value="resources/js/autosize.min.js"/>"></script>
+<script type="text/javascript" src="<c:url value="resources/js/onclick-edit.js"/>"></script>
 
-<script type="text/javascript" src="<c:url value="resources/js/descriptionFunc.js"/>"></script>
-
-
+<!-- Morris Charts JavaScript -->
+<script type="text/javascript" src="<c:url value="resources/js/plugins/morris/raphael.min.js"/>"></script>
+<script type="text/javascript" src="<c:url value="resources/js/plugins/morris/morris.min.js"/>"></script>
+<script type="text/javascript" src="<c:url value="resources/js/plugins/morris/morris-data.js"/>"></script>
 
 <!-- Flot Charts JavaScript -->
 <!--[if lte IE 8]>
-<script type="text/javascript" src="<c:url value="resources/js/plugins/flot/excanvas.min.js"/>"></script><![endif]-->
+<script type="text/javascript" src="<c:url value=" resources/js/plugins/flot/excanvas.min.js"/>"></script>
+<![endif]-->
 <script type="text/javascript" src="<c:url value="resources/js/plugins/flot/jquery.flot.js"/>"></script>
 <script type="text/javascript" src="<c:url value="resources/js/plugins/flot/jquery.flot.tooltip.min.js"/>"></script>
 <script type="text/javascript" src="<c:url value="resources/js/plugins/flot/jquery.flot.resize.js"/>"></script>
 <script type="text/javascript" src="<c:url value="resources/js/plugins/flot/jquery.flot.pie.js"/>"></script>
 <script type="text/javascript" src="<c:url value="resources/js/plugins/flot/flot-data.js"/>"></script>
-
 
 
 </body>

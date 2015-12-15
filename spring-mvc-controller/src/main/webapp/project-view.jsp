@@ -226,36 +226,56 @@
             </div>
 
             <div class="row">
-                <div class="col-lg-2">
-                    <p>Name: <span id="proj_name">${project.getName()}</span></p>
-                </div>
-                <div class="col-lg-2">
-                    <p>Status: <span id="proj_stat">${project.getStatus().getStatusName()}</span></p>
-                </div>
-                <div class="col-lg-2">
-                    <p>Last update: <span id="proj_update">${project.getDateUpdated()}</span></p>
+                <div class="col-lg-4 pull-right">
+                    <p class="inline">Last update:</p>
+                    <span id="proj_update">${project.getDateUpdated()}</span>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-lg-6 pull-left">
+                    <p class="inline">Name:<i data-target="proj_name" class="update_data fa fa-pencil-square-o"></i></p>
+                    <input class="form-control" id="proj_name" value="${project.getName()}" disabled="true"></input>
+                </div>
+            </div>
+
+            <div class="row">
+                    <div class="col-lg-4">
+                        <p class="inline">Status:<i data-target="proj_stat" class="update_data fa fa-pencil-square-o"></i></p>
+                        <select id="proj_stat" class="form-control" disabled="true">
+                                    <option>
+                                        ${project.getStatus().getStatusName()}
+                                    </option>
+                        </select>
+                    </div>
+                    <div class="col-lg-5">
+                        <p class="inline">Responsible:<i data-target="proj_respon" class="update_data fa fa-pencil-square-o"></i></p>
+                        <select id="proj_respon" class="form-control" disabled="true">
+                                    <option>
+                                        ${project.getResponsible().getUserInfo().getName()}
+                                        ${project.getResponsible().getUserInfo().getSurname()}
+                                    </option>
+                        </select>
+                    </div>
+                </div>
 
             <!-- Description start-->
             <div class="row">
-                <div class="col-lg-6">
-                    <h4>Description<i class="fa fa-pencil-square-o edit_ico" onclick="enableTextarea(this)"></i></h4>
-                    <textarea id="description" class="well" disabled="true">${project.getDescriprion()}</textarea>
-                    <button type="submit" id="cancel_button" class="btn btn-danger edit"
-                            onclick="disableTextarea(this)">Cancel
-                    </button>
-                    <button type="button" id="update_button" class="btn btn-success edit"
-                            onclick="disableTextarea(this)">Update
-                    </button>
-
+                <div class="col-lg-9">
+                    <h4>Description<i data-target="proj_description" class="update_data fa fa-pencil-square-o"></i></h4>
+                    <textarea id="proj_description" class="well" disabled="true">${project.getDescriprion()}</textarea>
                 </div>
             </div>
             <!-- Description end -->
-
+            <div class="row">
+                <div class="col-lg-9">
+                    <button type="submit" id="cancel_button" class="btn btn-danger edit">Cancel</button>
+                    <button type="button" id="update_button" class="btn btn-success edit">Update</button>
+                </div>
+            </div>
             <!-- Child projects start -->
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-9">
                     <h4>Child projects</h4>
                     <c:if test="${!childProjectsList.isEmpty()}">
                     <div class="table-responsive">
@@ -295,7 +315,7 @@
             <!-- Tasks start -->
 
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-9">
                     <h4>Tasks</h4>
                     <c:if test="${!tasksList.isEmpty()}">
                     <div class="table-responsive">
@@ -335,7 +355,7 @@
 
             <!-- Comments start-->
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-9">
                     <h4>Comments</h4>
                     <c:if test="${!project.getComments().isEmpty()}">
                     <div class="comments">
@@ -373,19 +393,17 @@
 <!-- Bootstrap Core JavaScript -->
 
 <script type="text/javascript" src="<c:url value="resources/js/bootstrap.min.js"/>"></script>
-<!-- Morris Charts JavaScript -->
 
+<!-- Autosize for textarea -->
+<script type="text/javascript" src="<c:url value="resources/js/autosize.min.js"/>"></script>
+<script type="text/javascript" src="<c:url value="resources/js/onclick-edit.js"/>"></script>
+
+<!-- Morris Charts JavaScript -->
 <script type="text/javascript" src="<c:url value="resources/js/plugins/morris/raphael.min.js"/>"></script>
 
 <script type="text/javascript" src="<c:url value="resources/js/plugins/morris/morris.min.js"/>"></script>
 
 <script type="text/javascript" src="<c:url value="resources/js/plugins/morris/morris-data.js"/>"></script>
-
-
-<!-- Autosize for textarea -->
-<script type="text/javascript" src="<c:url value="resources/js/autosize.min.js"/>"></script>
-<script type="text/javascript" src="<c:url value="resources/js/descriptionFunc.js"/>"></script>
-
 
 <!-- Flot Charts JavaScript -->
 <!--[if lte IE 8]>
