@@ -1,2 +1,2 @@
 language: java
-instal: mvn deploy -DskipTests=true
+instal: mvn instal -DskipTests=true
