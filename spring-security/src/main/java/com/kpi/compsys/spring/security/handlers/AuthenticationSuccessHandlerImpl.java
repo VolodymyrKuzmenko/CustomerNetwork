@@ -6,6 +6,7 @@ import com.kpi.compsys.service.SessionHistoryService;
 import com.kpi.compsys.spring.security.userdetails.SecurityUser;
 import eu.bitwalker.useragentutils.UserAgent;
 import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -22,7 +23,7 @@ import java.util.Date;
  */
 @Component
 public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHandler {
-    private static final Logger logger = Logger.getLogger(AuthenticationSuccessHandlerImpl.class);
+    private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger(AuthenticationSuccessHandlerImpl.class);
     @Autowired
     private SessionHistoryService sessionHistoryService;
 

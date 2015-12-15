@@ -4,6 +4,7 @@ import com.kpi.compsys.model.User;
 import com.kpi.compsys.service.UserRoleService;
 import com.kpi.compsys.service.UserService;
 import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -20,7 +21,7 @@ import java.util.Map;
 @Controller
 @RequestMapping
 public class RegistrationController {
-    private static final Logger logger = Logger.getLogger(RegistrationController.class);
+    private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger(RegistrationController.class);
     @Autowired
     private UserService userService;
 

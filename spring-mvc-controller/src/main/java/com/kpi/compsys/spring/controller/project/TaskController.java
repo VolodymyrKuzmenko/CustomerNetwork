@@ -8,6 +8,7 @@ import com.kpi.compsys.service.StatusService;
 import com.kpi.compsys.service.TaskService;
 import com.kpi.compsys.service.UserService;
 import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +24,7 @@ import java.util.Date;
 @Controller
 @RequestMapping
 public class TaskController {
-    private static final Logger logger = Logger.getLogger(TaskController.class);
+    private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger(TaskController.class);
     @Autowired
     private TaskService taskService;
 

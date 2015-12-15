@@ -5,6 +5,7 @@ import com.kpi.compsys.model.UserRole;
 import com.kpi.compsys.service.UserRoleService;
 import com.kpi.compsys.service.UserService;
 import com.kpi.compsys.spring.security.userdetails.SecurityUser;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.GrantedAuthority;
@@ -23,7 +24,7 @@ import org.apache.log4j.Logger;
  */
 @Service
 public class SecurityUserServiceImpl implements UserDetailsService {
-    private static final Logger logger = Logger.getLogger(SecurityUserServiceImpl.class);
+    private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger(SecurityUserServiceImpl.class);
     @Autowired
     private UserService userService;
 

@@ -1,6 +1,7 @@
 package com.kpi.compsys.spring.security.handlers;
 
 import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.stereotype.Component;
@@ -15,7 +16,7 @@ import java.io.IOException;
  */
 @Component
 public class AuthentificationFailureHandlerImpl implements AuthenticationFailureHandler {
-    private static final Logger logger = Logger.getLogger(AuthentificationFailureHandlerImpl.class);
+    private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger(AuthentificationFailureHandlerImpl.class);
     @Override
     public void onAuthenticationFailure(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
         //TODO set message into index.jsp about failure login/password
