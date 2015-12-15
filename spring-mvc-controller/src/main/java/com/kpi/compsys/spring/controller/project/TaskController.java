@@ -7,7 +7,6 @@ import com.kpi.compsys.service.ProjectService;
 import com.kpi.compsys.service.StatusService;
 import com.kpi.compsys.service.TaskService;
 import com.kpi.compsys.service.UserService;
-import org.apache.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
