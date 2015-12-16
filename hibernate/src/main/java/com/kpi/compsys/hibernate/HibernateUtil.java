@@ -4,7 +4,6 @@ package com.kpi.compsys.hibernate;
  * Created by Vova on 10/12/2015.
  */
 
-import org.apache.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
