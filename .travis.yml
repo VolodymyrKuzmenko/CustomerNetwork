@@ -1,7 +1,15 @@
 language: java
 jdk:
   - oraclejdk8
+  - openjdk8
 script:
-        - mvn clean
+        - mvn pmd:cpd-check
         - mvn test
 instal: mvn install
+
+notifications:
+  email:
+    recipients:
+      - kuzmenko.volodimir@gmail.com
+    on_success: always
+    on_failure: always
