@@ -5,6 +5,7 @@ import com.kpi.compsys.spring.security.config.SpringSecurityConfig;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.web.util.Log4jConfigListener;
 
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
@@ -31,7 +32,9 @@ public class SpringInitializer implements WebApplicationInitializer {
         ctx.register(SpringSecurityConfig.class);
         logger.info("Register Spring Security configuration");
         servletContext.addListener(new ContextLoaderListener(ctx));
+        servletContext.addListener(new Log4jConfigListener());
         ctx.setServletContext(servletContext);
+
         ServletRegistration.Dynamic servlet = servletContext.addServlet(DISPATCHER_SERVLET_NAME, new DispatcherServlet(ctx));
         servlet.addMapping("/");
         servlet.setLoadOnStartup(1);
