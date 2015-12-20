@@ -4,6 +4,7 @@ package com.kpi.compsys.hibernate;
  * Created by Vova on 10/12/2015.
  */
 
+import com.kpi.compsys.dao.exceptions.DatabaseNotResponseException;
 import org.apache.logging.log4j.LogManager;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -18,13 +19,18 @@ public class HibernateUtil {
     private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger(HibernateUtil.class);
     private static SessionFactory sessionFactory = null;
     private static Session session;
+    private static boolean dataBaseNotresponse = false;
+
+
+    private ExponentialTimer backOffTimer = new ExponentialTimer();
+
 
     public HibernateUtil() {
         session = buildSessionFactory().openSession();
         logger.info("Init session has open.");
     }
 
-    private static SessionFactory buildSessionFactory() {
+    private SessionFactory buildSessionFactory() {
         SessionFactory sessionFactory = null;
         try {
             Configuration configuration = new Configuration()
@@ -36,30 +42,50 @@ public class HibernateUtil {
 
         } catch (Exception e) {
             logger.error("Initial SessionFactory creation failed.\n" + e.getMessage());
+            backOffTimer.calcNextTime();
+            backOffTimer.throwDatabaseNotResponceException();
         }
         return sessionFactory;
     }
 
-    public static SessionFactory getSessionFactory() {
+    public SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             sessionFactory = buildSessionFactory();
         }
         return sessionFactory;
     }
 
-    public static void shutdownSessionFactory() {
+    public void shutdownSessionFactory() {
         getSessionFactory().close();
         logger.info("Session factory has closed.");
     }
 
     public Session getSesssion() {
+
+        if (dataBaseNotresponse) {
+
+            backOffTimer.checkTimeBarrier();
+            //if OK, try connect
+
+            dataBaseNotresponse = false;
+
+            session = getSessionFactory().openSession();
+
+        }
+
         if (session == null) {
             session = getSessionFactory().openSession();
         } else {
+
             if (!session.isOpen()) {
                 session = getSessionFactory().openSession();
+                //if connect OK, reset timer
+                backOffTimer.reset();
                 logger.info("Hibernate Session is open. ");
+
             }
+
+
         }
         return session;
     }
@@ -67,5 +93,15 @@ public class HibernateUtil {
     public void shutdownSession() {
         session.close();
         logger.info("Hibernate session is closed.");
+    }
+
+    public void dataBaseNotResponse() {
+
+        if (!dataBaseNotresponse) {
+            dataBaseNotresponse = true;
+            backOffTimer.start();
+            throw new DatabaseNotResponseException("Database connection is lost.");
+        }
+
     }
 }
