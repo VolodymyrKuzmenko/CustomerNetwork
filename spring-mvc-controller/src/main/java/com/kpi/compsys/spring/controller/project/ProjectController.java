@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Vova on 12/4/2015.
@@ -41,7 +42,8 @@ public class ProjectController {
     public ModelAndView getUserProjects() {
         ModelAndView projectsModelView = new ModelAndView();
         projectsModelView.setViewName("projects");
-        projectsModelView.addObject("projectsList", projectService.getAll());
+        List<Project> projects = projectService.getAll();
+        projectsModelView.addObject("projectsList", projects);
 
         return projectsModelView;
     }
@@ -67,7 +69,7 @@ public class ProjectController {
     ) {
 
         Project project = new Project();
-        if(parrentProjectId!=0){
+        if (parrentProjectId != 0) {
             project.setParrentProject(projectService.getById(parrentProjectId));
         }
         project.setDateCreated(new Date(System.currentTimeMillis()));
@@ -86,20 +88,17 @@ public class ProjectController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("new-project");
         modelAndView.addObject("usersList", userService.getAll());
-        if (projectId!=null){
+        if (projectId != null) {
             System.out.println("projectID!=null");
             Project project = projectService.getById(projectId);
             modelAndView.addObject("project", project);
-        }else {
+        } else {
             modelAndView.addObject("project", null);
         }
 
 
-
         return modelAndView;
     }
-
-
 
 
     @RequestMapping(value = "/create-project/{projectID}")
