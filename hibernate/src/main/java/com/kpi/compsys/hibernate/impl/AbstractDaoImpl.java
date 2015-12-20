@@ -2,7 +2,11 @@ package com.kpi.compsys.hibernate.impl;
 
 import com.kpi.compsys.dao.AbstractDao;
 import com.kpi.compsys.hibernate.HibernateUtil;
+import edu.emory.mathcs.backport.java.util.LinkedList;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.Query;
+import org.hibernate.exception.JDBCConnectionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,27 +17,43 @@ import java.util.List;
  */
 @Component
 public abstract class AbstractDaoImpl<T> implements AbstractDao<T> {
-
+    private static final Logger logger = LogManager.getLogger(AbstractDaoImpl.class);
     @Autowired
     protected HibernateUtil util;
 
     //TODO dead code. Need work with prepare statement, may be sql injection.
     @Override
     public List<T> getByFilter(String queryStr) {
-        Query query = util.getSesssion().createQuery(queryStr);
-        List<T> list = query.list();
+        List<T> list = new LinkedList();
+        try {
+            Query query = util.getSesssion().createQuery(queryStr);
+            list = query.list();
+        } catch (JDBCConnectionException e) {
+            logger.warn("Error execution query");
+            util.dataBaseNotResponse();
+        }
         return list;
     }
 
     @Override
     public T create(T entity) {
-        util.getSesssion().save(entity);
+        try {
+            util.getSesssion().save(entity);
+        } catch (JDBCConnectionException e) {
+            logger.warn("Error execution query");
+            util.dataBaseNotResponse();
+        }
         return entity;
     }
 
 
     public void delete(T entity) {
-        util.getSesssion().delete(entity);
+        try {
+            util.getSesssion().delete(entity);
+        } catch (JDBCConnectionException e) {
+            logger.warn("Error execution query");
+            util.dataBaseNotResponse();
+        }
     }
 
     @Override
