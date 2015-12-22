@@ -10,6 +10,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -17,17 +18,19 @@ import org.springframework.stereotype.Component;
 @Scope(value = "singleton")
 public class HibernateUtil {
     private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger(HibernateUtil.class);
-    private static SessionFactory sessionFactory = null;
-    private static Session session;
-    private static boolean dataBaseNotresponse = false;
+
+    @Autowired
+    private SessionFactory sessionFactory;
+    private Session session;
+    private boolean dataBaseNotresponse = false;
 
 
     private ExponentialTimer backOffTimer = new ExponentialTimer();
 
 
     public HibernateUtil() {
-        session = buildSessionFactory().openSession();
-        logger.info("Init session has open.");
+//        session = buildSessionFactory().openSession();
+//        logger.info("Init session has open.");
     }
 
     private SessionFactory buildSessionFactory() {
@@ -49,9 +52,9 @@ public class HibernateUtil {
     }
 
     public SessionFactory getSessionFactory() {
-        if (sessionFactory == null) {
-            sessionFactory = buildSessionFactory();
-        }
+//        if (sessionFactory == null) {
+//            sessionFactory = buildSessionFactory();
+//        }
         return sessionFactory;
     }
 
