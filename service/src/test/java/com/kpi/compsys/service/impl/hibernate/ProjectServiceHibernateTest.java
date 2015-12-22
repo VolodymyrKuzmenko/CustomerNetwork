@@ -1,0 +1,17 @@
+package com.kpi.compsys.service.impl.hibernate;
+
+import com.kpi.compsys.service.AbstractProjectServiceTest;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import static org.junit.Assert.*;
+
+/**
+ * Created by Vova on 12/23/2015.
+ */
+@ContextConfiguration(locations = {"classpath:test-context.xml"})
+@RunWith(SpringJUnit4ClassRunner.class)
+public class ProjectServiceHibernateTest extends AbstractProjectServiceTest{
+
+}
