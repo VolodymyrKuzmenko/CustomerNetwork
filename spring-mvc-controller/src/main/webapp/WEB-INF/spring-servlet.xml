@@ -17,5 +17,8 @@
         <constructor-arg name="strength" value="12" />
     </bean>
 
-    <import resource="hibernate-datasource-beans.xml"/>
+    <import resource="datasource.xml"/>
+    <import resource="hibernate4-beans.xml"/>
+
+
 </beans>
