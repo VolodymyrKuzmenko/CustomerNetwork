@@ -1,36 +1,33 @@
 package com.kpi.compsys.service;
 
+import com.kpi.compsys.model.Project;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import static org.assertj.core.api.Assertions.assertThat;
+import java.util.List;
 
-import static org.junit.Assert.*;
 
 /**
  * Created by Vova on 12/23/2015.
  */
 public abstract class AbstractProjectServiceTest {
 
-    @Test
-    public void testAdd() throws Exception {
-
-    }
+    @Autowired
+    protected ProjectService projectService;
 
     @Test
-    public void testUpdate() throws Exception {
+    public void shouldShowChildProjectsByProjectId() throws Exception {
 
-    }
 
-    @Test
-    public void testGetAll() throws Exception {
+        List<Project> childProjects = projectService.getChildProjects(1);
 
-    }
+        Project chld1 = projectService.getById(6);
+        Project chld2 = projectService.getById(5);
+        Project chld3 = projectService.getById(4);
 
-    @Test
-    public void testGetById() throws Exception {
-
-    }
-
-    @Test
-    public void testGetChildProjects() throws Exception {
+        assertThat(childProjects.contains(chld1));
+        assertThat(childProjects.contains(chld2));
+        assertThat(childProjects.contains(chld3));
 
     }
 }

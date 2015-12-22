@@ -5,9 +5,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+import static org.assertj.core.api.Assertions.assertThat;
+import java.util.List;
 
 /**
  * Created by Vova on 12/22/2015.
@@ -20,23 +19,27 @@ public abstract class AbstractUserServiceTest {
     protected UserService userService;
 
     @Test
-    public void sholdFindAllUsers(){
-    }
+    public void shouldFindAllUsers(){
+        List<User> userList = userService.getAll();
 
-    @Test
-    public void sholdFindUserByEmail(){
+        User user1 = userService.getById(1);
+        assertThat(user1.getEmail().equalsIgnoreCase(userList.get(0).getEmail()));
 
-    }
-
-    @Test
-    public void sholdFindUserById(){
+        User user4 = userService.getById(4);
+        assertThat(user4.getEmail().equalsIgnoreCase(userList.get(3).getEmail()));
 
     }
 
     @Test
-    public void shouldCreateUserByEmailAndPassword(){
+    public void shouldFindUserByEmail(){
+        String email = "admin@gmail.com";
 
+        List<User> actual = userService.getByEmail(email);
+        assertThat(actual.size()==1);
+        assertThat(actual.get(0).getEmail().equalsIgnoreCase(email));
     }
+
+
 
 
 

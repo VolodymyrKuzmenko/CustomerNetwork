@@ -9,20 +9,7 @@ import static org.junit.Assert.*;
  */
 public abstract class AbstractSessionHistoryServiceTest {
 
-    @Test
-    public void testSaveLogOutSessionInformation() throws Exception {
 
-    }
-
-    @Test
-    public void testSaveSuccsesAuthorizationInformation() throws Exception {
-
-    }
-
-    @Test
-    public void testSaveFailureAuthorisationInformation() throws Exception {
-
-    }
 
     @Test
     public void testGetAllSessionHistory() throws Exception {
