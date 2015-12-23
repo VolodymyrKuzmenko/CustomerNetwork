@@ -23,43 +23,14 @@ public class HibernateUtil {
     private SessionFactory sessionFactory;
     private Session session;
     private boolean dataBaseNotresponse = false;
-
-
     private ExponentialTimer backOffTimer = new ExponentialTimer();
 
 
-    public HibernateUtil() {
-//        session = buildSessionFactory().openSession();
-//        logger.info("Init session has open.");
-    }
+    public HibernateUtil() {}
 
-    private SessionFactory buildSessionFactory() {
-        SessionFactory sessionFactory = null;
-        try {
-            Configuration configuration = new Configuration()
-                    .configure();
-            logger.info("Hibernate configuration created.");
-            StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
-            sessionFactory = configuration.buildSessionFactory(builder.build());
-            logger.info("Session Factory has build.");
-
-        } catch (Exception e) {
-            logger.error("Initial SessionFactory creation failed.\n" + e.getMessage());
-            backOffTimer.calcNextTime();
-            backOffTimer.throwDatabaseNotResponceException();
-        }
-        return sessionFactory;
-    }
-
-    public SessionFactory getSessionFactory() {
-//        if (sessionFactory == null) {
-//            sessionFactory = buildSessionFactory();
-//        }
-        return sessionFactory;
-    }
 
     public void shutdownSessionFactory() {
-        getSessionFactory().close();
+        sessionFactory.close();
         logger.info("Session factory has closed.");
     }
 
@@ -72,16 +43,16 @@ public class HibernateUtil {
 
             dataBaseNotresponse = false;
 
-            session = getSessionFactory().openSession();
+            session = sessionFactory.openSession();
 
         }
 
         if (session == null) {
-            session = getSessionFactory().openSession();
+            session = sessionFactory.openSession();
         } else {
 
             if (!session.isOpen()) {
-                session = getSessionFactory().openSession();
+                session = sessionFactory.openSession();
                 //if connect OK, reset timer
                 backOffTimer.reset();
                 logger.info("Hibernate Session is open. ");

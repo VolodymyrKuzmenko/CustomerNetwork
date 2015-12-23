@@ -38,7 +38,7 @@ public class ProjectController {
     @Autowired
     private StatusService statusService;
 
-    @RequestMapping(value = "/projects")
+    @RequestMapping(value = "/projects", method = RequestMethod.GET)
     public ModelAndView getUserProjects() {
         ModelAndView projectsModelView = new ModelAndView();
         projectsModelView.setViewName("projects");
