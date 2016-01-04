@@ -235,7 +235,7 @@
                     <form method="post" action="${createProjectUrl}" id="createProject">
                         <div class="form-group">
                                 <label>Name:</label>
-                                <input class="form-control" name="projectName" placeholder="Enter text">
+                                <input class="form-control" name="projectName" placeholder="Enter text" required>
                             </div>
                             <div class="form-group">
                                 <label>Description:</label>
