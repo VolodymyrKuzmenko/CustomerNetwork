@@ -3,12 +3,28 @@ $(document).ready(function(){
     $('.update_data').on('click',function(){
         var input = $('#'+ $(this).attr('data-target'));
         input.attr('disabled',false).focus().focusEnd();
-        $('#update_button').css('display','inline-block').on('click',function(){
+        $('#update_button').fadeIn('fast').one('click',function(){
+            var key = input.attr('id');
+            $.ajax ({
+                type: "POST",
+                url: "/some.php",
+                data: key + '=' + input.val(), 
+                success: function(data){
+                    $(".alert-success").fadeIn(700);
+                    setTimeout(function(){
+                    $(".alert-success").fadeOut(700);
+                    },2000);
+                },
+                error: function(){
+                    $(".alert-errors").fadeIn(1000);
+                }
+            });
+
             input.attr('disabled',true);
             $('#update_button').fadeOut('fast');
             $('#cancel_button').fadeOut('fast');
         });
-        $('#cancel_button').css('display','inline-block').on('click',function(){
+        $('#cancel_button').fadeIn('fast').one('click',function(){
             $('#update_button').fadeOut('fast');
             $('#cancel_button').fadeOut('fast');
         });
