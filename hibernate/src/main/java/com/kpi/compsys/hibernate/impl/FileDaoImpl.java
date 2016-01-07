@@ -6,6 +6,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.exception.JDBCConnectionException;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -13,6 +16,8 @@ import java.util.List;
  * Created by Vova on 11/27/2015.
  */
 @Component
+@Repository("fileDao")
+@Transactional(propagation = Propagation.REQUIRED)
 public class FileDaoImpl extends AbstractDaoImpl<File> implements FileDao {
     private static final Logger logger = LogManager.getLogger(FileDaoImpl.class);
 
@@ -20,10 +25,9 @@ public class FileDaoImpl extends AbstractDaoImpl<File> implements FileDao {
     public File getById(Integer id) {
         File entity = null;
         try {
-            entity = (File) util.getSesssion().load(File.class, id);
+            entity = entityManager.find(File.class, id);
         } catch (JDBCConnectionException e) {
             logger.warn("Error execution query");
-            util.dataBaseNotResponse();
         }
         return entity;
     }
@@ -32,10 +36,9 @@ public class FileDaoImpl extends AbstractDaoImpl<File> implements FileDao {
     public void delete(Integer id) {
         File file = null;
         try {
-            file = (File) util.getSesssion().load(File.class, id);
+            file = entityManager.find(File.class, id);
         } catch (JDBCConnectionException e) {
             logger.warn("Error execution query");
-            util.dataBaseNotResponse();
         }
         super.delete(file);
     }
@@ -44,10 +47,9 @@ public class FileDaoImpl extends AbstractDaoImpl<File> implements FileDao {
     public List<File> getAll() {
         List<File> list = null;
         try {
-            list = util.getSesssion().createCriteria(File.class).list();
+            list = entityManager.createNamedQuery("File.getAll", File.class).getResultList();
         } catch (JDBCConnectionException e) {
             logger.warn("Error execution query");
-            util.dataBaseNotResponse();
         }
         return list;
     }

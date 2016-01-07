@@ -1,15 +1,14 @@
 package com.kpi.compsys.hibernate.impl;
 
 import com.kpi.compsys.dao.AbstractDao;
-import com.kpi.compsys.hibernate.HibernateUtil;
 import edu.emory.mathcs.backport.java.util.LinkedList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.hibernate.Query;
 import org.hibernate.exception.JDBCConnectionException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 /**
@@ -18,19 +17,19 @@ import java.util.List;
 @Component
 public abstract class AbstractDaoImpl<T> implements AbstractDao<T> {
     private static final Logger logger = LogManager.getLogger(AbstractDaoImpl.class);
-    @Autowired
-    protected HibernateUtil util;
+
+    @PersistenceContext
+    public EntityManager entityManager;
 
     //TODO dead code. Need work with prepare statement, may be sql injection.
     @Override
     public List<T> getByFilter(String queryStr) {
         List<T> list = new LinkedList();
         try {
-            Query query = util.getSesssion().createQuery(queryStr);
-            list = query.list();
+            javax.persistence.Query query = entityManager.createQuery(queryStr);
+            list = query.getResultList();
         } catch (JDBCConnectionException e) {
             logger.warn("Error execution query");
-            util.dataBaseNotResponse();
         }
         return list;
     }
@@ -38,10 +37,9 @@ public abstract class AbstractDaoImpl<T> implements AbstractDao<T> {
     @Override
     public T create(T entity) {
         try {
-            util.getSesssion().save(entity);
+            entityManager.persist(entity);
         } catch (JDBCConnectionException e) {
             logger.warn("Error execution query");
-            util.dataBaseNotResponse();
         }
         return entity;
     }
@@ -49,16 +47,15 @@ public abstract class AbstractDaoImpl<T> implements AbstractDao<T> {
 
     public void delete(T entity) {
         try {
-            util.getSesssion().delete(entity);
+            entityManager.remove(entity);
         } catch (JDBCConnectionException e) {
             logger.warn("Error execution query");
-            util.dataBaseNotResponse();
         }
     }
 
     @Override
     public T update(T entity) {
-        util.getSesssion().merge(entity);
+        entityManager.merge(entity);
         return entity;
     }
 
@@ -70,7 +67,7 @@ public abstract class AbstractDaoImpl<T> implements AbstractDao<T> {
 
     @Override
     public void close() {
-        util.shutdownSession();
+        entityManager.close();
     }
 
 }

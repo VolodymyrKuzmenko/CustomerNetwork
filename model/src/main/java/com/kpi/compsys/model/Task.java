@@ -11,6 +11,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "Task")
+@NamedQuery(name = "Task.getAll", query = "SELECT t FROM Task t")
 public class Task implements Serializable {
     private Integer taskId;
     private String name;
@@ -21,7 +22,7 @@ public class Task implements Serializable {
     private Project project;
     private List<Comment> comments = new LinkedList<>();
 
-//    @OneToOne(fetch = FetchType.LAZY)
+    //    @OneToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "status")
     @Enumerated(EnumType.ORDINAL)
     public Status getStatus() {
@@ -52,7 +53,7 @@ public class Task implements Serializable {
         this.responsible = responsible;
     }
 
-    @Column(name="deleted")
+    @Column(name = "deleted")
     public Boolean getDeleted() {
         return deleted;
     }
@@ -62,7 +63,7 @@ public class Task implements Serializable {
     }
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="date_updated")
+    @Column(name = "date_updated")
     public Date getDateUpdated() {
         return dateUpdated;
     }
@@ -93,7 +94,7 @@ public class Task implements Serializable {
 
     @Id
     @GeneratedValue
-    @Column(name="task_id")
+    @Column(name = "task_id")
     public Integer getTaskId() {
         return taskId;
     }

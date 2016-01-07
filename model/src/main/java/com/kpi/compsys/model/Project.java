@@ -11,7 +11,8 @@ import java.util.List;
  * Created by Vova on 11/27/2015.
  */
 @Entity
-@Table(name= "Project")
+@Table(name = "Project")
+@NamedQuery(name = "Project.getAll", query = "SELECT p FROM Project p")
 public class Project implements Serializable {
     private Integer id;
     private String name;
@@ -44,7 +45,7 @@ public class Project implements Serializable {
         this.name = name;
     }
 
-//    @OneToOne(cascade = CascadeType.ALL)
+    //    @OneToOne(cascade = CascadeType.ALL)
 //    @JoinColumn(name="status")
     @Enumerated(EnumType.ORDINAL)
     //@Column(name = "status")
@@ -56,7 +57,7 @@ public class Project implements Serializable {
         this.status = status;
     }
 
-    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "parrent_project")
     public Project getParrentProject() {
         return parrentProject;

@@ -10,6 +10,7 @@ import java.util.Date;
  */
 @Table(name="Comment")
 @Entity
+@NamedQuery(name = "Comment.getAll", query = "SELECT c FROM Comment c")
 public class Comment implements Serializable {
     @Id
     @GeneratedValue

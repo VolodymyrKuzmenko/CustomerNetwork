@@ -7,7 +7,8 @@ import java.io.Serializable;
  * Created by Vova on 11/27/2015.
  */
 @Entity
-@Table(name="File")
+@Table(name = "File")
+@NamedQuery(name = "File.getAll", query = "SELECT f FROM File f")
 public class File implements Serializable {
     private Integer idFile;
 
@@ -21,6 +22,7 @@ public class File implements Serializable {
     public void setIdFile(Integer idFile) {
         this.idFile = idFile;
     }
+
     @Column(name = "fileName")
     public String getFileName() {
         return fileName;
@@ -29,6 +31,7 @@ public class File implements Serializable {
     public void setFileName(String fileName) {
         this.fileName = fileName;
     }
+
     @Column(name = "pathToFile")
     public String getPathToFile() {
         return pathToFile;

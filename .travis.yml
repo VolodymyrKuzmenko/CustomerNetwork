@@ -9,6 +9,7 @@ instal: mvn install
 notifications:
   email:
     recipients:
-      - kuzmenko.volodimir@gmail.com
+      - kuzmenko.volodimir@gmail.com 
+      - zakolenkoroman@gmail.com
     on_success: always
     on_failure: always

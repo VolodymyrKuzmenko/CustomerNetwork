@@ -9,6 +9,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name="UserRole")
+@NamedQuery(name = "UserRole.getAll", query = "SELECT u FROM UserRole u")
 public class UserRole implements Serializable {
 
     private Integer roleId;

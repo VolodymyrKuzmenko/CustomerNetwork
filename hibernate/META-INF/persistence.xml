@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+    <persistence-unit name="persistenceUnit" transaction-type="RESOURCE_LOCAL">
+        <class>com.kpi.compsys.model.File</class>
+        <class>com.kpi.compsys.model.Comment</class>
+        <class>com.kpi.compsys.model.Project</class>
+        <class>com.kpi.compsys.model.SessionHistory</class>
+        <class>com.kpi.compsys.model.Status</class>
+        <class>com.kpi.compsys.model.Task</class>
+        <class>com.kpi.compsys.model.User</class>
+        <class>com.kpi.compsys.model.UserInfo</class>
+        <class>com.kpi.compsys.model.UserRole</class>
+    </persistence-unit>
+</persistence>

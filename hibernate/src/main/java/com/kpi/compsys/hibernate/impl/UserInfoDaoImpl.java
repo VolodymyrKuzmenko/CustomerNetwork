@@ -6,6 +6,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.exception.JDBCConnectionException;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -13,6 +16,8 @@ import java.util.List;
  * Created by Lilly_94 on 27.10.2015.
  */
 @Component
+@Repository("userInfoDao")
+@Transactional(propagation = Propagation.REQUIRED)
 public class UserInfoDaoImpl extends AbstractDaoImpl<UserInfo> implements UserInfoDao {
     private static final Logger logger = LogManager.getLogger(UserInfoDaoImpl.class);
 
@@ -20,10 +25,9 @@ public class UserInfoDaoImpl extends AbstractDaoImpl<UserInfo> implements UserIn
     public void delete(Integer id) {
         UserInfo userInfo = null;
         try {
-            userInfo = (UserInfo) util.getSesssion().load(UserInfo.class, id);
+            userInfo = entityManager.find(UserInfo.class, id);
         } catch (JDBCConnectionException e) {
             logger.warn("Error execution query");
-            util.dataBaseNotResponse();
         }
         super.delete(userInfo);
     }
@@ -32,10 +36,9 @@ public class UserInfoDaoImpl extends AbstractDaoImpl<UserInfo> implements UserIn
     public UserInfo getById(Integer id) {
         UserInfo userInfo = null;
         try {
-            userInfo = (UserInfo) util.getSesssion().load(UserInfo.class, id);
+            userInfo = entityManager.find(UserInfo.class, id);
         } catch (JDBCConnectionException e) {
             logger.warn("Error execution query");
-            util.dataBaseNotResponse();
         }
         return userInfo;
     }
@@ -44,10 +47,9 @@ public class UserInfoDaoImpl extends AbstractDaoImpl<UserInfo> implements UserIn
     public List<UserInfo> getAll() {
         List<UserInfo> list = null;
         try {
-            list =  util.getSesssion().createCriteria(UserInfo.class).list();
+            list = entityManager.createNamedQuery("UserInfo.getAll", UserInfo.class).getResultList();
         } catch (JDBCConnectionException e) {
             logger.warn("Error execution query");
-            util.dataBaseNotResponse();
         }
         return list;
 

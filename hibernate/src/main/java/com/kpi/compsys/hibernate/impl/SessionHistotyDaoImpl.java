@@ -6,6 +6,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.exception.JDBCConnectionException;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -13,6 +16,8 @@ import java.util.List;
  * Created by Vova on 11/27/2015.
  */
 @Component
+@Repository("sessionHistoryDao")
+@Transactional(propagation = Propagation.REQUIRED)
 public class SessionHistotyDaoImpl extends AbstractDaoImpl<SessionHistory> implements SessionHistoryDao {
     private static final Logger logger = LogManager.getLogger(SessionHistotyDaoImpl.class);
 
@@ -20,10 +25,9 @@ public class SessionHistotyDaoImpl extends AbstractDaoImpl<SessionHistory> imple
     public SessionHistory getById(Integer id) {
         SessionHistory entity = null;
         try {
-            entity = (SessionHistory) util.getSesssion().load(SessionHistory.class, id);
+            entity = entityManager.find(SessionHistory.class, id);
         } catch (JDBCConnectionException e) {
             logger.warn("Error execution query");
-            util.dataBaseNotResponse();
         }
         return entity;
     }
@@ -32,10 +36,9 @@ public class SessionHistotyDaoImpl extends AbstractDaoImpl<SessionHistory> imple
     public void delete(Integer id) {
         SessionHistory sessionHistory = null;
         try {
-            sessionHistory = (SessionHistory) util.getSesssion().load(SessionHistory.class, id);
+            sessionHistory = entityManager.find(SessionHistory.class, id);
         } catch (JDBCConnectionException e) {
             logger.warn("Error execution query");
-            util.dataBaseNotResponse();
         }
         super.delete(sessionHistory);
     }
@@ -44,10 +47,9 @@ public class SessionHistotyDaoImpl extends AbstractDaoImpl<SessionHistory> imple
     public List<SessionHistory> getAll() {
         List<SessionHistory> list = null;
         try {
-            list = util.getSesssion().createCriteria(SessionHistory.class).list();
+            list = entityManager.createNamedQuery("Project.getAll", SessionHistory.class).getResultList();
         } catch (JDBCConnectionException e) {
             logger.warn("Error execution query");
-            util.dataBaseNotResponse();
         }
         return list;
     }

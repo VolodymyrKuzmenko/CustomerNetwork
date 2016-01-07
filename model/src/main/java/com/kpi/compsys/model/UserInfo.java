@@ -10,7 +10,8 @@ import java.util.Date;
  * Created by Lilly_94 on 27.10.2015.
  */
 @Entity
-@Table(name="userinfo")
+@Table(name = "userinfo")
+@NamedQuery(name = "UserInfo.getAll", query = "SELECT u FROM UserInfo u")
 public class UserInfo implements Serializable {
     private int info_id;
     private User user;
@@ -19,7 +20,7 @@ public class UserInfo implements Serializable {
     private Date birthday;
     private String image;
 
-    @Column(name="name")
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -28,7 +29,7 @@ public class UserInfo implements Serializable {
         this.name = name;
     }
 
-    @Column(name="surname")
+    @Column(name = "surname")
     public String getSurname() {
         return surname;
     }
@@ -37,7 +38,7 @@ public class UserInfo implements Serializable {
         this.surname = surname;
     }
 
-    @Column(name="birthday")
+    @Column(name = "birthday")
     public Date getBirthday() {
         return birthday;
     }
@@ -46,7 +47,7 @@ public class UserInfo implements Serializable {
         this.birthday = birthday;
     }
 
-    @Column(name="photo")
+    @Column(name = "photo")
     public String getImage() {
         return image;
     }
@@ -54,10 +55,11 @@ public class UserInfo implements Serializable {
     public void setImage(String image) {
         this.image = image;
     }
+
     @Id
-    @GeneratedValue(generator="increment")
-    @GenericGenerator(name="increment", strategy = "increment")
-    @Column(name="info_id")
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
+    @Column(name = "info_id")
     public int getInfo_id() {
         return info_id;
     }
@@ -65,14 +67,14 @@ public class UserInfo implements Serializable {
     public void setInfo_id(int info_id) {
         this.info_id = info_id;
     }
-    @OneToOne(fetch = FetchType.LAZY,cascade=CascadeType.ALL)
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
-    public User getUser()
-    {
+    public User getUser() {
         return user;
     }
-    public void setUser(User user)
-    {
+
+    public void setUser(User user) {
         this.user = user;
     }
 

@@ -19,7 +19,6 @@ import org.springframework.stereotype.Component;
 public class HibernateUtil {
     private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger(HibernateUtil.class);
 
-    @Autowired
     private SessionFactory sessionFactory;
     private Session session;
     private boolean dataBaseNotresponse = false;

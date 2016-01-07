@@ -8,7 +8,8 @@ import java.util.Date;
  * Created by Vova on 11/27/2015.
  */
 @Entity
-@Table(name="SessionHistory")
+@Table(name = "SessionHistory")
+@NamedQuery(name = "SessionHistory.getAll", query = "SELECT s FROM SessionHistory s")
 public class SessionHistory implements Serializable {
     @Id
     @GeneratedValue

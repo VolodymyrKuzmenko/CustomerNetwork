@@ -13,7 +13,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Entity
-@Table(name="user")
+@Table(name = "user")
+@NamedQuery(name = "User.getAll", query = "SELECT u FROM User u")
 public class User implements Serializable {
 
     private int id;
@@ -22,7 +23,7 @@ public class User implements Serializable {
 
     @NotFound(action = NotFoundAction.IGNORE)
     @OneToOne
-    @JoinColumn(name ="manager", nullable = true)
+    @JoinColumn(name = "manager", nullable = true)
     public User getManager() {
         return manager;
     }
@@ -46,7 +47,7 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue()
-    @Column(name="user_id")
+    @Column(name = "user_id")
     public int getId() {
         return id;
     }
@@ -56,7 +57,7 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    @Column(name="email")
+    @Column(name = "email")
     public String getEmail() {
         return email;
     }
@@ -66,7 +67,7 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    @Column(name="password")
+    @Column(name = "password")
     public String getPassword() {
         return password;
     }
@@ -77,7 +78,7 @@ public class User implements Serializable {
     }
 
     @NotFound(action = NotFoundAction.IGNORE)
-    @OneToOne(fetch=FetchType.LAZY, mappedBy="user")
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "user")
     public UserInfo getUserInfo() {
         return userInfo;
     }
@@ -104,7 +105,7 @@ public class User implements Serializable {
 
     private List<Comment> comments = new LinkedList<>();
 
-    public User(User user){
+    public User(User user) {
         this.comments = user.comments;
         this.email = user.email;
         this.id = user.id;
@@ -114,10 +115,9 @@ public class User implements Serializable {
         this.userInfo = user.userInfo;
     }
 
-    public User (){
+    public User() {
 
     }
-
 
 
 }
