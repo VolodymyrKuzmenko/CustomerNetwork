@@ -4,12 +4,12 @@
 <hibernate-configuration>
     <session-factory>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-      <property name="connection.url">jdbc:mysql://localhost/social_network</property>
+        <property name="connection.url">jdbc:mysql://localhost/social_network</property>
         <!--    <property name="connection.url">jdbc:mysql://node26154-env-test.unicloud.pl/social_network</property>-->
-          <property name="connection.username">root</property>
+        <property name="connection.username">root</property>
         <property name="connection.password">qwerty</property>
-       <!--   <property name="connection.password">TAHscv17437</property> -->
-        <property name="dialect"> org.hibernate.dialect.MySQLDialect</property>
+        <!--   <property name="connection.password">TAHscv17437</property> -->
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hbm2ddl.auto">update</property>
         <property name="hibernate.connection.autocommit">true</property>
         <property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>
@@ -28,7 +28,7 @@
         <mapping class="com.kpi.compsys.model.User"/>
         <mapping class="com.kpi.compsys.model.UserInfo"/>
         <mapping class="com.kpi.compsys.model.UserRole"/>
-
+        <mapping class="com.kpi.compsys.model.StatusEntityAdapter"/>
 
     </session-factory>
 </hibernate-configuration>
