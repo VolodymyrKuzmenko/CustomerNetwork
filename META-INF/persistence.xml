@@ -11,5 +11,6 @@
         <class>com.kpi.compsys.model.User</class>
         <class>com.kpi.compsys.model.UserInfo</class>
         <class>com.kpi.compsys.model.UserRole</class>
+        <class>com.kpi.compsys.model.StatusEntityAdapter</class>
     </persistence-unit>
 </persistence>
