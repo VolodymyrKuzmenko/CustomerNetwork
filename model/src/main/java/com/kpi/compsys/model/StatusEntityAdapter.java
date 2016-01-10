@@ -7,8 +7,8 @@ import java.io.Serializable;
  * Created by Vova on 12/13/2015.
  */
 @Entity
-@Table(name = "Status")
-@NamedQuery(name = "Status.getAll", query = "SELECT s FROM Status s")
+@Table(name = "status")
+@NamedQuery(name = "Status.getAll", query = "SELECT s FROM StatusEntityAdapter s")
 public class StatusEntityAdapter implements Serializable {
     private Integer statusId;
 
