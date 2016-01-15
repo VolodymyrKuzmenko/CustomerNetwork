@@ -10,7 +10,3 @@ target
 .idea
 !.gitignore
 
-
-controller/src/main/webapp/addDeal.jsp
-controller/src/main/java/com/becomejavasenior/deal/AddDealServlet.java
-spring-mvc-controller/src/main/resources/hibernate.cfg.xml
