@@ -14,11 +14,10 @@ import java.util.List;
  * Created by Vova on 12/5/2015.
  */
 @Service
-public class ProjectServiceImpl implements ProjectService{
+public class ProjectServiceImpl implements ProjectService {
 
     @Autowired
     private ProjectDao projectDao;
-
 
 
     @Override
@@ -45,8 +44,8 @@ public class ProjectServiceImpl implements ProjectService{
     public List<Project> getChildProjects(Integer parrentProjectId) {
         //TODO create method with query in dao
         List<Project> childProjectList = new LinkedList<Project>();
-        for (Project project : projectDao.getAll()){
-            if (project.getParrentProject()!=null && project.getParrentProject().getId().equals(parrentProjectId)){
+        for (Project project : projectDao.getAll()) {
+            if (project.getParrentProject() != null && project.getParrentProject().getId().equals(parrentProjectId)) {
                 childProjectList.add(project);
             }
         }

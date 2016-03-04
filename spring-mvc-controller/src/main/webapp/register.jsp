@@ -37,7 +37,7 @@
 <div class="container-fluid">
     <div class="row-fluid">
         <div class="registration-form center-block">
-            <form class="form-horizontal" action='/registration' method="POST">
+            <form class="form-horizontal" action="/registration" method="POST">
                 <fieldset>
                     <div id="legend">
                         <legend class="">Register</legend>

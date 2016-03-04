@@ -4,6 +4,7 @@ import com.kpi.compsys.dao.UserDao;
 import com.kpi.compsys.model.User;
 import com.kpi.compsys.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,6 +1,7 @@
 package com.kpi.compsys.spring.controller;
 
 import com.kpi.compsys.model.User;
+import com.kpi.compsys.model.UserRole;
 import com.kpi.compsys.service.UserRoleService;
 import com.kpi.compsys.service.UserService;
 import org.apache.logging.log4j.LogManager;
@@ -54,17 +55,21 @@ public class RegistrationController {
                 return new ModelAndView("register");
         }
 
-        for (User user : userService.getAll()) {
-            if (usrEmail.equals(user.getEmail())) {
-                logger.info("Error registration, email"+usrEmail+"' has been registered in system");
-                return new ModelAndView("register");
-            }
-        }
+
+//        for (User user : userService.getAll()) {
+//            if (usrEmail.equals(user.getEmail())) {
+//                logger.info("Error registration, email"+usrEmail+"' has been registered in system");
+//                return new ModelAndView("register");
+//            }
+//        }
 
         User newUser = new User();
         newUser.setEmail(usrEmail);
-        newUser.setPassword(passwordEncoder.encode(usrPass));
-        newUser.setRole(userRoleService.getDefaultUserRole());
+//        String pass=passwordEncoder.encode();
+        newUser.setPassword(usrPass);
+//        UserRole role=userRoleService.getDefaultUserRole();
+//        logger.info(role);
+//        newUser.setRole(role);
         userService.add(newUser);
         logger.info("New user with email '"+usrEmail+"' has registered");
         model = new ModelAndView("index");

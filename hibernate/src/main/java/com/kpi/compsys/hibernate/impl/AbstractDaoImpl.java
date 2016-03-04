@@ -38,7 +38,11 @@ public abstract class AbstractDaoImpl<T> implements AbstractDao<T> {
     @Override
     public T create(T entity) {
         try {
+//            util.getSesssion().beginTransaction();
             util.getSesssion().save(entity);
+//            util.getSesssion().getTransaction().commit();
+
+            logger.info("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         } catch (JDBCConnectionException e) {
             logger.warn("Error execution query");
             util.dataBaseNotResponse();

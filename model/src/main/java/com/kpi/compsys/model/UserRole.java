@@ -35,4 +35,11 @@ public class UserRole implements Serializable {
 
     private String roleName;
 
+    @Override
+    public String toString() {
+        return "UserRole{" +
+                "roleId=" + roleId +
+                ", roleName='" + roleName + '\'' +
+                '}';
+    }
 }
